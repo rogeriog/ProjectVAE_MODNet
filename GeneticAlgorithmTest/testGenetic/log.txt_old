@@ -1,0 +1,2021 @@
+start
+Fri Feb 17 16:53:18 CET 2023
+2023-02-17 16:53:19.701029: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-17 16:53:19.812249: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-02-17 16:53:49,019 - modnet - INFO - Loaded <modnet.preprocessing.MODData object at 0x7ff367799d90> object, created with modnet version 0.1.12
+NAN values: 12054
+NAN values remaining: 0
+        AtomicOrbitals|HOMO_character  ...  BondFractions|B - B bond frac.
+id                                     ...                                
+17790                             3.0  ...                             0.0
+22482                             1.0  ...                             0.0
+38615                             3.0  ...                             0.0
+101296                            3.0  ...                             0.0
+41330                             3.0  ...                             0.0
+...                               ...  ...                             ...
+60998                             3.0  ...                             0.0
+82704                             4.0  ...                             0.0
+74721                             2.0  ...                             0.0
+18656                             2.0  ...                             0.0
+9010                              3.0  ...                             0.0
+
+[2000 rows x 1336 columns]
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:486: UserWarning: The percentage of genes to mutate (mutation_percent_genes=10) resutled in selecting (0) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).
+If you do not want to mutate any gene, please set mutation_type=None.
+  if not self.suppress_warnings: warnings.warn("The percentage of genes to mutate (mutation_percent_genes={mutation_percent}) resutled in selecting ({mutation_num}) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).\nIf you do not want to mutate any gene, please set mutation_type=None.".format(mutation_percent=mutation_percent_genes, mutation_num=mutation_num_genes))
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:764: UserWarning: Starting from PyGAD 2.6.0, the callback_generation parameter is deprecated and will be removed in a later release of PyGAD. Please use the on_generation parameter instead.
+  if not self.suppress_warnings: warnings.warn("Starting from PyGAD 2.6.0, the callback_generation parameter is deprecated and will be removed in a later release of PyGAD. Please use the on_generation parameter instead.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:820: UserWarning: Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:828: UserWarning: Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.")
+[[2.0 30 0.001 128 1]
+ [2.5 150 0.0005 256 1]
+ [2.0 120 0.002 128 1]
+ [1.0 60 0.001 128 2]
+ [2.5 120 0.001 256 2]]
+[2.0 30 0.001 128 1] 0
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+2023-02-17 16:53:50.030611: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-17 16:53:50.402926: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 20633 MB memory:  -> device: 0, name: NVIDIA A10, pci bus id: 0000:a2:00.0, compute capability: 8.6
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2498)         3122500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 2498)        9992        ['dense_enc0[0][0]']             
+ alization)                                                                                       
+                                                                                                  
+ re_lu (ReLU)                   (None, 2498)         0           ['batch_normalization[0][0]']    
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1247001     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1247001     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4631739     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer (VAELossLayer)  (None, 1249)         0           ['input_enc[0][0]',              
+                                                                  'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 10,258,233
+Trainable params: 10,247,243
+Non-trainable params: 10,990
+__________________________________________________________________________________________________
+File geneticVAE_MMmp_gap_custom_VAE2.0_cr0.4_bs128_ep30_loss_mse_lr0.001_AutoEncoder.h5 exists in folder already, skiping this calculation.
+2023-02-17 16:53:51.715938: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+1/7 [===>..........................] - ETA: 3s7/7 [==============================] - 1s 1ms/step
+correlation 0.2828355890512466
+cosine 0.2224222630262375
+MAE: 0.11358281
+RMSE: 0.18151493
+r2: -0.5809451021413099
+RMSE zero-vector: 0.25411352931712494
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+['2.0custom_VAE', 'mse', 128, 30, 0.001, 0.4, 499, '--', '--', 0.2828355890512466, 0.2224222630262375, 0.11358281224966049, 0.1815149337053299, -0.5809451021413099, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'str'>, <class 'str'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.5 150 0.0005 256 1] 1
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 3122)         3902500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_3 (BatchNo  (None, 3122)        12488       ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_3 (ReLU)                 (None, 3122)         0           ['batch_normalization_3[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1558377     ['re_lu_3[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1558377     ['re_lu_3[0][0]']                
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         5725611     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_1 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 12,757,353
+Trainable params: 12,743,867
+Non-trainable params: 13,486
+__________________________________________________________________________________________________
+Epoch 1/150
+2023-02-17 16:53:54.648586: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x55d660498940 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-02-17 16:53:54.648611: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A10, Compute Capability 8.6
+2023-02-17 16:53:54.653249: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-02-17 16:53:54.761930: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+8/8 - 3s - loss: 0.7064 - val_loss: 0.0953 - 3s/epoch - 314ms/step
+Epoch 2/150
+8/8 - 0s - loss: 0.3145 - val_loss: 0.0902 - 51ms/epoch - 6ms/step
+Epoch 3/150
+8/8 - 0s - loss: 0.1724 - val_loss: 0.0933 - 49ms/epoch - 6ms/step
+Epoch 4/150
+8/8 - 0s - loss: 0.1179 - val_loss: 0.0973 - 49ms/epoch - 6ms/step
+Epoch 5/150
+8/8 - 0s - loss: 0.0952 - val_loss: 0.0900 - 49ms/epoch - 6ms/step
+Epoch 6/150
+8/8 - 0s - loss: 0.0747 - val_loss: 0.0882 - 49ms/epoch - 6ms/step
+Epoch 7/150
+8/8 - 0s - loss: 0.0598 - val_loss: 0.0849 - 49ms/epoch - 6ms/step
+Epoch 8/150
+8/8 - 0s - loss: 0.0586 - val_loss: 0.1503 - 49ms/epoch - 6ms/step
+Epoch 9/150
+8/8 - 0s - loss: 0.1400 - val_loss: 0.0785 - 49ms/epoch - 6ms/step
+Epoch 10/150
+8/8 - 0s - loss: 0.1185 - val_loss: 0.0734 - 49ms/epoch - 6ms/step
+Epoch 11/150
+8/8 - 0s - loss: 0.0742 - val_loss: 0.0860 - 49ms/epoch - 6ms/step
+Epoch 12/150
+8/8 - 0s - loss: 0.0661 - val_loss: 0.0662 - 49ms/epoch - 6ms/step
+Epoch 13/150
+8/8 - 0s - loss: 0.0549 - val_loss: 0.0578 - 49ms/epoch - 6ms/step
+Epoch 14/150
+8/8 - 0s - loss: 0.0471 - val_loss: 0.0505 - 49ms/epoch - 6ms/step
+Epoch 15/150
+8/8 - 0s - loss: 0.0465 - val_loss: 0.0559 - 49ms/epoch - 6ms/step
+Epoch 16/150
+8/8 - 0s - loss: 0.0584 - val_loss: 0.0590 - 49ms/epoch - 6ms/step
+Epoch 17/150
+8/8 - 0s - loss: 0.0664 - val_loss: 0.0521 - 49ms/epoch - 6ms/step
+Epoch 18/150
+8/8 - 0s - loss: 0.0524 - val_loss: 0.0472 - 49ms/epoch - 6ms/step
+Epoch 19/150
+8/8 - 0s - loss: 0.0498 - val_loss: 0.0784 - 49ms/epoch - 6ms/step
+Epoch 20/150
+8/8 - 0s - loss: 0.1612 - val_loss: 0.0632 - 49ms/epoch - 6ms/step
+Epoch 21/150
+8/8 - 0s - loss: 0.0998 - val_loss: 0.0565 - 50ms/epoch - 6ms/step
+Epoch 22/150
+8/8 - 0s - loss: 0.0630 - val_loss: 0.0477 - 49ms/epoch - 6ms/step
+Epoch 23/150
+8/8 - 0s - loss: 0.0592 - val_loss: 0.0428 - 49ms/epoch - 6ms/step
+Epoch 24/150
+8/8 - 0s - loss: 0.0492 - val_loss: 0.0468 - 49ms/epoch - 6ms/step
+Epoch 25/150
+8/8 - 0s - loss: 0.0542 - val_loss: 0.0594 - 49ms/epoch - 6ms/step
+Epoch 26/150
+8/8 - 0s - loss: 0.0614 - val_loss: 0.0483 - 49ms/epoch - 6ms/step
+Epoch 27/150
+8/8 - 0s - loss: 0.0508 - val_loss: 0.0466 - 49ms/epoch - 6ms/step
+Epoch 28/150
+8/8 - 0s - loss: 0.0481 - val_loss: 0.0456 - 49ms/epoch - 6ms/step
+Epoch 29/150
+8/8 - 0s - loss: 0.0420 - val_loss: 0.0381 - 49ms/epoch - 6ms/step
+Epoch 30/150
+8/8 - 0s - loss: 0.0438 - val_loss: 0.0458 - 49ms/epoch - 6ms/step
+Epoch 31/150
+8/8 - 0s - loss: 0.0445 - val_loss: 0.0378 - 49ms/epoch - 6ms/step
+Epoch 32/150
+8/8 - 0s - loss: 0.0409 - val_loss: 0.0415 - 49ms/epoch - 6ms/step
+Epoch 33/150
+8/8 - 0s - loss: 0.0612 - val_loss: 0.0765 - 49ms/epoch - 6ms/step
+Epoch 34/150
+8/8 - 0s - loss: 0.0875 - val_loss: 0.0800 - 49ms/epoch - 6ms/step
+Epoch 35/150
+8/8 - 0s - loss: 0.0597 - val_loss: 0.0680 - 49ms/epoch - 6ms/step
+Epoch 36/150
+8/8 - 0s - loss: 0.0748 - val_loss: 0.0505 - 49ms/epoch - 6ms/step
+Epoch 37/150
+8/8 - 0s - loss: 0.0521 - val_loss: 0.0451 - 50ms/epoch - 6ms/step
+Epoch 38/150
+8/8 - 0s - loss: 0.0449 - val_loss: 0.0508 - 49ms/epoch - 6ms/step
+Epoch 39/150
+8/8 - 0s - loss: 0.0434 - val_loss: 0.0564 - 49ms/epoch - 6ms/step
+Epoch 40/150
+8/8 - 0s - loss: 0.0442 - val_loss: 0.1272 - 49ms/epoch - 6ms/step
+Epoch 41/150
+8/8 - 0s - loss: 0.1556 - val_loss: 0.2130 - 50ms/epoch - 6ms/step
+Epoch 42/150
+8/8 - 0s - loss: 0.1218 - val_loss: 0.1992 - 48ms/epoch - 6ms/step
+Epoch 43/150
+8/8 - 0s - loss: 0.0843 - val_loss: 0.1004 - 49ms/epoch - 6ms/step
+Epoch 44/150
+8/8 - 0s - loss: 0.0757 - val_loss: 0.0935 - 49ms/epoch - 6ms/step
+Epoch 45/150
+8/8 - 0s - loss: 0.0546 - val_loss: 0.0769 - 49ms/epoch - 6ms/step
+Epoch 46/150
+8/8 - 0s - loss: 0.0507 - val_loss: 0.0919 - 49ms/epoch - 6ms/step
+Epoch 47/150
+8/8 - 0s - loss: 0.0428 - val_loss: 0.0734 - 49ms/epoch - 6ms/step
+Epoch 48/150
+8/8 - 0s - loss: 0.0384 - val_loss: 0.0694 - 49ms/epoch - 6ms/step
+Epoch 49/150
+8/8 - 0s - loss: 0.0449 - val_loss: 0.0831 - 49ms/epoch - 6ms/step
+Epoch 50/150
+8/8 - 0s - loss: 0.0393 - val_loss: 0.0794 - 49ms/epoch - 6ms/step
+Epoch 51/150
+8/8 - 0s - loss: 0.0358 - val_loss: 0.0538 - 49ms/epoch - 6ms/step
+Epoch 52/150
+8/8 - 0s - loss: 0.0335 - val_loss: 0.0489 - 49ms/epoch - 6ms/step
+Epoch 53/150
+8/8 - 0s - loss: 0.0342 - val_loss: 0.0530 - 49ms/epoch - 6ms/step
+Epoch 54/150
+8/8 - 0s - loss: 0.0370 - val_loss: 0.0402 - 49ms/epoch - 6ms/step
+Epoch 55/150
+8/8 - 0s - loss: 0.0326 - val_loss: 0.0398 - 49ms/epoch - 6ms/step
+Epoch 56/150
+8/8 - 0s - loss: 0.0312 - val_loss: 0.0362 - 49ms/epoch - 6ms/step
+Epoch 57/150
+8/8 - 0s - loss: 0.0321 - val_loss: 0.0376 - 49ms/epoch - 6ms/step
+Epoch 58/150
+8/8 - 0s - loss: 0.0368 - val_loss: 0.0403 - 49ms/epoch - 6ms/step
+Epoch 59/150
+8/8 - 0s - loss: 0.0409 - val_loss: 0.0476 - 49ms/epoch - 6ms/step
+Epoch 60/150
+8/8 - 0s - loss: 0.0341 - val_loss: 0.0382 - 49ms/epoch - 6ms/step
+Epoch 61/150
+8/8 - 0s - loss: 0.0320 - val_loss: 0.0391 - 49ms/epoch - 6ms/step
+Epoch 62/150
+8/8 - 0s - loss: 0.0319 - val_loss: 0.0340 - 49ms/epoch - 6ms/step
+Epoch 63/150
+8/8 - 0s - loss: 0.0316 - val_loss: 0.0338 - 49ms/epoch - 6ms/step
+Epoch 64/150
+8/8 - 0s - loss: 0.0317 - val_loss: 0.0340 - 48ms/epoch - 6ms/step
+Epoch 65/150
+8/8 - 0s - loss: 0.0302 - val_loss: 0.0355 - 49ms/epoch - 6ms/step
+Epoch 66/150
+8/8 - 0s - loss: 0.0295 - val_loss: 0.0297 - 49ms/epoch - 6ms/step
+Epoch 67/150
+8/8 - 0s - loss: 0.0293 - val_loss: 0.0308 - 49ms/epoch - 6ms/step
+Epoch 68/150
+8/8 - 0s - loss: 0.0317 - val_loss: 0.0309 - 49ms/epoch - 6ms/step
+Epoch 69/150
+8/8 - 0s - loss: 0.0309 - val_loss: 0.0302 - 49ms/epoch - 6ms/step
+Epoch 70/150
+8/8 - 0s - loss: 0.0298 - val_loss: 0.0310 - 49ms/epoch - 6ms/step
+Epoch 71/150
+8/8 - 0s - loss: 0.0285 - val_loss: 0.0294 - 49ms/epoch - 6ms/step
+Epoch 72/150
+8/8 - 0s - loss: 0.0280 - val_loss: 0.0293 - 49ms/epoch - 6ms/step
+Epoch 73/150
+8/8 - 0s - loss: 0.0313 - val_loss: 0.0305 - 49ms/epoch - 6ms/step
+Epoch 74/150
+8/8 - 0s - loss: 0.0288 - val_loss: 0.0290 - 49ms/epoch - 6ms/step
+Epoch 75/150
+8/8 - 0s - loss: 0.0282 - val_loss: 0.0287 - 49ms/epoch - 6ms/step
+Epoch 76/150
+8/8 - 0s - loss: 0.0267 - val_loss: 0.0274 - 49ms/epoch - 6ms/step
+Epoch 77/150
+8/8 - 0s - loss: 0.0285 - val_loss: 0.0292 - 49ms/epoch - 6ms/step
+Epoch 78/150
+8/8 - 0s - loss: 0.0281 - val_loss: 0.0280 - 50ms/epoch - 6ms/step
+Epoch 79/150
+8/8 - 0s - loss: 0.0288 - val_loss: 0.0277 - 49ms/epoch - 6ms/step
+Epoch 80/150
+8/8 - 0s - loss: 0.0316 - val_loss: 0.0272 - 49ms/epoch - 6ms/step
+Epoch 81/150
+8/8 - 0s - loss: 0.0298 - val_loss: 0.0335 - 49ms/epoch - 6ms/step
+Epoch 82/150
+8/8 - 0s - loss: 0.0363 - val_loss: 0.0337 - 49ms/epoch - 6ms/step
+Epoch 83/150
+8/8 - 0s - loss: 0.0337 - val_loss: 0.0557 - 49ms/epoch - 6ms/step
+Epoch 84/150
+8/8 - 0s - loss: 0.0665 - val_loss: 0.0545 - 49ms/epoch - 6ms/step
+Epoch 85/150
+8/8 - 0s - loss: 0.0455 - val_loss: 0.0416 - 49ms/epoch - 6ms/step
+Epoch 86/150
+8/8 - 0s - loss: 0.0362 - val_loss: 0.0332 - 49ms/epoch - 6ms/step
+Epoch 87/150
+8/8 - 0s - loss: 0.0331 - val_loss: 0.0300 - 49ms/epoch - 6ms/step
+Epoch 88/150
+8/8 - 0s - loss: 0.0305 - val_loss: 0.0282 - 48ms/epoch - 6ms/step
+Epoch 89/150
+8/8 - 0s - loss: 0.0286 - val_loss: 0.0303 - 49ms/epoch - 6ms/step
+Epoch 90/150
+8/8 - 0s - loss: 0.0284 - val_loss: 0.0285 - 49ms/epoch - 6ms/step
+Epoch 91/150
+8/8 - 0s - loss: 0.0324 - val_loss: 0.0304 - 49ms/epoch - 6ms/step
+Epoch 92/150
+8/8 - 0s - loss: 0.0300 - val_loss: 0.0296 - 49ms/epoch - 6ms/step
+Epoch 93/150
+8/8 - 0s - loss: 0.0322 - val_loss: 0.0344 - 49ms/epoch - 6ms/step
+Epoch 94/150
+8/8 - 0s - loss: 0.0378 - val_loss: 0.0439 - 49ms/epoch - 6ms/step
+Epoch 95/150
+8/8 - 0s - loss: 0.0331 - val_loss: 0.0314 - 49ms/epoch - 6ms/step
+Epoch 96/150
+8/8 - 0s - loss: 0.0285 - val_loss: 0.0265 - 49ms/epoch - 6ms/step
+Epoch 97/150
+8/8 - 0s - loss: 0.0280 - val_loss: 0.0258 - 49ms/epoch - 6ms/step
+Epoch 98/150
+8/8 - 0s - loss: 0.0301 - val_loss: 0.0277 - 49ms/epoch - 6ms/step
+Epoch 99/150
+8/8 - 0s - loss: 0.0305 - val_loss: 0.0277 - 49ms/epoch - 6ms/step
+Epoch 100/150
+8/8 - 0s - loss: 0.0298 - val_loss: 0.0261 - 49ms/epoch - 6ms/step
+Epoch 101/150
+8/8 - 0s - loss: 0.0275 - val_loss: 0.0266 - 49ms/epoch - 6ms/step
+Epoch 102/150
+8/8 - 0s - loss: 0.0272 - val_loss: 0.0274 - 49ms/epoch - 6ms/step
+Epoch 103/150
+8/8 - 0s - loss: 0.0305 - val_loss: 0.0333 - 49ms/epoch - 6ms/step
+Epoch 104/150
+8/8 - 0s - loss: 0.0383 - val_loss: 0.0423 - 49ms/epoch - 6ms/step
+Epoch 105/150
+8/8 - 0s - loss: 0.0382 - val_loss: 0.0361 - 49ms/epoch - 6ms/step
+Epoch 106/150
+8/8 - 0s - loss: 0.0308 - val_loss: 0.0344 - 49ms/epoch - 6ms/step
+Epoch 107/150
+8/8 - 0s - loss: 0.0307 - val_loss: 0.0331 - 49ms/epoch - 6ms/step
+Epoch 108/150
+8/8 - 0s - loss: 0.0299 - val_loss: 0.0321 - 49ms/epoch - 6ms/step
+Epoch 109/150
+8/8 - 0s - loss: 0.0304 - val_loss: 0.0355 - 49ms/epoch - 6ms/step
+Epoch 110/150
+8/8 - 0s - loss: 0.0299 - val_loss: 0.0358 - 48ms/epoch - 6ms/step
+Epoch 111/150
+8/8 - 0s - loss: 0.0273 - val_loss: 0.0357 - 49ms/epoch - 6ms/step
+Epoch 112/150
+8/8 - 0s - loss: 0.0272 - val_loss: 0.0307 - 48ms/epoch - 6ms/step
+Epoch 113/150
+8/8 - 0s - loss: 0.0307 - val_loss: 0.0492 - 49ms/epoch - 6ms/step
+Epoch 114/150
+8/8 - 0s - loss: 0.0439 - val_loss: 0.0467 - 49ms/epoch - 6ms/step
+Epoch 115/150
+8/8 - 0s - loss: 0.0410 - val_loss: 0.0426 - 49ms/epoch - 6ms/step
+Epoch 116/150
+8/8 - 0s - loss: 0.0327 - val_loss: 0.0332 - 49ms/epoch - 6ms/step
+Epoch 117/150
+8/8 - 0s - loss: 0.0306 - val_loss: 0.0328 - 49ms/epoch - 6ms/step
+Epoch 118/150
+8/8 - 0s - loss: 0.0303 - val_loss: 0.0355 - 49ms/epoch - 6ms/step
+Epoch 119/150
+8/8 - 0s - loss: 0.0320 - val_loss: 0.0378 - 50ms/epoch - 6ms/step
+Epoch 120/150
+8/8 - 0s - loss: 0.0351 - val_loss: 0.0377 - 49ms/epoch - 6ms/step
+Epoch 121/150
+8/8 - 0s - loss: 0.0323 - val_loss: 0.0324 - 49ms/epoch - 6ms/step
+Epoch 122/150
+8/8 - 0s - loss: 0.0302 - val_loss: 0.0304 - 49ms/epoch - 6ms/step
+Epoch 123/150
+8/8 - 0s - loss: 0.0315 - val_loss: 0.0300 - 49ms/epoch - 6ms/step
+Epoch 124/150
+8/8 - 0s - loss: 0.0333 - val_loss: 0.0325 - 49ms/epoch - 6ms/step
+Epoch 125/150
+8/8 - 0s - loss: 0.0379 - val_loss: 0.0449 - 49ms/epoch - 6ms/step
+Epoch 126/150
+8/8 - 0s - loss: 0.0626 - val_loss: 0.0776 - 49ms/epoch - 6ms/step
+Epoch 127/150
+8/8 - 0s - loss: 0.0573 - val_loss: 0.0462 - 49ms/epoch - 6ms/step
+Epoch 128/150
+8/8 - 0s - loss: 0.0384 - val_loss: 0.0355 - 49ms/epoch - 6ms/step
+Epoch 129/150
+8/8 - 0s - loss: 0.0319 - val_loss: 0.0298 - 49ms/epoch - 6ms/step
+Epoch 130/150
+8/8 - 0s - loss: 0.0306 - val_loss: 0.0311 - 49ms/epoch - 6ms/step
+Epoch 131/150
+8/8 - 0s - loss: 0.0297 - val_loss: 0.0302 - 49ms/epoch - 6ms/step
+Epoch 132/150
+8/8 - 0s - loss: 0.0279 - val_loss: 0.0284 - 49ms/epoch - 6ms/step
+Epoch 133/150
+8/8 - 0s - loss: 0.0260 - val_loss: 0.0270 - 50ms/epoch - 6ms/step
+Epoch 134/150
+8/8 - 0s - loss: 0.0264 - val_loss: 0.0293 - 49ms/epoch - 6ms/step
+Epoch 135/150
+8/8 - 0s - loss: 0.0269 - val_loss: 0.0295 - 49ms/epoch - 6ms/step
+Epoch 136/150
+8/8 - 0s - loss: 0.0314 - val_loss: 0.0328 - 49ms/epoch - 6ms/step
+Epoch 137/150
+8/8 - 0s - loss: 0.0332 - val_loss: 0.0328 - 49ms/epoch - 6ms/step
+Epoch 138/150
+8/8 - 0s - loss: 0.0294 - val_loss: 0.0328 - 49ms/epoch - 6ms/step
+Epoch 139/150
+8/8 - 0s - loss: 0.0378 - val_loss: 0.0342 - 49ms/epoch - 6ms/step
+Epoch 140/150
+8/8 - 0s - loss: 0.0333 - val_loss: 0.0313 - 49ms/epoch - 6ms/step
+Epoch 141/150
+8/8 - 0s - loss: 0.0398 - val_loss: 0.0427 - 49ms/epoch - 6ms/step
+Epoch 142/150
+8/8 - 0s - loss: 0.0380 - val_loss: 0.0434 - 49ms/epoch - 6ms/step
+Epoch 143/150
+8/8 - 0s - loss: 0.0370 - val_loss: 0.0694 - 49ms/epoch - 6ms/step
+Epoch 144/150
+8/8 - 0s - loss: 0.1500 - val_loss: 0.1130 - 49ms/epoch - 6ms/step
+Epoch 145/150
+8/8 - 0s - loss: 0.0911 - val_loss: 0.0799 - 49ms/epoch - 6ms/step
+Epoch 146/150
+8/8 - 0s - loss: 0.0565 - val_loss: 0.0480 - 49ms/epoch - 6ms/step
+Epoch 147/150
+8/8 - 0s - loss: 0.0385 - val_loss: 0.0368 - 49ms/epoch - 6ms/step
+Epoch 148/150
+8/8 - 0s - loss: 0.0321 - val_loss: 0.0338 - 49ms/epoch - 6ms/step
+Epoch 149/150
+8/8 - 0s - loss: 0.0355 - val_loss: 0.0347 - 49ms/epoch - 6ms/step
+Epoch 150/150
+8/8 - 0s - loss: 0.0338 - val_loss: 0.0335 - 48ms/epoch - 6ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.033521927893161774
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.22145769879221916
+cosine 0.16674237251281737
+MAE: 0.09529675
+RMSE: 0.14564194
+r2: -0.023263492505459296
+RMSE zero-vector: 0.25411352931712494
+['2.5custom_VAE', 'mse', 256, 150, 0.0005, 0.4, 499, 0.03377772122621536, 0.033521927893161774, 0.22145769879221916, 0.16674237251281737, 0.09529674798250198, 0.14564193785190582, -0.023263492505459296, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.0 120 0.002 128 1] 2
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2498)         3122500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_6 (BatchNo  (None, 2498)        9992        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_6 (ReLU)                 (None, 2498)         0           ['batch_normalization_6[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1247001     ['re_lu_6[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1247001     ['re_lu_6[0][0]']                
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4631739     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_2 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 10,258,233
+Trainable params: 10,247,243
+Non-trainable params: 10,990
+__________________________________________________________________________________________________
+File geneticVAE_MMmp_gap_custom_VAE2.0_cr0.4_bs128_ep120_loss_mse_lr0.002_AutoEncoder.h5 exists in folder already, skiping this calculation.
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.20122960031032563
+cosine 0.15145862877368926
+MAE: 0.08030995
+RMSE: 0.13454317
+r2: 0.12517447644622903
+RMSE zero-vector: 0.25411352931712494
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+['2.0custom_VAE', 'mse', 128, 120, 0.002, 0.4, 499, '--', '--', 0.20122960031032563, 0.15145862877368926, 0.08030994981527328, 0.13454316556453705, 0.12517447644622903, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'str'>, <class 'str'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[1.0 60 0.001 128 2] 3
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 1249)         1561250     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_9 (BatchNo  (None, 1249)        4996        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_9 (ReLU)                 (None, 1249)         0           ['batch_normalization_9[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          623750      ['re_lu_9[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          623750      ['re_lu_9[0][0]']                
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         2442242     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_3 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 5,255,988
+Trainable params: 5,249,994
+Non-trainable params: 5,994
+__________________________________________________________________________________________________
+Epoch 1/60
+15/15 - 2s - loss: 0.1965 - val_loss: 0.0498 - 2s/epoch - 149ms/step
+Epoch 2/60
+15/15 - 0s - loss: 0.0909 - val_loss: 0.0490 - 67ms/epoch - 4ms/step
+Epoch 3/60
+15/15 - 0s - loss: 0.0412 - val_loss: 0.0495 - 66ms/epoch - 4ms/step
+Epoch 4/60
+15/15 - 0s - loss: 0.0267 - val_loss: 0.0448 - 66ms/epoch - 4ms/step
+Epoch 5/60
+15/15 - 0s - loss: 0.0210 - val_loss: 0.0464 - 66ms/epoch - 4ms/step
+Epoch 6/60
+15/15 - 0s - loss: 0.0209 - val_loss: 0.0337 - 66ms/epoch - 4ms/step
+Epoch 7/60
+15/15 - 0s - loss: 0.0175 - val_loss: 0.0314 - 66ms/epoch - 4ms/step
+Epoch 8/60
+15/15 - 0s - loss: 0.0159 - val_loss: 0.0328 - 66ms/epoch - 4ms/step
+Epoch 9/60
+15/15 - 0s - loss: 0.0166 - val_loss: 0.0242 - 66ms/epoch - 4ms/step
+Epoch 10/60
+15/15 - 0s - loss: 0.0147 - val_loss: 0.0241 - 67ms/epoch - 4ms/step
+Epoch 11/60
+15/15 - 0s - loss: 0.0143 - val_loss: 0.0196 - 66ms/epoch - 4ms/step
+Epoch 12/60
+15/15 - 0s - loss: 0.0137 - val_loss: 0.0190 - 66ms/epoch - 4ms/step
+Epoch 13/60
+15/15 - 0s - loss: 0.0137 - val_loss: 0.0175 - 66ms/epoch - 4ms/step
+Epoch 14/60
+15/15 - 0s - loss: 0.0132 - val_loss: 0.0161 - 66ms/epoch - 4ms/step
+Epoch 15/60
+15/15 - 0s - loss: 0.0128 - val_loss: 0.0167 - 66ms/epoch - 4ms/step
+Epoch 16/60
+15/15 - 0s - loss: 0.0131 - val_loss: 0.0194 - 66ms/epoch - 4ms/step
+Epoch 17/60
+15/15 - 0s - loss: 0.0140 - val_loss: 0.0157 - 66ms/epoch - 4ms/step
+Epoch 18/60
+15/15 - 0s - loss: 0.0126 - val_loss: 0.0136 - 66ms/epoch - 4ms/step
+Epoch 19/60
+15/15 - 0s - loss: 0.0131 - val_loss: 0.0162 - 66ms/epoch - 4ms/step
+Epoch 20/60
+15/15 - 0s - loss: 0.0128 - val_loss: 0.0163 - 66ms/epoch - 4ms/step
+Epoch 21/60
+15/15 - 0s - loss: 0.0126 - val_loss: 0.0140 - 66ms/epoch - 4ms/step
+Epoch 22/60
+15/15 - 0s - loss: 0.0116 - val_loss: 0.0125 - 66ms/epoch - 4ms/step
+Epoch 23/60
+15/15 - 0s - loss: 0.0119 - val_loss: 0.0129 - 67ms/epoch - 4ms/step
+Epoch 24/60
+15/15 - 0s - loss: 0.0123 - val_loss: 0.0132 - 66ms/epoch - 4ms/step
+Epoch 25/60
+15/15 - 0s - loss: 0.0119 - val_loss: 0.0128 - 66ms/epoch - 4ms/step
+Epoch 26/60
+15/15 - 0s - loss: 0.0114 - val_loss: 0.0130 - 67ms/epoch - 4ms/step
+Epoch 27/60
+15/15 - 0s - loss: 0.0115 - val_loss: 0.0129 - 66ms/epoch - 4ms/step
+Epoch 28/60
+15/15 - 0s - loss: 0.0117 - val_loss: 0.0135 - 66ms/epoch - 4ms/step
+Epoch 29/60
+15/15 - 0s - loss: 0.0115 - val_loss: 0.0137 - 66ms/epoch - 4ms/step
+Epoch 30/60
+15/15 - 0s - loss: 0.0112 - val_loss: 0.0121 - 66ms/epoch - 4ms/step
+Epoch 31/60
+15/15 - 0s - loss: 0.0111 - val_loss: 0.0122 - 66ms/epoch - 4ms/step
+Epoch 32/60
+15/15 - 0s - loss: 0.0130 - val_loss: 0.0134 - 66ms/epoch - 4ms/step
+Epoch 33/60
+15/15 - 0s - loss: 0.0120 - val_loss: 0.0169 - 66ms/epoch - 4ms/step
+Epoch 34/60
+15/15 - 0s - loss: 0.0125 - val_loss: 0.0138 - 66ms/epoch - 4ms/step
+Epoch 35/60
+15/15 - 0s - loss: 0.0115 - val_loss: 0.0133 - 66ms/epoch - 4ms/step
+Epoch 36/60
+15/15 - 0s - loss: 0.0114 - val_loss: 0.0129 - 67ms/epoch - 4ms/step
+Epoch 37/60
+15/15 - 0s - loss: 0.0113 - val_loss: 0.0122 - 66ms/epoch - 4ms/step
+Epoch 38/60
+15/15 - 0s - loss: 0.0116 - val_loss: 0.0122 - 66ms/epoch - 4ms/step
+Epoch 39/60
+15/15 - 0s - loss: 0.0118 - val_loss: 0.0159 - 67ms/epoch - 4ms/step
+Epoch 40/60
+15/15 - 0s - loss: 0.0122 - val_loss: 0.0128 - 66ms/epoch - 4ms/step
+Epoch 41/60
+15/15 - 0s - loss: 0.0114 - val_loss: 0.0126 - 66ms/epoch - 4ms/step
+Epoch 42/60
+15/15 - 0s - loss: 0.0110 - val_loss: 0.0117 - 66ms/epoch - 4ms/step
+Epoch 43/60
+15/15 - 0s - loss: 0.0118 - val_loss: 0.0139 - 66ms/epoch - 4ms/step
+Epoch 44/60
+15/15 - 0s - loss: 0.0114 - val_loss: 0.0130 - 66ms/epoch - 4ms/step
+Epoch 45/60
+15/15 - 0s - loss: 0.0113 - val_loss: 0.0114 - 66ms/epoch - 4ms/step
+Epoch 46/60
+15/15 - 0s - loss: 0.0117 - val_loss: 0.0147 - 66ms/epoch - 4ms/step
+Epoch 47/60
+15/15 - 0s - loss: 0.0133 - val_loss: 0.0228 - 66ms/epoch - 4ms/step
+Epoch 48/60
+15/15 - 0s - loss: 0.0142 - val_loss: 0.0145 - 66ms/epoch - 4ms/step
+Epoch 49/60
+15/15 - 0s - loss: 0.0122 - val_loss: 0.0121 - 66ms/epoch - 4ms/step
+Epoch 50/60
+15/15 - 0s - loss: 0.0111 - val_loss: 0.0121 - 66ms/epoch - 4ms/step
+Epoch 51/60
+15/15 - 0s - loss: 0.0108 - val_loss: 0.0121 - 66ms/epoch - 4ms/step
+Epoch 52/60
+15/15 - 0s - loss: 0.0104 - val_loss: 0.0137 - 66ms/epoch - 4ms/step
+Epoch 53/60
+15/15 - 0s - loss: 0.0106 - val_loss: 0.0150 - 66ms/epoch - 4ms/step
+Epoch 54/60
+15/15 - 0s - loss: 0.0111 - val_loss: 0.0122 - 66ms/epoch - 4ms/step
+Epoch 55/60
+15/15 - 0s - loss: 0.0109 - val_loss: 0.0121 - 67ms/epoch - 4ms/step
+Epoch 56/60
+15/15 - 0s - loss: 0.0108 - val_loss: 0.0111 - 66ms/epoch - 4ms/step
+Epoch 57/60
+15/15 - 0s - loss: 0.0107 - val_loss: 0.0118 - 66ms/epoch - 4ms/step
+Epoch 58/60
+15/15 - 0s - loss: 0.0108 - val_loss: 0.0131 - 67ms/epoch - 4ms/step
+Epoch 59/60
+15/15 - 0s - loss: 0.0113 - val_loss: 0.0137 - 66ms/epoch - 4ms/step
+Epoch 60/60
+15/15 - 0s - loss: 0.0113 - val_loss: 0.0160 - 66ms/epoch - 4ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.015977265313267708
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.23510312169790268
+cosine 0.17893752187490464
+MAE: 0.09344538
+RMSE: 0.15840055
+r2: -0.2152980906201727
+RMSE zero-vector: 0.25411352931712494
+['1.0custom_VAE', 'logcosh', 128, 60, 0.001, 0.4, 499, 0.011347572319209576, 0.015977265313267708, 0.23510312169790268, 0.17893752187490464, 0.09344538301229477, 0.1584005504846573, -0.2152980906201727, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.5 120 0.001 256 2] 4
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 3122)         3902500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_12 (BatchN  (None, 3122)        12488       ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_12 (ReLU)                (None, 3122)         0           ['batch_normalization_12[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1558377     ['re_lu_12[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1558377     ['re_lu_12[0][0]']               
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         5725611     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_4 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 12,757,353
+Trainable params: 12,743,867
+Non-trainable params: 13,486
+__________________________________________________________________________________________________
+Epoch 1/120
+8/8 - 2s - loss: 0.3456 - val_loss: 0.0539 - 2s/epoch - 265ms/step
+Epoch 2/120
+8/8 - 0s - loss: 583.3235 - val_loss: 0.0378 - 50ms/epoch - 6ms/step
+Epoch 3/120
+8/8 - 0s - loss: 0.1271 - val_loss: 0.0383 - 49ms/epoch - 6ms/step
+Epoch 4/120
+8/8 - 0s - loss: 0.0881 - val_loss: 0.0358 - 49ms/epoch - 6ms/step
+Epoch 5/120
+8/8 - 0s - loss: 0.0636 - val_loss: 0.0335 - 49ms/epoch - 6ms/step
+Epoch 6/120
+8/8 - 0s - loss: 0.0541 - val_loss: 0.0335 - 50ms/epoch - 6ms/step
+Epoch 7/120
+8/8 - 0s - loss: 0.0713 - val_loss: 0.0363 - 49ms/epoch - 6ms/step
+Epoch 8/120
+8/8 - 0s - loss: 0.0487 - val_loss: 0.0307 - 49ms/epoch - 6ms/step
+Epoch 9/120
+8/8 - 0s - loss: 0.0438 - val_loss: 0.0350 - 49ms/epoch - 6ms/step
+Epoch 10/120
+8/8 - 0s - loss: 0.0620 - val_loss: 0.0318 - 48ms/epoch - 6ms/step
+Epoch 11/120
+8/8 - 0s - loss: 0.0511 - val_loss: 0.0274 - 48ms/epoch - 6ms/step
+Epoch 12/120
+8/8 - 0s - loss: 0.0414 - val_loss: 0.0260 - 49ms/epoch - 6ms/step
+Epoch 13/120
+8/8 - 0s - loss: 0.0387 - val_loss: 0.0258 - 49ms/epoch - 6ms/step
+Epoch 14/120
+8/8 - 0s - loss: 0.0343 - val_loss: 0.0267 - 49ms/epoch - 6ms/step
+Epoch 15/120
+8/8 - 0s - loss: 0.0414 - val_loss: 0.0295 - 49ms/epoch - 6ms/step
+Epoch 16/120
+8/8 - 0s - loss: 0.0482 - val_loss: 0.0244 - 48ms/epoch - 6ms/step
+Epoch 17/120
+8/8 - 0s - loss: 0.0398 - val_loss: 0.0266 - 49ms/epoch - 6ms/step
+Epoch 18/120
+8/8 - 0s - loss: 0.0384 - val_loss: 0.0260 - 48ms/epoch - 6ms/step
+Epoch 19/120
+8/8 - 0s - loss: 0.0356 - val_loss: 0.0232 - 49ms/epoch - 6ms/step
+Epoch 20/120
+8/8 - 0s - loss: 0.0312 - val_loss: 0.0323 - 49ms/epoch - 6ms/step
+Epoch 21/120
+8/8 - 0s - loss: 0.0368 - val_loss: 0.0261 - 49ms/epoch - 6ms/step
+Epoch 22/120
+8/8 - 0s - loss: 0.0336 - val_loss: 0.0237 - 49ms/epoch - 6ms/step
+Epoch 23/120
+8/8 - 0s - loss: 0.0292 - val_loss: 0.0202 - 49ms/epoch - 6ms/step
+Epoch 24/120
+8/8 - 0s - loss: 0.0260 - val_loss: 0.0217 - 49ms/epoch - 6ms/step
+Epoch 25/120
+8/8 - 0s - loss: 0.0246 - val_loss: 0.0213 - 48ms/epoch - 6ms/step
+Epoch 26/120
+8/8 - 0s - loss: 0.0250 - val_loss: 0.0220 - 48ms/epoch - 6ms/step
+Epoch 27/120
+8/8 - 0s - loss: 0.0284 - val_loss: 0.0221 - 49ms/epoch - 6ms/step
+Epoch 28/120
+8/8 - 0s - loss: 0.0273 - val_loss: 0.0206 - 49ms/epoch - 6ms/step
+Epoch 29/120
+8/8 - 0s - loss: 0.0240 - val_loss: 0.0197 - 49ms/epoch - 6ms/step
+Epoch 30/120
+8/8 - 0s - loss: 0.0227 - val_loss: 0.0188 - 49ms/epoch - 6ms/step
+Epoch 31/120
+8/8 - 0s - loss: 0.0222 - val_loss: 0.0196 - 49ms/epoch - 6ms/step
+Epoch 32/120
+8/8 - 0s - loss: 0.0213 - val_loss: 0.0188 - 49ms/epoch - 6ms/step
+Epoch 33/120
+8/8 - 0s - loss: 0.0211 - val_loss: 0.0203 - 48ms/epoch - 6ms/step
+Epoch 34/120
+8/8 - 0s - loss: 0.0221 - val_loss: 0.0242 - 48ms/epoch - 6ms/step
+Epoch 35/120
+8/8 - 0s - loss: 0.0299 - val_loss: 0.0216 - 49ms/epoch - 6ms/step
+Epoch 36/120
+8/8 - 0s - loss: 0.0233 - val_loss: 0.0179 - 48ms/epoch - 6ms/step
+Epoch 37/120
+8/8 - 0s - loss: 0.0219 - val_loss: 0.0228 - 49ms/epoch - 6ms/step
+Epoch 38/120
+8/8 - 0s - loss: 0.0247 - val_loss: 0.0262 - 48ms/epoch - 6ms/step
+Epoch 39/120
+8/8 - 0s - loss: 0.0247 - val_loss: 0.0199 - 49ms/epoch - 6ms/step
+Epoch 40/120
+8/8 - 0s - loss: 0.0226 - val_loss: 0.0278 - 49ms/epoch - 6ms/step
+Epoch 41/120
+8/8 - 0s - loss: 0.0295 - val_loss: 0.0252 - 49ms/epoch - 6ms/step
+Epoch 42/120
+8/8 - 0s - loss: 0.0258 - val_loss: 0.0221 - 49ms/epoch - 6ms/step
+Epoch 43/120
+8/8 - 0s - loss: 0.0266 - val_loss: 0.0211 - 49ms/epoch - 6ms/step
+Epoch 44/120
+8/8 - 0s - loss: 0.0272 - val_loss: 0.0247 - 49ms/epoch - 6ms/step
+Epoch 45/120
+8/8 - 0s - loss: 0.0274 - val_loss: 0.0234 - 48ms/epoch - 6ms/step
+Epoch 46/120
+8/8 - 0s - loss: 0.0250 - val_loss: 0.0225 - 49ms/epoch - 6ms/step
+Epoch 47/120
+8/8 - 0s - loss: 0.0234 - val_loss: 0.0242 - 49ms/epoch - 6ms/step
+Epoch 48/120
+8/8 - 0s - loss: 0.0264 - val_loss: 0.0222 - 49ms/epoch - 6ms/step
+Epoch 49/120
+8/8 - 0s - loss: 0.0262 - val_loss: 0.0217 - 49ms/epoch - 6ms/step
+Epoch 50/120
+8/8 - 0s - loss: 0.0216 - val_loss: 0.0191 - 49ms/epoch - 6ms/step
+Epoch 51/120
+8/8 - 0s - loss: 0.0199 - val_loss: 0.0201 - 49ms/epoch - 6ms/step
+Epoch 52/120
+8/8 - 0s - loss: 0.0214 - val_loss: 0.0215 - 49ms/epoch - 6ms/step
+Epoch 53/120
+8/8 - 0s - loss: 0.0191 - val_loss: 0.0198 - 49ms/epoch - 6ms/step
+Epoch 54/120
+8/8 - 0s - loss: 0.0204 - val_loss: 0.0207 - 49ms/epoch - 6ms/step
+Epoch 55/120
+8/8 - 0s - loss: 0.0191 - val_loss: 0.0192 - 49ms/epoch - 6ms/step
+Epoch 56/120
+8/8 - 0s - loss: 0.0192 - val_loss: 0.0185 - 49ms/epoch - 6ms/step
+Epoch 57/120
+8/8 - 0s - loss: 0.0188 - val_loss: 0.0207 - 49ms/epoch - 6ms/step
+Epoch 58/120
+8/8 - 0s - loss: 0.0210 - val_loss: 0.0204 - 48ms/epoch - 6ms/step
+Epoch 59/120
+8/8 - 0s - loss: 0.0205 - val_loss: 0.0207 - 48ms/epoch - 6ms/step
+Epoch 60/120
+8/8 - 0s - loss: 0.0196 - val_loss: 0.0195 - 49ms/epoch - 6ms/step
+Epoch 61/120
+8/8 - 0s - loss: 0.0192 - val_loss: 0.0195 - 48ms/epoch - 6ms/step
+Epoch 62/120
+8/8 - 0s - loss: 0.0192 - val_loss: 0.0217 - 49ms/epoch - 6ms/step
+Epoch 63/120
+8/8 - 0s - loss: 0.0211 - val_loss: 0.0234 - 48ms/epoch - 6ms/step
+Epoch 64/120
+8/8 - 0s - loss: 0.0218 - val_loss: 0.0229 - 48ms/epoch - 6ms/step
+Epoch 65/120
+8/8 - 0s - loss: 0.0211 - val_loss: 0.1496 - 48ms/epoch - 6ms/step
+Epoch 66/120
+8/8 - 0s - loss: 0.3119 - val_loss: 0.1942 - 49ms/epoch - 6ms/step
+Epoch 67/120
+8/8 - 0s - loss: 0.1043 - val_loss: 0.5564 - 49ms/epoch - 6ms/step
+Epoch 68/120
+8/8 - 0s - loss: 0.0776 - val_loss: 0.2792 - 49ms/epoch - 6ms/step
+Epoch 69/120
+8/8 - 0s - loss: 0.0574 - val_loss: 0.2389 - 49ms/epoch - 6ms/step
+Epoch 70/120
+8/8 - 0s - loss: 0.0459 - val_loss: 0.1633 - 48ms/epoch - 6ms/step
+Epoch 71/120
+8/8 - 0s - loss: 0.0487 - val_loss: 0.1486 - 50ms/epoch - 6ms/step
+Epoch 72/120
+8/8 - 0s - loss: 0.0380 - val_loss: 0.1060 - 49ms/epoch - 6ms/step
+Epoch 73/120
+8/8 - 0s - loss: 0.0359 - val_loss: 0.0904 - 49ms/epoch - 6ms/step
+Epoch 74/120
+8/8 - 0s - loss: 0.0293 - val_loss: 0.2365 - 49ms/epoch - 6ms/step
+Epoch 75/120
+8/8 - 0s - loss: 0.0254 - val_loss: 0.2672 - 49ms/epoch - 6ms/step
+Epoch 76/120
+8/8 - 0s - loss: 0.0248 - val_loss: 0.1524 - 49ms/epoch - 6ms/step
+Epoch 77/120
+8/8 - 0s - loss: 0.0234 - val_loss: 0.1989 - 49ms/epoch - 6ms/step
+Epoch 78/120
+8/8 - 0s - loss: 0.0247 - val_loss: 0.1329 - 49ms/epoch - 6ms/step
+Epoch 79/120
+8/8 - 0s - loss: 0.0266 - val_loss: 0.1040 - 49ms/epoch - 6ms/step
+Epoch 80/120
+8/8 - 0s - loss: 0.0339 - val_loss: 0.1451 - 48ms/epoch - 6ms/step
+Epoch 81/120
+8/8 - 0s - loss: 0.0372 - val_loss: 0.1288 - 49ms/epoch - 6ms/step
+Epoch 82/120
+8/8 - 0s - loss: 0.0309 - val_loss: 0.1830 - 49ms/epoch - 6ms/step
+Epoch 83/120
+8/8 - 0s - loss: 0.0279 - val_loss: 0.1567 - 50ms/epoch - 6ms/step
+Epoch 84/120
+8/8 - 0s - loss: 0.0233 - val_loss: 0.0888 - 49ms/epoch - 6ms/step
+Epoch 85/120
+8/8 - 0s - loss: 0.0258 - val_loss: 0.0637 - 48ms/epoch - 6ms/step
+Epoch 86/120
+8/8 - 0s - loss: 0.0284 - val_loss: 0.0424 - 48ms/epoch - 6ms/step
+Epoch 87/120
+8/8 - 0s - loss: 0.0258 - val_loss: 0.0328 - 48ms/epoch - 6ms/step
+Epoch 88/120
+8/8 - 0s - loss: 0.0259 - val_loss: 0.0868 - 48ms/epoch - 6ms/step
+Epoch 89/120
+8/8 - 0s - loss: 0.0439 - val_loss: 0.0692 - 48ms/epoch - 6ms/step
+Epoch 90/120
+8/8 - 0s - loss: 0.0471 - val_loss: 0.0652 - 48ms/epoch - 6ms/step
+Epoch 91/120
+8/8 - 0s - loss: 0.0409 - val_loss: 0.0429 - 48ms/epoch - 6ms/step
+Epoch 92/120
+8/8 - 0s - loss: 0.0323 - val_loss: 0.0443 - 48ms/epoch - 6ms/step
+Epoch 93/120
+8/8 - 0s - loss: 0.0343 - val_loss: 0.0388 - 49ms/epoch - 6ms/step
+Epoch 94/120
+8/8 - 0s - loss: 0.0287 - val_loss: 0.0403 - 49ms/epoch - 6ms/step
+Epoch 95/120
+8/8 - 0s - loss: 0.0263 - val_loss: 0.0326 - 49ms/epoch - 6ms/step
+Epoch 96/120
+8/8 - 0s - loss: 0.0225 - val_loss: 0.0307 - 49ms/epoch - 6ms/step
+Epoch 97/120
+8/8 - 0s - loss: 0.0210 - val_loss: 0.0307 - 49ms/epoch - 6ms/step
+Epoch 98/120
+8/8 - 0s - loss: 0.0235 - val_loss: 0.0278 - 48ms/epoch - 6ms/step
+Epoch 99/120
+8/8 - 0s - loss: 0.0203 - val_loss: 0.0259 - 48ms/epoch - 6ms/step
+Epoch 100/120
+8/8 - 0s - loss: 0.0231 - val_loss: 0.0248 - 49ms/epoch - 6ms/step
+Epoch 101/120
+8/8 - 0s - loss: 0.0224 - val_loss: 0.0252 - 49ms/epoch - 6ms/step
+Epoch 102/120
+8/8 - 0s - loss: 0.0216 - val_loss: 0.0231 - 49ms/epoch - 6ms/step
+Epoch 103/120
+8/8 - 0s - loss: 0.0220 - val_loss: 0.0387 - 48ms/epoch - 6ms/step
+Epoch 104/120
+8/8 - 0s - loss: 0.0303 - val_loss: 0.0311 - 49ms/epoch - 6ms/step
+Epoch 105/120
+8/8 - 0s - loss: 0.0256 - val_loss: 0.0324 - 48ms/epoch - 6ms/step
+Epoch 106/120
+8/8 - 0s - loss: 0.0290 - val_loss: 0.0409 - 49ms/epoch - 6ms/step
+Epoch 107/120
+8/8 - 0s - loss: 0.0319 - val_loss: 0.0383 - 49ms/epoch - 6ms/step
+Epoch 108/120
+8/8 - 0s - loss: 0.0245 - val_loss: 0.0273 - 49ms/epoch - 6ms/step
+Epoch 109/120
+8/8 - 0s - loss: 0.0207 - val_loss: 0.0246 - 49ms/epoch - 6ms/step
+Epoch 110/120
+8/8 - 0s - loss: 0.0193 - val_loss: 0.0215 - 48ms/epoch - 6ms/step
+Epoch 111/120
+8/8 - 0s - loss: 0.0178 - val_loss: 0.0198 - 49ms/epoch - 6ms/step
+Epoch 112/120
+8/8 - 0s - loss: 0.0171 - val_loss: 0.0193 - 49ms/epoch - 6ms/step
+Epoch 113/120
+8/8 - 0s - loss: 0.0181 - val_loss: 0.0199 - 48ms/epoch - 6ms/step
+Epoch 114/120
+8/8 - 0s - loss: 0.0178 - val_loss: 0.0201 - 48ms/epoch - 6ms/step
+Epoch 115/120
+8/8 - 0s - loss: 0.0199 - val_loss: 0.0193 - 48ms/epoch - 6ms/step
+Epoch 116/120
+8/8 - 0s - loss: 0.0201 - val_loss: 0.0210 - 49ms/epoch - 6ms/step
+Epoch 117/120
+8/8 - 0s - loss: 0.0187 - val_loss: 0.0190 - 48ms/epoch - 6ms/step
+Epoch 118/120
+8/8 - 0s - loss: 0.0172 - val_loss: 0.0203 - 49ms/epoch - 6ms/step
+Epoch 119/120
+8/8 - 0s - loss: 0.0169 - val_loss: 0.0171 - 48ms/epoch - 6ms/step
+Epoch 120/120
+8/8 - 0s - loss: 0.0164 - val_loss: 0.0324 - 48ms/epoch - 6ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.03240889683365822
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.290091059692204
+cosine 0.23247099585831166
+MAE: 0.121853925
+RMSE: 0.21175253
+r2: -1.1589014410636809
+RMSE zero-vector: 0.25411352931712494
+['2.5custom_VAE', 'logcosh', 256, 120, 0.001, 0.4, 499, 0.016377542167901993, 0.03240889683365822, 0.290091059692204, 0.23247099585831166, 0.12185392528772354, 0.2117525339126587, -1.1589014410636809, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.0 30 0.0008 128 1] 2
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2498)         3122500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_15 (BatchN  (None, 2498)        9992        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_15 (ReLU)                (None, 2498)         0           ['batch_normalization_15[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1247001     ['re_lu_15[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1247001     ['re_lu_15[0][0]']               
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4631739     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_5 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 10,258,233
+Trainable params: 10,247,243
+Non-trainable params: 10,990
+__________________________________________________________________________________________________
+Epoch 1/30
+15/15 - 2s - loss: 0.4742 - val_loss: 0.0946 - 2s/epoch - 154ms/step
+Epoch 2/30
+15/15 - 0s - loss: 0.1336 - val_loss: 0.1043 - 69ms/epoch - 5ms/step
+Epoch 3/30
+15/15 - 0s - loss: 0.0735 - val_loss: 0.0877 - 68ms/epoch - 5ms/step
+Epoch 4/30
+15/15 - 0s - loss: 0.0506 - val_loss: 0.0766 - 67ms/epoch - 4ms/step
+Epoch 5/30
+15/15 - 0s - loss: 0.0414 - val_loss: 0.0888 - 68ms/epoch - 5ms/step
+Epoch 6/30
+15/15 - 0s - loss: 0.0473 - val_loss: 0.0606 - 68ms/epoch - 5ms/step
+Epoch 7/30
+15/15 - 0s - loss: 0.0363 - val_loss: 0.0554 - 68ms/epoch - 5ms/step
+Epoch 8/30
+15/15 - 0s - loss: 0.0333 - val_loss: 0.0550 - 68ms/epoch - 5ms/step
+Epoch 9/30
+15/15 - 0s - loss: 0.0324 - val_loss: 0.0438 - 68ms/epoch - 5ms/step
+Epoch 10/30
+15/15 - 0s - loss: 0.0310 - val_loss: 0.0507 - 68ms/epoch - 5ms/step
+Epoch 11/30
+15/15 - 0s - loss: 0.0316 - val_loss: 0.0398 - 68ms/epoch - 5ms/step
+Epoch 12/30
+15/15 - 0s - loss: 0.0297 - val_loss: 0.0363 - 68ms/epoch - 5ms/step
+Epoch 13/30
+15/15 - 0s - loss: 0.0302 - val_loss: 0.0322 - 68ms/epoch - 5ms/step
+Epoch 14/30
+15/15 - 0s - loss: 0.0283 - val_loss: 0.0383 - 67ms/epoch - 4ms/step
+Epoch 15/30
+15/15 - 0s - loss: 0.0285 - val_loss: 0.0361 - 67ms/epoch - 4ms/step
+Epoch 16/30
+15/15 - 0s - loss: 0.0314 - val_loss: 0.0446 - 69ms/epoch - 5ms/step
+Epoch 17/30
+15/15 - 0s - loss: 0.0320 - val_loss: 0.0340 - 68ms/epoch - 5ms/step
+Epoch 18/30
+15/15 - 0s - loss: 0.0287 - val_loss: 0.0301 - 68ms/epoch - 5ms/step
+Epoch 19/30
+15/15 - 0s - loss: 0.0274 - val_loss: 0.0349 - 67ms/epoch - 4ms/step
+Epoch 20/30
+15/15 - 0s - loss: 0.0273 - val_loss: 0.0321 - 68ms/epoch - 5ms/step
+Epoch 21/30
+15/15 - 0s - loss: 0.0284 - val_loss: 0.0371 - 68ms/epoch - 5ms/step
+Epoch 22/30
+15/15 - 0s - loss: 0.0283 - val_loss: 0.0298 - 68ms/epoch - 5ms/step
+Epoch 23/30
+15/15 - 0s - loss: 0.0272 - val_loss: 0.0478 - 68ms/epoch - 5ms/step
+Epoch 24/30
+15/15 - 0s - loss: 0.0307 - val_loss: 0.0470 - 68ms/epoch - 5ms/step
+Epoch 25/30
+15/15 - 0s - loss: 0.0280 - val_loss: 0.0474 - 68ms/epoch - 5ms/step
+Epoch 26/30
+15/15 - 0s - loss: 0.0350 - val_loss: 0.0672 - 68ms/epoch - 5ms/step
+Epoch 27/30
+15/15 - 0s - loss: 0.0361 - val_loss: 0.0371 - 67ms/epoch - 4ms/step
+Epoch 28/30
+15/15 - 0s - loss: 0.0297 - val_loss: 0.0345 - 68ms/epoch - 5ms/step
+Epoch 29/30
+15/15 - 0s - loss: 0.0261 - val_loss: 0.0285 - 67ms/epoch - 4ms/step
+Epoch 30/30
+15/15 - 0s - loss: 0.0257 - val_loss: 0.0252 - 68ms/epoch - 5ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.025163646787405014
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.21548534393310548
+cosine 0.16456032991409303
+MAE: 0.086658195
+RMSE: 0.13961218
+r2: 0.06517438095111024
+RMSE zero-vector: 0.25411352931712494
+['2.0custom_VAE', 'mse', 128, 30, 0.0008, 0.4, 499, 0.02570744976401329, 0.025163646787405014, 0.21548534393310548, 0.16456032991409303, 0.08665819466114044, 0.13961218297481537, 0.06517438095111024, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.1 120 0.002 128 1] 4
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2622)         3277500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_18 (BatchN  (None, 2622)        10488       ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_18 (ReLU)                (None, 2622)         0           ['batch_normalization_18[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1308877     ['re_lu_18[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1308877     ['re_lu_18[0][0]']               
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4849111     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_6 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 10,754,853
+Trainable params: 10,743,367
+Non-trainable params: 11,486
+__________________________________________________________________________________________________
+Epoch 1/120
+15/15 - 2s - loss: 0.4935 - val_loss: 0.0883 - 2s/epoch - 154ms/step
+Epoch 2/120
+15/15 - 0s - loss: 0.1440 - val_loss: 0.1005 - 69ms/epoch - 5ms/step
+Epoch 3/120
+15/15 - 0s - loss: 0.0939 - val_loss: 0.0837 - 69ms/epoch - 5ms/step
+Epoch 4/120
+15/15 - 0s - loss: 0.0569 - val_loss: 0.0805 - 68ms/epoch - 5ms/step
+Epoch 5/120
+15/15 - 0s - loss: 0.0460 - val_loss: 0.0728 - 70ms/epoch - 5ms/step
+Epoch 6/120
+15/15 - 0s - loss: 0.0468 - val_loss: 0.0609 - 68ms/epoch - 5ms/step
+Epoch 7/120
+15/15 - 0s - loss: 0.0395 - val_loss: 0.0554 - 68ms/epoch - 5ms/step
+Epoch 8/120
+15/15 - 0s - loss: 0.0407 - val_loss: 0.0782 - 68ms/epoch - 5ms/step
+Epoch 9/120
+15/15 - 0s - loss: 0.0667 - val_loss: 0.0543 - 69ms/epoch - 5ms/step
+Epoch 10/120
+15/15 - 0s - loss: 0.0472 - val_loss: 0.0563 - 68ms/epoch - 5ms/step
+Epoch 11/120
+15/15 - 0s - loss: 0.0517 - val_loss: 0.0435 - 68ms/epoch - 5ms/step
+Epoch 12/120
+15/15 - 0s - loss: 0.0373 - val_loss: 0.0456 - 67ms/epoch - 4ms/step
+Epoch 13/120
+15/15 - 0s - loss: 0.0328 - val_loss: 0.0354 - 69ms/epoch - 5ms/step
+Epoch 14/120
+15/15 - 0s - loss: 0.0296 - val_loss: 0.0375 - 68ms/epoch - 5ms/step
+Epoch 15/120
+15/15 - 0s - loss: 0.0305 - val_loss: 0.0356 - 68ms/epoch - 5ms/step
+Epoch 16/120
+15/15 - 0s - loss: 0.0285 - val_loss: 0.0329 - 68ms/epoch - 5ms/step
+Epoch 17/120
+15/15 - 0s - loss: 0.0277 - val_loss: 0.0321 - 68ms/epoch - 5ms/step
+Epoch 18/120
+15/15 - 0s - loss: 0.0284 - val_loss: 0.0332 - 68ms/epoch - 5ms/step
+Epoch 19/120
+15/15 - 0s - loss: 0.0299 - val_loss: 0.0736 - 68ms/epoch - 5ms/step
+Epoch 20/120
+15/15 - 0s - loss: 0.0490 - val_loss: 0.0411 - 69ms/epoch - 5ms/step
+Epoch 21/120
+15/15 - 0s - loss: 0.0336 - val_loss: 0.0322 - 68ms/epoch - 5ms/step
+Epoch 22/120
+15/15 - 0s - loss: 0.0273 - val_loss: 0.0349 - 68ms/epoch - 5ms/step
+Epoch 23/120
+15/15 - 0s - loss: 0.0300 - val_loss: 0.0373 - 68ms/epoch - 5ms/step
+Epoch 24/120
+15/15 - 0s - loss: 0.0339 - val_loss: 0.0491 - 68ms/epoch - 5ms/step
+Epoch 25/120
+15/15 - 0s - loss: 0.0409 - val_loss: 0.1743 - 68ms/epoch - 5ms/step
+Epoch 26/120
+15/15 - 0s - loss: 0.0914 - val_loss: 0.0587 - 68ms/epoch - 5ms/step
+Epoch 27/120
+15/15 - 0s - loss: 0.0419 - val_loss: 0.0354 - 68ms/epoch - 5ms/step
+Epoch 28/120
+15/15 - 0s - loss: 0.0311 - val_loss: 0.0317 - 68ms/epoch - 5ms/step
+Epoch 29/120
+15/15 - 0s - loss: 0.0262 - val_loss: 0.0285 - 69ms/epoch - 5ms/step
+Epoch 30/120
+15/15 - 0s - loss: 0.0266 - val_loss: 0.0286 - 69ms/epoch - 5ms/step
+Epoch 31/120
+15/15 - 0s - loss: 0.0271 - val_loss: 0.0286 - 69ms/epoch - 5ms/step
+Epoch 32/120
+15/15 - 0s - loss: 0.0276 - val_loss: 0.0335 - 69ms/epoch - 5ms/step
+Epoch 33/120
+15/15 - 0s - loss: 0.0327 - val_loss: 0.0312 - 68ms/epoch - 5ms/step
+Epoch 34/120
+15/15 - 0s - loss: 0.0272 - val_loss: 0.0279 - 68ms/epoch - 5ms/step
+Epoch 35/120
+15/15 - 0s - loss: 0.0246 - val_loss: 0.0267 - 70ms/epoch - 5ms/step
+Epoch 36/120
+15/15 - 0s - loss: 0.0252 - val_loss: 0.0348 - 69ms/epoch - 5ms/step
+Epoch 37/120
+15/15 - 0s - loss: 0.0290 - val_loss: 0.0467 - 68ms/epoch - 5ms/step
+Epoch 38/120
+15/15 - 0s - loss: 0.0374 - val_loss: 0.0304 - 68ms/epoch - 5ms/step
+Epoch 39/120
+15/15 - 0s - loss: 0.0270 - val_loss: 0.0369 - 68ms/epoch - 5ms/step
+Epoch 40/120
+15/15 - 0s - loss: 0.0305 - val_loss: 0.0391 - 69ms/epoch - 5ms/step
+Epoch 41/120
+15/15 - 0s - loss: 0.0340 - val_loss: 0.0400 - 68ms/epoch - 5ms/step
+Epoch 42/120
+15/15 - 0s - loss: 0.0314 - val_loss: 0.0431 - 68ms/epoch - 5ms/step
+Epoch 43/120
+15/15 - 0s - loss: 0.0332 - val_loss: 0.0294 - 68ms/epoch - 5ms/step
+Epoch 44/120
+15/15 - 0s - loss: 0.0283 - val_loss: 0.0378 - 69ms/epoch - 5ms/step
+Epoch 45/120
+15/15 - 0s - loss: 0.0320 - val_loss: 0.0370 - 68ms/epoch - 5ms/step
+Epoch 46/120
+15/15 - 0s - loss: 0.0305 - val_loss: 0.0493 - 68ms/epoch - 5ms/step
+Epoch 47/120
+15/15 - 0s - loss: 0.0433 - val_loss: 0.0420 - 68ms/epoch - 5ms/step
+Epoch 48/120
+15/15 - 0s - loss: 0.0383 - val_loss: 0.0335 - 68ms/epoch - 5ms/step
+Epoch 49/120
+15/15 - 0s - loss: 0.0282 - val_loss: 0.0260 - 68ms/epoch - 5ms/step
+Epoch 50/120
+15/15 - 0s - loss: 0.0242 - val_loss: 0.0252 - 68ms/epoch - 5ms/step
+Epoch 51/120
+15/15 - 0s - loss: 0.0233 - val_loss: 0.0268 - 68ms/epoch - 5ms/step
+Epoch 52/120
+15/15 - 0s - loss: 0.0257 - val_loss: 0.0276 - 68ms/epoch - 5ms/step
+Epoch 53/120
+15/15 - 0s - loss: 0.0260 - val_loss: 0.0293 - 68ms/epoch - 5ms/step
+Epoch 54/120
+15/15 - 0s - loss: 0.0279 - val_loss: 0.0277 - 68ms/epoch - 5ms/step
+Epoch 55/120
+15/15 - 0s - loss: 0.0236 - val_loss: 0.0239 - 68ms/epoch - 5ms/step
+Epoch 56/120
+15/15 - 0s - loss: 0.0220 - val_loss: 0.0259 - 68ms/epoch - 5ms/step
+Epoch 57/120
+15/15 - 0s - loss: 0.0254 - val_loss: 0.0285 - 69ms/epoch - 5ms/step
+Epoch 58/120
+15/15 - 0s - loss: 0.0280 - val_loss: 0.0328 - 68ms/epoch - 5ms/step
+Epoch 59/120
+15/15 - 0s - loss: 0.0293 - val_loss: 0.0641 - 68ms/epoch - 5ms/step
+Epoch 60/120
+15/15 - 0s - loss: 0.0527 - val_loss: 0.0558 - 69ms/epoch - 5ms/step
+Epoch 61/120
+15/15 - 0s - loss: 0.0412 - val_loss: 0.0699 - 69ms/epoch - 5ms/step
+Epoch 62/120
+15/15 - 0s - loss: 0.0431 - val_loss: 0.0438 - 68ms/epoch - 5ms/step
+Epoch 63/120
+15/15 - 0s - loss: 0.0353 - val_loss: 0.0368 - 68ms/epoch - 5ms/step
+Epoch 64/120
+15/15 - 0s - loss: 0.0274 - val_loss: 0.0292 - 68ms/epoch - 5ms/step
+Epoch 65/120
+15/15 - 0s - loss: 0.0251 - val_loss: 0.0307 - 68ms/epoch - 5ms/step
+Epoch 66/120
+15/15 - 0s - loss: 0.0304 - val_loss: 0.0297 - 68ms/epoch - 5ms/step
+Epoch 67/120
+15/15 - 0s - loss: 0.0262 - val_loss: 0.0272 - 68ms/epoch - 5ms/step
+Epoch 68/120
+15/15 - 0s - loss: 0.0228 - val_loss: 0.0245 - 68ms/epoch - 5ms/step
+Epoch 69/120
+15/15 - 0s - loss: 0.0242 - val_loss: 0.0329 - 68ms/epoch - 5ms/step
+Epoch 70/120
+15/15 - 0s - loss: 0.0337 - val_loss: 0.0335 - 68ms/epoch - 5ms/step
+Epoch 71/120
+15/15 - 0s - loss: 0.0263 - val_loss: 0.0272 - 68ms/epoch - 5ms/step
+Epoch 72/120
+15/15 - 0s - loss: 0.0285 - val_loss: 0.0406 - 68ms/epoch - 5ms/step
+Epoch 73/120
+15/15 - 0s - loss: 0.0427 - val_loss: 0.0399 - 68ms/epoch - 5ms/step
+Epoch 74/120
+15/15 - 0s - loss: 0.0297 - val_loss: 0.0443 - 68ms/epoch - 5ms/step
+Epoch 75/120
+15/15 - 0s - loss: 0.0302 - val_loss: 0.0446 - 68ms/epoch - 5ms/step
+Epoch 76/120
+15/15 - 0s - loss: 0.0292 - val_loss: 0.0412 - 68ms/epoch - 5ms/step
+Epoch 77/120
+15/15 - 0s - loss: 0.0271 - val_loss: 0.0367 - 68ms/epoch - 5ms/step
+Epoch 78/120
+15/15 - 0s - loss: 0.0315 - val_loss: 0.0304 - 69ms/epoch - 5ms/step
+Epoch 79/120
+15/15 - 0s - loss: 0.0258 - val_loss: 0.0280 - 69ms/epoch - 5ms/step
+Epoch 80/120
+15/15 - 0s - loss: 0.0231 - val_loss: 0.0244 - 69ms/epoch - 5ms/step
+Epoch 81/120
+15/15 - 0s - loss: 0.0224 - val_loss: 0.0266 - 68ms/epoch - 5ms/step
+Epoch 82/120
+15/15 - 0s - loss: 0.0281 - val_loss: 0.0285 - 69ms/epoch - 5ms/step
+Epoch 83/120
+15/15 - 0s - loss: 0.0266 - val_loss: 0.0253 - 69ms/epoch - 5ms/step
+Epoch 84/120
+15/15 - 0s - loss: 0.0222 - val_loss: 0.0222 - 68ms/epoch - 5ms/step
+Epoch 85/120
+15/15 - 0s - loss: 0.0225 - val_loss: 0.0309 - 68ms/epoch - 5ms/step
+Epoch 86/120
+15/15 - 0s - loss: 0.0482 - val_loss: 0.0520 - 68ms/epoch - 5ms/step
+Epoch 87/120
+15/15 - 0s - loss: 0.0781 - val_loss: 0.0739 - 71ms/epoch - 5ms/step
+Epoch 88/120
+15/15 - 0s - loss: 0.0528 - val_loss: 0.0781 - 68ms/epoch - 5ms/step
+Epoch 89/120
+15/15 - 0s - loss: 0.0914 - val_loss: 0.1625 - 68ms/epoch - 5ms/step
+Epoch 90/120
+15/15 - 0s - loss: 0.1551 - val_loss: 0.3019 - 68ms/epoch - 5ms/step
+Epoch 91/120
+15/15 - 0s - loss: 0.2987 - val_loss: 1.9020 - 69ms/epoch - 5ms/step
+Epoch 92/120
+15/15 - 0s - loss: 0.1468 - val_loss: 1.6076 - 68ms/epoch - 5ms/step
+Epoch 93/120
+15/15 - 0s - loss: 0.0671 - val_loss: 0.8730 - 68ms/epoch - 5ms/step
+Epoch 94/120
+15/15 - 0s - loss: 0.0401 - val_loss: 0.3442 - 68ms/epoch - 5ms/step
+Epoch 95/120
+15/15 - 0s - loss: 0.0351 - val_loss: 0.2026 - 68ms/epoch - 5ms/step
+Epoch 96/120
+15/15 - 0s - loss: 0.0301 - val_loss: 0.1301 - 68ms/epoch - 5ms/step
+Epoch 97/120
+15/15 - 0s - loss: 0.0297 - val_loss: 0.0659 - 68ms/epoch - 5ms/step
+Epoch 98/120
+15/15 - 0s - loss: 0.0267 - val_loss: 0.0753 - 68ms/epoch - 5ms/step
+Epoch 99/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0469 - 68ms/epoch - 5ms/step
+Epoch 100/120
+15/15 - 0s - loss: 0.0368 - val_loss: 0.0445 - 68ms/epoch - 5ms/step
+Epoch 101/120
+15/15 - 0s - loss: 0.0302 - val_loss: 0.0365 - 68ms/epoch - 5ms/step
+Epoch 102/120
+15/15 - 0s - loss: 0.0258 - val_loss: 0.0283 - 68ms/epoch - 5ms/step
+Epoch 103/120
+15/15 - 0s - loss: 0.0251 - val_loss: 0.0273 - 68ms/epoch - 5ms/step
+Epoch 104/120
+15/15 - 0s - loss: 0.0235 - val_loss: 0.0261 - 68ms/epoch - 5ms/step
+Epoch 105/120
+15/15 - 0s - loss: 0.0239 - val_loss: 0.0242 - 68ms/epoch - 5ms/step
+Epoch 106/120
+15/15 - 0s - loss: 0.0230 - val_loss: 0.0246 - 69ms/epoch - 5ms/step
+Epoch 107/120
+15/15 - 0s - loss: 0.0293 - val_loss: 0.0408 - 68ms/epoch - 5ms/step
+Epoch 108/120
+15/15 - 0s - loss: 0.0253 - val_loss: 0.0249 - 68ms/epoch - 5ms/step
+Epoch 109/120
+15/15 - 0s - loss: 0.0229 - val_loss: 0.0232 - 69ms/epoch - 5ms/step
+Epoch 110/120
+15/15 - 0s - loss: 0.0230 - val_loss: 0.0225 - 69ms/epoch - 5ms/step
+Epoch 111/120
+15/15 - 0s - loss: 0.0238 - val_loss: 0.0226 - 68ms/epoch - 5ms/step
+Epoch 112/120
+15/15 - 0s - loss: 0.0215 - val_loss: 0.0213 - 70ms/epoch - 5ms/step
+Epoch 113/120
+15/15 - 0s - loss: 0.0213 - val_loss: 0.0212 - 68ms/epoch - 5ms/step
+Epoch 114/120
+15/15 - 0s - loss: 0.0216 - val_loss: 0.0210 - 68ms/epoch - 5ms/step
+Epoch 115/120
+15/15 - 0s - loss: 0.0214 - val_loss: 0.0208 - 68ms/epoch - 5ms/step
+Epoch 116/120
+15/15 - 0s - loss: 0.0212 - val_loss: 0.0203 - 69ms/epoch - 5ms/step
+Epoch 117/120
+15/15 - 0s - loss: 0.0211 - val_loss: 0.0213 - 69ms/epoch - 5ms/step
+Epoch 118/120
+15/15 - 0s - loss: 0.0259 - val_loss: 0.0271 - 69ms/epoch - 5ms/step
+Epoch 119/120
+15/15 - 0s - loss: 0.0252 - val_loss: 0.0281 - 68ms/epoch - 5ms/step
+Epoch 120/120
+15/15 - 0s - loss: 0.0228 - val_loss: 0.0235 - 68ms/epoch - 5ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.023518286645412445
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.1758444947004318
+cosine 0.13222427159547806
+MAE: 0.07185601
+RMSE: 0.12669219
+r2: 0.22159546880856212
+RMSE zero-vector: 0.25411352931712494
+['2.1custom_VAE', 'mse', 128, 120, 0.002, 0.4, 499, 0.02279553934931755, 0.023518286645412445, 0.1758444947004318, 0.13222427159547806, 0.07185600697994232, 0.12669219076633453, 0.22159546880856212, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+Saved GA instance to file: ga_instance_generation_1.pkl
+[2.1 120 0.0022 128 1] 2
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2622)         3277500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_21 (BatchN  (None, 2622)        10488       ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_21 (ReLU)                (None, 2622)         0           ['batch_normalization_21[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1308877     ['re_lu_21[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1308877     ['re_lu_21[0][0]']               
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4849111     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_7 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 10,754,853
+Trainable params: 10,743,367
+Non-trainable params: 11,486
+__________________________________________________________________________________________________
+Epoch 1/120
+15/15 - 2s - loss: 0.4805 - val_loss: 0.0949 - 2s/epoch - 143ms/step
+Epoch 2/120
+15/15 - 0s - loss: 0.1341 - val_loss: 0.1086 - 70ms/epoch - 5ms/step
+Epoch 3/120
+15/15 - 0s - loss: 0.0826 - val_loss: 0.0878 - 69ms/epoch - 5ms/step
+Epoch 4/120
+15/15 - 0s - loss: 0.0540 - val_loss: 0.0759 - 69ms/epoch - 5ms/step
+Epoch 5/120
+15/15 - 0s - loss: 0.0422 - val_loss: 0.0749 - 68ms/epoch - 5ms/step
+Epoch 6/120
+15/15 - 0s - loss: 0.0381 - val_loss: 0.0654 - 68ms/epoch - 5ms/step
+Epoch 7/120
+15/15 - 0s - loss: 0.0357 - val_loss: 0.0557 - 68ms/epoch - 5ms/step
+Epoch 8/120
+15/15 - 0s - loss: 0.0342 - val_loss: 0.0663 - 68ms/epoch - 5ms/step
+Epoch 9/120
+15/15 - 0s - loss: 0.0396 - val_loss: 0.0626 - 68ms/epoch - 5ms/step
+Epoch 10/120
+15/15 - 0s - loss: 0.0350 - val_loss: 0.0580 - 68ms/epoch - 5ms/step
+Epoch 11/120
+15/15 - 0s - loss: 0.0374 - val_loss: 0.0466 - 68ms/epoch - 5ms/step
+Epoch 12/120
+15/15 - 0s - loss: 0.0325 - val_loss: 0.0549 - 69ms/epoch - 5ms/step
+Epoch 13/120
+15/15 - 0s - loss: 0.0430 - val_loss: 0.0486 - 68ms/epoch - 5ms/step
+Epoch 14/120
+15/15 - 0s - loss: 0.0356 - val_loss: 0.0409 - 69ms/epoch - 5ms/step
+Epoch 15/120
+15/15 - 0s - loss: 0.0328 - val_loss: 0.0339 - 69ms/epoch - 5ms/step
+Epoch 16/120
+15/15 - 0s - loss: 0.0301 - val_loss: 0.0349 - 69ms/epoch - 5ms/step
+Epoch 17/120
+15/15 - 0s - loss: 0.0295 - val_loss: 0.0325 - 69ms/epoch - 5ms/step
+Epoch 18/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0295 - 71ms/epoch - 5ms/step
+Epoch 19/120
+15/15 - 0s - loss: 0.0257 - val_loss: 0.0293 - 69ms/epoch - 5ms/step
+Epoch 20/120
+15/15 - 0s - loss: 0.0258 - val_loss: 0.0379 - 69ms/epoch - 5ms/step
+Epoch 21/120
+15/15 - 0s - loss: 0.0275 - val_loss: 0.0287 - 68ms/epoch - 5ms/step
+Epoch 22/120
+15/15 - 0s - loss: 0.0254 - val_loss: 0.0313 - 69ms/epoch - 5ms/step
+Epoch 23/120
+15/15 - 0s - loss: 0.0271 - val_loss: 0.0334 - 69ms/epoch - 5ms/step
+Epoch 24/120
+15/15 - 0s - loss: 0.0280 - val_loss: 0.0500 - 68ms/epoch - 5ms/step
+Epoch 25/120
+15/15 - 0s - loss: 0.0285 - val_loss: 0.0300 - 69ms/epoch - 5ms/step
+Epoch 26/120
+15/15 - 0s - loss: 0.0293 - val_loss: 0.0631 - 68ms/epoch - 5ms/step
+Epoch 27/120
+15/15 - 0s - loss: 0.0431 - val_loss: 0.0511 - 68ms/epoch - 5ms/step
+Epoch 28/120
+15/15 - 0s - loss: 0.0329 - val_loss: 0.0350 - 68ms/epoch - 5ms/step
+Epoch 29/120
+15/15 - 0s - loss: 0.0274 - val_loss: 0.0312 - 69ms/epoch - 5ms/step
+Epoch 30/120
+15/15 - 0s - loss: 0.0307 - val_loss: 0.0335 - 69ms/epoch - 5ms/step
+Epoch 31/120
+15/15 - 0s - loss: 0.0276 - val_loss: 0.0324 - 68ms/epoch - 5ms/step
+Epoch 32/120
+15/15 - 0s - loss: 0.0256 - val_loss: 0.0379 - 68ms/epoch - 5ms/step
+Epoch 33/120
+15/15 - 0s - loss: 0.0261 - val_loss: 0.0303 - 68ms/epoch - 5ms/step
+Epoch 34/120
+15/15 - 0s - loss: 0.0256 - val_loss: 0.0287 - 69ms/epoch - 5ms/step
+Epoch 35/120
+15/15 - 0s - loss: 0.0249 - val_loss: 0.0275 - 68ms/epoch - 5ms/step
+Epoch 36/120
+15/15 - 0s - loss: 0.0228 - val_loss: 0.0253 - 69ms/epoch - 5ms/step
+Epoch 37/120
+15/15 - 0s - loss: 0.0240 - val_loss: 0.0352 - 68ms/epoch - 5ms/step
+Epoch 38/120
+15/15 - 0s - loss: 0.0281 - val_loss: 0.0271 - 68ms/epoch - 5ms/step
+Epoch 39/120
+15/15 - 0s - loss: 0.0245 - val_loss: 0.0372 - 69ms/epoch - 5ms/step
+Epoch 40/120
+15/15 - 0s - loss: 0.0276 - val_loss: 0.0307 - 69ms/epoch - 5ms/step
+Epoch 41/120
+15/15 - 0s - loss: 0.0261 - val_loss: 0.0300 - 69ms/epoch - 5ms/step
+Epoch 42/120
+15/15 - 0s - loss: 0.0241 - val_loss: 0.0305 - 69ms/epoch - 5ms/step
+Epoch 43/120
+15/15 - 0s - loss: 0.0253 - val_loss: 0.0289 - 68ms/epoch - 5ms/step
+Epoch 44/120
+15/15 - 0s - loss: 0.0237 - val_loss: 0.0347 - 68ms/epoch - 5ms/step
+Epoch 45/120
+15/15 - 0s - loss: 0.0255 - val_loss: 0.0254 - 68ms/epoch - 5ms/step
+Epoch 46/120
+15/15 - 0s - loss: 0.0248 - val_loss: 0.0821 - 69ms/epoch - 5ms/step
+Epoch 47/120
+15/15 - 0s - loss: 0.0410 - val_loss: 0.0432 - 68ms/epoch - 5ms/step
+Epoch 48/120
+15/15 - 0s - loss: 0.0300 - val_loss: 0.0305 - 69ms/epoch - 5ms/step
+Epoch 49/120
+15/15 - 0s - loss: 0.0266 - val_loss: 0.0289 - 69ms/epoch - 5ms/step
+Epoch 50/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0469 - 69ms/epoch - 5ms/step
+Epoch 51/120
+15/15 - 0s - loss: 0.0284 - val_loss: 0.0354 - 71ms/epoch - 5ms/step
+Epoch 52/120
+15/15 - 0s - loss: 0.0313 - val_loss: 0.0334 - 68ms/epoch - 5ms/step
+Epoch 53/120
+15/15 - 0s - loss: 0.0245 - val_loss: 0.0300 - 69ms/epoch - 5ms/step
+Epoch 54/120
+15/15 - 0s - loss: 0.0242 - val_loss: 0.0280 - 69ms/epoch - 5ms/step
+Epoch 55/120
+15/15 - 0s - loss: 0.0239 - val_loss: 0.0252 - 69ms/epoch - 5ms/step
+Epoch 56/120
+15/15 - 0s - loss: 0.0235 - val_loss: 0.0324 - 69ms/epoch - 5ms/step
+Epoch 57/120
+15/15 - 0s - loss: 0.0264 - val_loss: 0.0339 - 69ms/epoch - 5ms/step
+Epoch 58/120
+15/15 - 0s - loss: 0.0296 - val_loss: 0.0345 - 69ms/epoch - 5ms/step
+Epoch 59/120
+15/15 - 0s - loss: 0.0274 - val_loss: 0.0796 - 69ms/epoch - 5ms/step
+Epoch 60/120
+15/15 - 0s - loss: 0.0464 - val_loss: 0.0398 - 68ms/epoch - 5ms/step
+Epoch 61/120
+15/15 - 0s - loss: 0.0320 - val_loss: 0.0528 - 69ms/epoch - 5ms/step
+Epoch 62/120
+15/15 - 0s - loss: 0.0391 - val_loss: 0.0383 - 69ms/epoch - 5ms/step
+Epoch 63/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0284 - 69ms/epoch - 5ms/step
+Epoch 64/120
+15/15 - 0s - loss: 0.0234 - val_loss: 0.0274 - 69ms/epoch - 5ms/step
+Epoch 65/120
+15/15 - 0s - loss: 0.0236 - val_loss: 0.0264 - 69ms/epoch - 5ms/step
+Epoch 66/120
+15/15 - 0s - loss: 0.0229 - val_loss: 0.0237 - 69ms/epoch - 5ms/step
+Epoch 67/120
+15/15 - 0s - loss: 0.0224 - val_loss: 0.0331 - 69ms/epoch - 5ms/step
+Epoch 68/120
+15/15 - 0s - loss: 0.0294 - val_loss: 0.0326 - 69ms/epoch - 5ms/step
+Epoch 69/120
+15/15 - 0s - loss: 0.0309 - val_loss: 0.0796 - 69ms/epoch - 5ms/step
+Epoch 70/120
+15/15 - 0s - loss: 0.0692 - val_loss: 0.4010 - 69ms/epoch - 5ms/step
+Epoch 71/120
+15/15 - 0s - loss: 0.0386 - val_loss: 0.1667 - 69ms/epoch - 5ms/step
+Epoch 72/120
+15/15 - 0s - loss: 0.0298 - val_loss: 0.0453 - 68ms/epoch - 5ms/step
+Epoch 73/120
+15/15 - 0s - loss: 0.0370 - val_loss: 0.0650 - 69ms/epoch - 5ms/step
+Epoch 74/120
+15/15 - 0s - loss: 0.0268 - val_loss: 0.1411 - 68ms/epoch - 5ms/step
+Epoch 75/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0959 - 68ms/epoch - 5ms/step
+Epoch 76/120
+15/15 - 0s - loss: 0.0245 - val_loss: 0.0558 - 69ms/epoch - 5ms/step
+Epoch 77/120
+15/15 - 0s - loss: 0.0298 - val_loss: 0.0493 - 68ms/epoch - 5ms/step
+Epoch 78/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0424 - 71ms/epoch - 5ms/step
+Epoch 79/120
+15/15 - 0s - loss: 0.0263 - val_loss: 0.0469 - 68ms/epoch - 5ms/step
+Epoch 80/120
+15/15 - 0s - loss: 0.0491 - val_loss: 0.0591 - 69ms/epoch - 5ms/step
+Epoch 81/120
+15/15 - 0s - loss: 0.0308 - val_loss: 0.0439 - 69ms/epoch - 5ms/step
+Epoch 82/120
+15/15 - 0s - loss: 0.0271 - val_loss: 0.0325 - 68ms/epoch - 5ms/step
+Epoch 83/120
+15/15 - 0s - loss: 0.0237 - val_loss: 0.0294 - 69ms/epoch - 5ms/step
+Epoch 84/120
+15/15 - 0s - loss: 0.0298 - val_loss: 0.0324 - 69ms/epoch - 5ms/step
+Epoch 85/120
+15/15 - 0s - loss: 0.0250 - val_loss: 0.0321 - 69ms/epoch - 5ms/step
+Epoch 86/120
+15/15 - 0s - loss: 0.0273 - val_loss: 0.0273 - 69ms/epoch - 5ms/step
+Epoch 87/120
+15/15 - 0s - loss: 0.0237 - val_loss: 0.0238 - 68ms/epoch - 5ms/step
+Epoch 88/120
+15/15 - 0s - loss: 0.0230 - val_loss: 0.0247 - 69ms/epoch - 5ms/step
+Epoch 89/120
+15/15 - 0s - loss: 0.0219 - val_loss: 0.0284 - 69ms/epoch - 5ms/step
+Epoch 90/120
+15/15 - 0s - loss: 0.0291 - val_loss: 0.0262 - 69ms/epoch - 5ms/step
+Epoch 91/120
+15/15 - 0s - loss: 0.0250 - val_loss: 0.0258 - 69ms/epoch - 5ms/step
+Epoch 92/120
+15/15 - 0s - loss: 0.0264 - val_loss: 0.0340 - 69ms/epoch - 5ms/step
+Epoch 93/120
+15/15 - 0s - loss: 0.0303 - val_loss: 0.0274 - 68ms/epoch - 5ms/step
+Epoch 94/120
+15/15 - 0s - loss: 0.0312 - val_loss: 0.0385 - 68ms/epoch - 5ms/step
+Epoch 95/120
+15/15 - 0s - loss: 0.0293 - val_loss: 0.0275 - 68ms/epoch - 5ms/step
+Epoch 96/120
+15/15 - 0s - loss: 0.0272 - val_loss: 0.0251 - 69ms/epoch - 5ms/step
+Epoch 97/120
+15/15 - 0s - loss: 0.0242 - val_loss: 0.0314 - 69ms/epoch - 5ms/step
+Epoch 98/120
+15/15 - 0s - loss: 0.0335 - val_loss: 0.0328 - 70ms/epoch - 5ms/step
+Epoch 99/120
+15/15 - 0s - loss: 0.0331 - val_loss: 0.0329 - 69ms/epoch - 5ms/step
+Epoch 100/120
+15/15 - 0s - loss: 0.0307 - val_loss: 0.0293 - 69ms/epoch - 5ms/step
+Epoch 101/120
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0260 - 68ms/epoch - 5ms/step
+Epoch 102/120
+15/15 - 0s - loss: 0.0231 - val_loss: 0.0227 - 69ms/epoch - 5ms/step
+Epoch 103/120
+15/15 - 0s - loss: 0.0233 - val_loss: 0.0234 - 69ms/epoch - 5ms/step
+Epoch 104/120
+15/15 - 0s - loss: 0.0244 - val_loss: 0.0242 - 69ms/epoch - 5ms/step
+Epoch 105/120
+15/15 - 0s - loss: 0.0244 - val_loss: 0.0240 - 70ms/epoch - 5ms/step
+Epoch 106/120
+15/15 - 0s - loss: 0.0288 - val_loss: 0.0282 - 69ms/epoch - 5ms/step
+Epoch 107/120
+15/15 - 0s - loss: 0.0339 - val_loss: 0.0345 - 69ms/epoch - 5ms/step
+Epoch 108/120
+15/15 - 0s - loss: 0.0260 - val_loss: 0.0259 - 68ms/epoch - 5ms/step
+Epoch 109/120
+15/15 - 0s - loss: 0.0232 - val_loss: 0.0367 - 69ms/epoch - 5ms/step
+Epoch 110/120
+15/15 - 0s - loss: 0.0578 - val_loss: 0.0551 - 69ms/epoch - 5ms/step
+Epoch 111/120
+15/15 - 0s - loss: 0.0407 - val_loss: 0.0444 - 71ms/epoch - 5ms/step
+Epoch 112/120
+15/15 - 0s - loss: 0.0373 - val_loss: 0.0536 - 69ms/epoch - 5ms/step
+Epoch 113/120
+15/15 - 0s - loss: 0.0608 - val_loss: 0.0620 - 69ms/epoch - 5ms/step
+Epoch 114/120
+15/15 - 0s - loss: 0.0752 - val_loss: 0.1070 - 68ms/epoch - 5ms/step
+Epoch 115/120
+15/15 - 0s - loss: 0.0371 - val_loss: 0.0370 - 69ms/epoch - 5ms/step
+Epoch 116/120
+15/15 - 0s - loss: 0.0251 - val_loss: 0.0310 - 69ms/epoch - 5ms/step
+Epoch 117/120
+15/15 - 0s - loss: 0.0223 - val_loss: 0.0263 - 69ms/epoch - 5ms/step
+Epoch 118/120
+15/15 - 0s - loss: 0.0241 - val_loss: 0.0304 - 69ms/epoch - 5ms/step
+Epoch 119/120
+15/15 - 0s - loss: 0.0238 - val_loss: 0.0259 - 69ms/epoch - 5ms/step
+Epoch 120/120
+15/15 - 0s - loss: 0.0258 - val_loss: 0.0291 - 68ms/epoch - 5ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.029095523059368134
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.17223446369171141
+cosine 0.12964616775512694
+MAE: 0.072399765
+RMSE: 0.12483888
+r2: 0.24512509481199024
+RMSE zero-vector: 0.25411352931712494
+['2.1custom_VAE', 'mse', 128, 120, 0.0022, 0.4, 499, 0.02578856609761715, 0.029095523059368134, 0.17223446369171141, 0.12964616775512694, 0.07239976525306702, 0.12483888119459152, 0.24512509481199024, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.0 120 0.002 256 1] 3
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2498)         3122500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_24 (BatchN  (None, 2498)        9992        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_24 (ReLU)                (None, 2498)         0           ['batch_normalization_24[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1247001     ['re_lu_24[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1247001     ['re_lu_24[0][0]']               
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4631739     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_8 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 10,258,233
+Trainable params: 10,247,243
+Non-trainable params: 10,990
+__________________________________________________________________________________________________
+Epoch 1/120
+8/8 - 2s - loss: 0.6082 - val_loss: 0.1054 - 2s/epoch - 266ms/step
+Epoch 2/120
+8/8 - 0s - loss: 0.2818 - val_loss: 0.0932 - 49ms/epoch - 6ms/step
+Epoch 3/120
+8/8 - 0s - loss: 0.1549 - val_loss: 0.1007 - 47ms/epoch - 6ms/step
+Epoch 4/120
+8/8 - 0s - loss: 0.1043 - val_loss: 0.0894 - 47ms/epoch - 6ms/step
+Epoch 5/120
+8/8 - 0s - loss: 0.0864 - val_loss: 0.0894 - 47ms/epoch - 6ms/step
+Epoch 6/120
+8/8 - 0s - loss: 0.0683 - val_loss: 0.0832 - 46ms/epoch - 6ms/step
+Epoch 7/120
+8/8 - 0s - loss: 0.0599 - val_loss: 0.0717 - 47ms/epoch - 6ms/step
+Epoch 8/120
+8/8 - 0s - loss: 0.0515 - val_loss: 0.0791 - 47ms/epoch - 6ms/step
+Epoch 9/120
+8/8 - 0s - loss: 0.0473 - val_loss: 0.0759 - 47ms/epoch - 6ms/step
+Epoch 10/120
+8/8 - 0s - loss: 0.0455 - val_loss: 0.0700 - 47ms/epoch - 6ms/step
+Epoch 11/120
+8/8 - 0s - loss: 0.0560 - val_loss: 0.0532 - 47ms/epoch - 6ms/step
+Epoch 12/120
+8/8 - 0s - loss: 0.0682 - val_loss: 0.0577 - 46ms/epoch - 6ms/step
+Epoch 13/120
+8/8 - 0s - loss: 0.0647 - val_loss: 0.0538 - 47ms/epoch - 6ms/step
+Epoch 14/120
+8/8 - 0s - loss: 0.0501 - val_loss: 0.0499 - 46ms/epoch - 6ms/step
+Epoch 15/120
+8/8 - 0s - loss: 0.0424 - val_loss: 0.0524 - 47ms/epoch - 6ms/step
+Epoch 16/120
+8/8 - 0s - loss: 0.0402 - val_loss: 0.0470 - 47ms/epoch - 6ms/step
+Epoch 17/120
+8/8 - 0s - loss: 0.0366 - val_loss: 0.0436 - 49ms/epoch - 6ms/step
+Epoch 18/120
+8/8 - 0s - loss: 0.0346 - val_loss: 0.0442 - 47ms/epoch - 6ms/step
+Epoch 19/120
+8/8 - 0s - loss: 0.0356 - val_loss: 0.0415 - 47ms/epoch - 6ms/step
+Epoch 20/120
+8/8 - 0s - loss: 0.0345 - val_loss: 0.0488 - 47ms/epoch - 6ms/step
+Epoch 21/120
+8/8 - 0s - loss: 0.0495 - val_loss: 0.0432 - 47ms/epoch - 6ms/step
+Epoch 22/120
+8/8 - 0s - loss: 0.0375 - val_loss: 0.0386 - 47ms/epoch - 6ms/step
+Epoch 23/120
+8/8 - 0s - loss: 0.0373 - val_loss: 0.0402 - 47ms/epoch - 6ms/step
+Epoch 24/120
+8/8 - 0s - loss: 0.0458 - val_loss: 0.0844 - 46ms/epoch - 6ms/step
+Epoch 25/120
+8/8 - 0s - loss: 0.1003 - val_loss: 0.0887 - 47ms/epoch - 6ms/step
+Epoch 26/120
+8/8 - 0s - loss: 0.0714 - val_loss: 0.0494 - 47ms/epoch - 6ms/step
+Epoch 27/120
+8/8 - 0s - loss: 0.0539 - val_loss: 0.0406 - 47ms/epoch - 6ms/step
+Epoch 28/120
+8/8 - 0s - loss: 0.0432 - val_loss: 0.0394 - 47ms/epoch - 6ms/step
+Epoch 29/120
+8/8 - 0s - loss: 0.0388 - val_loss: 0.0346 - 47ms/epoch - 6ms/step
+Epoch 30/120
+8/8 - 0s - loss: 0.0357 - val_loss: 0.0356 - 46ms/epoch - 6ms/step
+Epoch 31/120
+8/8 - 0s - loss: 0.0418 - val_loss: 0.0474 - 47ms/epoch - 6ms/step
+Epoch 32/120
+8/8 - 0s - loss: 0.0657 - val_loss: 0.0661 - 47ms/epoch - 6ms/step
+Epoch 33/120
+8/8 - 0s - loss: 0.0481 - val_loss: 0.0454 - 47ms/epoch - 6ms/step
+Epoch 34/120
+8/8 - 0s - loss: 0.0400 - val_loss: 0.0438 - 47ms/epoch - 6ms/step
+Epoch 35/120
+8/8 - 0s - loss: 0.0373 - val_loss: 0.0416 - 46ms/epoch - 6ms/step
+Epoch 36/120
+8/8 - 0s - loss: 0.0350 - val_loss: 0.0441 - 47ms/epoch - 6ms/step
+Epoch 37/120
+8/8 - 0s - loss: 0.0360 - val_loss: 0.0427 - 46ms/epoch - 6ms/step
+Epoch 38/120
+8/8 - 0s - loss: 0.0383 - val_loss: 0.0382 - 47ms/epoch - 6ms/step
+Epoch 39/120
+8/8 - 0s - loss: 0.0356 - val_loss: 0.0368 - 47ms/epoch - 6ms/step
+Epoch 40/120
+8/8 - 0s - loss: 0.0321 - val_loss: 0.0369 - 47ms/epoch - 6ms/step
+Epoch 41/120
+8/8 - 0s - loss: 0.0362 - val_loss: 0.0478 - 47ms/epoch - 6ms/step
+Epoch 42/120
+8/8 - 0s - loss: 0.0357 - val_loss: 0.0391 - 47ms/epoch - 6ms/step
+Epoch 43/120
+8/8 - 0s - loss: 0.0364 - val_loss: 0.0400 - 47ms/epoch - 6ms/step
+Epoch 44/120
+8/8 - 0s - loss: 0.0365 - val_loss: 0.0391 - 47ms/epoch - 6ms/step
+Epoch 45/120
+8/8 - 0s - loss: 0.0354 - val_loss: 0.0331 - 47ms/epoch - 6ms/step
+Epoch 46/120
+8/8 - 0s - loss: 0.0327 - val_loss: 0.0319 - 47ms/epoch - 6ms/step
+Epoch 47/120
+8/8 - 0s - loss: 0.0305 - val_loss: 0.0376 - 47ms/epoch - 6ms/step
+Epoch 48/120
+8/8 - 0s - loss: 0.0341 - val_loss: 0.0756 - 46ms/epoch - 6ms/step
+Epoch 49/120
+8/8 - 0s - loss: 0.0895 - val_loss: 0.0964 - 47ms/epoch - 6ms/step
+Epoch 50/120
+8/8 - 0s - loss: 0.0638 - val_loss: 0.0592 - 47ms/epoch - 6ms/step
+Epoch 51/120
+8/8 - 0s - loss: 0.0454 - val_loss: 0.0444 - 47ms/epoch - 6ms/step
+Epoch 52/120
+8/8 - 0s - loss: 0.0341 - val_loss: 0.0364 - 47ms/epoch - 6ms/step
+Epoch 53/120
+8/8 - 0s - loss: 0.0292 - val_loss: 0.0319 - 46ms/epoch - 6ms/step
+Epoch 54/120
+8/8 - 0s - loss: 0.0297 - val_loss: 0.0303 - 47ms/epoch - 6ms/step
+Epoch 55/120
+8/8 - 0s - loss: 0.0293 - val_loss: 0.0311 - 47ms/epoch - 6ms/step
+Epoch 56/120
+8/8 - 0s - loss: 0.0285 - val_loss: 0.0308 - 46ms/epoch - 6ms/step
+Epoch 57/120
+8/8 - 0s - loss: 0.0268 - val_loss: 0.0294 - 47ms/epoch - 6ms/step
+Epoch 58/120
+8/8 - 0s - loss: 0.0262 - val_loss: 0.0276 - 49ms/epoch - 6ms/step
+Epoch 59/120
+8/8 - 0s - loss: 0.0260 - val_loss: 0.0274 - 47ms/epoch - 6ms/step
+Epoch 60/120
+8/8 - 0s - loss: 0.0256 - val_loss: 0.0285 - 47ms/epoch - 6ms/step
+Epoch 61/120
+8/8 - 0s - loss: 0.0279 - val_loss: 0.0302 - 47ms/epoch - 6ms/step
+Epoch 62/120
+8/8 - 0s - loss: 0.0276 - val_loss: 0.0295 - 47ms/epoch - 6ms/step
+Epoch 63/120
+8/8 - 0s - loss: 0.0326 - val_loss: 0.0502 - 47ms/epoch - 6ms/step
+Epoch 64/120
+8/8 - 0s - loss: 0.0523 - val_loss: 0.0480 - 47ms/epoch - 6ms/step
+Epoch 65/120
+8/8 - 0s - loss: 0.0457 - val_loss: 0.0461 - 47ms/epoch - 6ms/step
+Epoch 66/120
+8/8 - 0s - loss: 0.0402 - val_loss: 0.0430 - 47ms/epoch - 6ms/step
+Epoch 67/120
+8/8 - 0s - loss: 0.0401 - val_loss: 0.0454 - 47ms/epoch - 6ms/step
+Epoch 68/120
+8/8 - 0s - loss: 0.0410 - val_loss: 0.0419 - 47ms/epoch - 6ms/step
+Epoch 69/120
+8/8 - 0s - loss: 0.0379 - val_loss: 0.0446 - 46ms/epoch - 6ms/step
+Epoch 70/120
+8/8 - 0s - loss: 0.0341 - val_loss: 0.0354 - 47ms/epoch - 6ms/step
+Epoch 71/120
+8/8 - 0s - loss: 0.0329 - val_loss: 0.0372 - 47ms/epoch - 6ms/step
+Epoch 72/120
+8/8 - 0s - loss: 0.0352 - val_loss: 0.0420 - 46ms/epoch - 6ms/step
+Epoch 73/120
+8/8 - 0s - loss: 0.0394 - val_loss: 0.0750 - 46ms/epoch - 6ms/step
+Epoch 74/120
+8/8 - 0s - loss: 0.0733 - val_loss: 0.1201 - 46ms/epoch - 6ms/step
+Epoch 75/120
+8/8 - 0s - loss: 0.0516 - val_loss: 0.0745 - 47ms/epoch - 6ms/step
+Epoch 76/120
+8/8 - 0s - loss: 0.0358 - val_loss: 0.0480 - 47ms/epoch - 6ms/step
+Epoch 77/120
+8/8 - 0s - loss: 0.0306 - val_loss: 0.0429 - 47ms/epoch - 6ms/step
+Epoch 78/120
+8/8 - 0s - loss: 0.0299 - val_loss: 0.0423 - 47ms/epoch - 6ms/step
+Epoch 79/120
+8/8 - 0s - loss: 0.0316 - val_loss: 0.0386 - 47ms/epoch - 6ms/step
+Epoch 80/120
+8/8 - 0s - loss: 0.0382 - val_loss: 0.0534 - 47ms/epoch - 6ms/step
+Epoch 81/120
+8/8 - 0s - loss: 0.0343 - val_loss: 0.0407 - 46ms/epoch - 6ms/step
+Epoch 82/120
+8/8 - 0s - loss: 0.0307 - val_loss: 0.0347 - 46ms/epoch - 6ms/step
+Epoch 83/120
+8/8 - 0s - loss: 0.0291 - val_loss: 0.0349 - 47ms/epoch - 6ms/step
+Epoch 84/120
+8/8 - 0s - loss: 0.0312 - val_loss: 0.0325 - 47ms/epoch - 6ms/step
+Epoch 85/120
+8/8 - 0s - loss: 0.0276 - val_loss: 0.0331 - 47ms/epoch - 6ms/step
+Epoch 86/120
+8/8 - 0s - loss: 0.0337 - val_loss: 0.0453 - 47ms/epoch - 6ms/step
+Epoch 87/120
+8/8 - 0s - loss: 0.0470 - val_loss: 0.0754 - 47ms/epoch - 6ms/step
+Epoch 88/120
+8/8 - 0s - loss: 0.0384 - val_loss: 0.0520 - 47ms/epoch - 6ms/step
+Epoch 89/120
+8/8 - 0s - loss: 0.0310 - val_loss: 0.0441 - 46ms/epoch - 6ms/step
+Epoch 90/120
+8/8 - 0s - loss: 0.0273 - val_loss: 0.0326 - 47ms/epoch - 6ms/step
+Epoch 91/120
+8/8 - 0s - loss: 0.0276 - val_loss: 0.0351 - 46ms/epoch - 6ms/step
+Epoch 92/120
+8/8 - 0s - loss: 0.0323 - val_loss: 0.0371 - 47ms/epoch - 6ms/step
+Epoch 93/120
+8/8 - 0s - loss: 0.0331 - val_loss: 0.0389 - 47ms/epoch - 6ms/step
+Epoch 94/120
+8/8 - 0s - loss: 0.0317 - val_loss: 0.0313 - 47ms/epoch - 6ms/step
+Epoch 95/120
+8/8 - 0s - loss: 0.0288 - val_loss: 0.0321 - 47ms/epoch - 6ms/step
+Epoch 96/120
+8/8 - 0s - loss: 0.0301 - val_loss: 0.0295 - 47ms/epoch - 6ms/step
+Epoch 97/120
+8/8 - 0s - loss: 0.0296 - val_loss: 0.0290 - 47ms/epoch - 6ms/step
+Epoch 98/120
+8/8 - 0s - loss: 0.0277 - val_loss: 0.0336 - 46ms/epoch - 6ms/step
+Epoch 99/120
+8/8 - 0s - loss: 0.0381 - val_loss: 0.0370 - 47ms/epoch - 6ms/step
+Epoch 100/120
+8/8 - 0s - loss: 0.0326 - val_loss: 0.0322 - 47ms/epoch - 6ms/step
+Epoch 101/120
+8/8 - 0s - loss: 0.0303 - val_loss: 0.0495 - 47ms/epoch - 6ms/step
+Epoch 102/120
+8/8 - 0s - loss: 0.0592 - val_loss: 0.0734 - 47ms/epoch - 6ms/step
+Epoch 103/120
+8/8 - 0s - loss: 0.0500 - val_loss: 0.0443 - 47ms/epoch - 6ms/step
+Epoch 104/120
+8/8 - 0s - loss: 0.0353 - val_loss: 0.0339 - 47ms/epoch - 6ms/step
+Epoch 105/120
+8/8 - 0s - loss: 0.0308 - val_loss: 0.0313 - 47ms/epoch - 6ms/step
+Epoch 106/120
+8/8 - 0s - loss: 0.0313 - val_loss: 0.0336 - 46ms/epoch - 6ms/step
+Epoch 107/120
+8/8 - 0s - loss: 0.0305 - val_loss: 0.0289 - 47ms/epoch - 6ms/step
+Epoch 108/120
+8/8 - 0s - loss: 0.0273 - val_loss: 0.0295 - 47ms/epoch - 6ms/step
+Epoch 109/120
+8/8 - 0s - loss: 0.0270 - val_loss: 0.0408 - 46ms/epoch - 6ms/step
+Epoch 110/120
+8/8 - 0s - loss: 0.0504 - val_loss: 0.0627 - 49ms/epoch - 6ms/step
+Epoch 111/120
+8/8 - 0s - loss: 0.0467 - val_loss: 0.0484 - 47ms/epoch - 6ms/step
+Epoch 112/120
+8/8 - 0s - loss: 0.0407 - val_loss: 0.0344 - 47ms/epoch - 6ms/step
+Epoch 113/120
+8/8 - 0s - loss: 0.0327 - val_loss: 0.0400 - 47ms/epoch - 6ms/step
+Epoch 114/120
+8/8 - 0s - loss: 0.0460 - val_loss: 0.0498 - 47ms/epoch - 6ms/step
+Epoch 115/120
+8/8 - 0s - loss: 0.0438 - val_loss: 0.0428 - 47ms/epoch - 6ms/step
+Epoch 116/120
+8/8 - 0s - loss: 0.0342 - val_loss: 0.0337 - 46ms/epoch - 6ms/step
+Epoch 117/120
+8/8 - 0s - loss: 0.0350 - val_loss: 0.0322 - 47ms/epoch - 6ms/step
+Epoch 118/120
+8/8 - 0s - loss: 0.0304 - val_loss: 0.0300 - 46ms/epoch - 6ms/step
+Epoch 119/120
+8/8 - 0s - loss: 0.0274 - val_loss: 0.0300 - 46ms/epoch - 6ms/step
+Epoch 120/120
+8/8 - 0s - loss: 0.0254 - val_loss: 0.0267 - 46ms/epoch - 6ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.02668529935181141
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.19869416147470476
+cosine 0.14982481598854064
+MAE: 0.08486587
+RMSE: 0.13789032
+r2: 0.08047642475940237
+RMSE zero-vector: 0.25411352931712494
+['2.0custom_VAE', 'mse', 256, 120, 0.002, 0.4, 499, 0.02536856010556221, 0.02668529935181141, 0.19869416147470476, 0.14982481598854064, 0.08486586809158325, 0.13789032399654388, 0.08047642475940237, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'numpy.int64'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[1.9 30 0.0008 128 2] 4
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2373)         2966250     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_27 (BatchN  (None, 2373)        9492        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_27 (ReLU)                (None, 2373)         0           ['batch_normalization_27[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1184626     ['re_lu_27[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1184626     ['re_lu_27[0][0]']               
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         4412614     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer_9 (VAELossLayer  (None, 1249)        0           ['input_enc[0][0]',              
+ )                                                                'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 9,757,608
+Trainable params: 9,747,118
+Non-trainable params: 10,490
+__________________________________________________________________________________________________
+Epoch 1/30
+15/15 - 2s - loss: 0.2508 - val_loss: 0.0467 - 2s/epoch - 153ms/step
+Epoch 2/30
+15/15 - 0s - loss: 0.1171 - val_loss: 0.0498 - 68ms/epoch - 5ms/step
+Epoch 3/30
+15/15 - 0s - loss: 0.0571 - val_loss: 0.0548 - 67ms/epoch - 4ms/step
+Epoch 4/30
+15/15 - 0s - loss: 0.0411 - val_loss: 0.0510 - 67ms/epoch - 4ms/step
+Epoch 5/30
+15/15 - 0s - loss: 0.0289 - val_loss: 0.0476 - 67ms/epoch - 4ms/step
+Epoch 6/30
+15/15 - 0s - loss: 0.0242 - val_loss: 0.0397 - 67ms/epoch - 4ms/step
+Epoch 7/30
+15/15 - 0s - loss: 0.0228 - val_loss: 0.0789 - 67ms/epoch - 4ms/step
+Epoch 8/30
+15/15 - 0s - loss: 0.0413 - val_loss: 0.0364 - 67ms/epoch - 4ms/step
+Epoch 9/30
+15/15 - 0s - loss: 0.0251 - val_loss: 0.0300 - 67ms/epoch - 4ms/step
+Epoch 10/30
+15/15 - 0s - loss: 0.0191 - val_loss: 0.0264 - 67ms/epoch - 4ms/step
+Epoch 11/30
+15/15 - 0s - loss: 0.0181 - val_loss: 0.0244 - 67ms/epoch - 4ms/step
+Epoch 12/30
+15/15 - 0s - loss: 0.0203 - val_loss: 0.0252 - 67ms/epoch - 4ms/step
+Epoch 13/30
+15/15 - 0s - loss: 0.0182 - val_loss: 0.0680 - 67ms/epoch - 4ms/step
+Epoch 14/30
+15/15 - 0s - loss: 0.0291 - val_loss: 0.0278 - 67ms/epoch - 4ms/step
+Epoch 15/30
+15/15 - 0s - loss: 0.0196 - val_loss: 0.0260 - 67ms/epoch - 4ms/step
+Epoch 16/30
+15/15 - 0s - loss: 0.0180 - val_loss: 0.0199 - 67ms/epoch - 4ms/step
+Epoch 17/30
+15/15 - 0s - loss: 0.0169 - val_loss: 0.0235 - 67ms/epoch - 4ms/step
+Epoch 18/30
+15/15 - 0s - loss: 0.0190 - val_loss: 0.0349 - 67ms/epoch - 4ms/step
+Epoch 19/30
+15/15 - 0s - loss: 0.0208 - val_loss: 0.0232 - 67ms/epoch - 4ms/step
+Epoch 20/30
+15/15 - 0s - loss: 0.0184 - val_loss: 0.0244 - 67ms/epoch - 4ms/step
+Epoch 21/30
+15/15 - 0s - loss: 0.0162 - val_loss: 0.0230 - 69ms/epoch - 5ms/step
+Epoch 22/30
+15/15 - 0s - loss: 0.0170 - val_loss: 0.0296 - 67ms/epoch - 4ms/step
+Epoch 23/30
+15/15 - 0s - loss: 0.0196 - val_loss: 0.0235 - 67ms/epoch - 4ms/step
+Epoch 24/30
+15/15 - 0s - loss: 0.0167 - val_loss: 0.0265 - 67ms/epoch - 4ms/step
+Epoch 25/30
+15/15 - 0s - loss: 0.0191 - val_loss: 0.0253 - 67ms/epoch - 4ms/step
+Epoch 26/30
+15/15 - 0s - loss: 0.0152 - val_loss: 0.0280 - 67ms/epoch - 4ms/step
+Epoch 27/30
+15/15 - 0s - loss: 0.0170 - val_loss: 0.0208 - 71ms/epoch - 5ms/step
+Epoch 28/30
+15/15 - 0s - loss: 0.0146 - val_loss: 0.0200 - 67ms/epoch - 4ms/step
+Epoch 29/30
+15/15 - 0s - loss: 0.0144 - val_loss: 0.0341 - 67ms/epoch - 4ms/step
+Epoch 30/30
+15/15 - 0s - loss: 0.0161 - val_loss: 0.0205 - 67ms/epoch - 4ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.02045781910419464
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.2756940111517906
+cosine 0.209970683157444
+MAE: 0.10649775
+RMSE: 0.18119435
+r2: -0.5804050145680305
+RMSE zero-vector: 0.25411352931712494
+['1.9custom_VAE', 'logcosh', 128, 30, 0.0008, 0.4, 499, 0.016135063022375107, 0.02045781910419464, 0.2756940111517906, 0.209970683157444, 0.10649774968624115, 0.18119435012340546, -0.5804050145680305, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+Saved GA instance to file: ga_instance_generation_2.pkl
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:3345: UserWarning: Please use the plot_fitness() method instead of plot_result(). The plot_result() method will be removed in the future.
+  warnings.warn("Please use the plot_fitness() method instead of plot_result(). The plot_result() method will be removed in the future.")
+Saved GA instance to file: ga_instance_generation_2.pkl
+Best solutions :  [[2.0 120 0.002 128 1]
+ [2.1 120 0.002 128 1]
+ [2.1 120 0.002 128 1]]
+Best solutions fitness :  [12.451602207421821, 13.916527309287085, 13.916527309287085]
+Solution 0: [2.0, 30, 0.001, 128, 1], Fitness: 8.804071462242975
+Solution 1: [2.5, 150, 0.0005, 256, 1], Fitness: 10.493427401701183
+Solution 2: [2.0, 120, 0.002, 128, 1], Fitness: 12.451602207421821
+Solution 3: [1.0, 60, 0.001, 128, 2], Fitness: 10.701323772675392
+Solution 4: [2.5, 120, 0.001, 256, 2], Fitness: 8.206479940296237
+Solution 5: [2.0, 120, 0.002, 128, 1], Fitness: 12.451602207421821
+Solution 6: [1.0, 60, 0.001, 128, 2], Fitness: 10.701323772675392
+Solution 7: [2.0, 30, 0.0008, 128, 1], Fitness: 11.53945641787066
+Solution 8: [2.0, 120, 0.002, 128, 1], Fitness: 12.451602207421821
+Solution 9: [2.1, 120, 0.002, 128, 1], Fitness: 13.916527309287085
+Solution 10: [2.1, 120, 0.002, 128, 1], Fitness: 13.916527309287085
+Solution 11: [2.0, 120, 0.002, 128, 1], Fitness: 12.451602207421821
+Solution 12: [2.1, 120, 0.0022, 128, 1], Fitness: 13.812008706049392
+Solution 13: [2.0, 120, 0.002, 256, 1], Fitness: 11.783161350090824
+Solution 14: [1.9, 30, 0.0008, 128, 2], Fitness: 9.389781597869712
+Fri Feb 17 16:55:29 CET 2023
+done

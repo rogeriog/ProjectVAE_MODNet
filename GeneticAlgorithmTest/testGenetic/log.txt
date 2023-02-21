@@ -1,0 +1,187 @@
+start
+Fri Feb 17 18:20:56 CET 2023
+2023-02-17 18:20:58.412319: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-17 18:20:58.523548: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-02-17 18:21:27,940 - modnet - INFO - Loaded <modnet.preprocessing.MODData object at 0x7ffad1930d90> object, created with modnet version 0.1.12
+NAN values: 12054
+NAN values remaining: 0
+        AtomicOrbitals|HOMO_character  ...  BondFractions|B - B bond frac.
+id                                     ...                                
+17790                             3.0  ...                             0.0
+22482                             1.0  ...                             0.0
+38615                             3.0  ...                             0.0
+101296                            3.0  ...                             0.0
+41330                             3.0  ...                             0.0
+...                               ...  ...                             ...
+60998                             3.0  ...                             0.0
+82704                             4.0  ...                             0.0
+74721                             2.0  ...                             0.0
+18656                             2.0  ...                             0.0
+9010                              3.0  ...                             0.0
+
+[2000 rows x 1336 columns]
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:486: UserWarning: The percentage of genes to mutate (mutation_percent_genes=10) resutled in selecting (0) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).
+If you do not want to mutate any gene, please set mutation_type=None.
+  if not self.suppress_warnings: warnings.warn("The percentage of genes to mutate (mutation_percent_genes={mutation_percent}) resutled in selecting ({mutation_num}) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).\nIf you do not want to mutate any gene, please set mutation_type=None.".format(mutation_percent=mutation_percent_genes, mutation_num=mutation_num_genes))
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:764: UserWarning: Starting from PyGAD 2.6.0, the callback_generation parameter is deprecated and will be removed in a later release of PyGAD. Please use the on_generation parameter instead.
+  if not self.suppress_warnings: warnings.warn("Starting from PyGAD 2.6.0, the callback_generation parameter is deprecated and will be removed in a later release of PyGAD. Please use the on_generation parameter instead.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:820: UserWarning: Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:828: UserWarning: Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.")
+[[2.5 30 0.001 128 1]
+ [2.5 90 0.001 128 1]
+ [2.0 90 0.001 256 1]
+ [1.5 120 0.001 128 2]
+ [1.0 30 0.002 256 2]]
+[2.5 30 0.001 128 1] 0
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+2023-02-17 18:21:28.949952: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-17 18:21:29.319780: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 20633 MB memory:  -> device: 0, name: NVIDIA A10, pci bus id: 0000:a2:00.0, compute capability: 8.6
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 3122)         3902500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 3122)        12488       ['dense_enc0[0][0]']             
+ alization)                                                                                       
+                                                                                                  
+ re_lu (ReLU)                   (None, 3122)         0           ['batch_normalization[0][0]']    
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1558377     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1558377     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         5725611     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer (VAELossLayer)  (None, 1249)         0           ['input_enc[0][0]',              
+                                                                  'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 12,757,353
+Trainable params: 12,743,867
+Non-trainable params: 13,486
+__________________________________________________________________________________________________
+Epoch 1/30
+2023-02-17 18:21:31.299672: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+2023-02-17 18:21:31.315409: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x55dd4f8f04a0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-02-17 18:21:31.315428: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): NVIDIA A10, Compute Capability 8.6
+2023-02-17 18:21:31.320184: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-02-17 18:21:31.428445: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+15/15 - 3s - loss: 0.5476 - val_loss: 0.0937 - 3s/epoch - 203ms/step
+Epoch 2/30
+15/15 - 0s - loss: 0.1540 - val_loss: 0.0979 - 73ms/epoch - 5ms/step
+Epoch 3/30
+15/15 - 0s - loss: 0.0805 - val_loss: 0.0857 - 72ms/epoch - 5ms/step
+Epoch 4/30
+15/15 - 0s - loss: 0.0535 - val_loss: 0.0749 - 72ms/epoch - 5ms/step
+Epoch 5/30
+15/15 - 0s - loss: 0.0429 - val_loss: 0.0782 - 72ms/epoch - 5ms/step
+Epoch 6/30
+15/15 - 0s - loss: 0.0426 - val_loss: 0.0648 - 72ms/epoch - 5ms/step
+Epoch 7/30
+15/15 - 0s - loss: 0.0406 - val_loss: 0.0647 - 71ms/epoch - 5ms/step
+Epoch 8/30
+15/15 - 0s - loss: 0.0374 - val_loss: 0.1016 - 71ms/epoch - 5ms/step
+Epoch 9/30
+15/15 - 0s - loss: 0.0487 - val_loss: 0.0876 - 71ms/epoch - 5ms/step
+Epoch 10/30
+15/15 - 0s - loss: 0.0488 - val_loss: 0.0632 - 71ms/epoch - 5ms/step
+Epoch 11/30
+15/15 - 0s - loss: 0.0483 - val_loss: 0.0441 - 71ms/epoch - 5ms/step
+Epoch 12/30
+15/15 - 0s - loss: 0.0354 - val_loss: 0.0383 - 71ms/epoch - 5ms/step
+Epoch 13/30
+15/15 - 0s - loss: 0.0308 - val_loss: 0.0523 - 71ms/epoch - 5ms/step
+Epoch 14/30
+15/15 - 0s - loss: 0.0379 - val_loss: 0.0420 - 71ms/epoch - 5ms/step
+Epoch 15/30
+15/15 - 0s - loss: 0.0331 - val_loss: 0.0316 - 72ms/epoch - 5ms/step
+Epoch 16/30
+15/15 - 0s - loss: 0.0289 - val_loss: 0.0492 - 71ms/epoch - 5ms/step
+Epoch 17/30
+15/15 - 0s - loss: 0.0347 - val_loss: 0.0329 - 71ms/epoch - 5ms/step
+Epoch 18/30
+15/15 - 0s - loss: 0.0312 - val_loss: 0.0309 - 71ms/epoch - 5ms/step
+Epoch 19/30
+15/15 - 0s - loss: 0.0369 - val_loss: 0.0310 - 71ms/epoch - 5ms/step
+Epoch 20/30
+15/15 - 0s - loss: 0.0301 - val_loss: 0.0351 - 71ms/epoch - 5ms/step
+Epoch 21/30
+15/15 - 0s - loss: 0.0294 - val_loss: 0.0319 - 71ms/epoch - 5ms/step
+Epoch 22/30
+15/15 - 0s - loss: 0.0280 - val_loss: 0.0496 - 71ms/epoch - 5ms/step
+Epoch 23/30
+15/15 - 0s - loss: 0.0305 - val_loss: 0.0334 - 71ms/epoch - 5ms/step
+Epoch 24/30
+15/15 - 0s - loss: 0.0319 - val_loss: 0.0619 - 71ms/epoch - 5ms/step
+Epoch 25/30
+15/15 - 0s - loss: 0.0448 - val_loss: 0.0414 - 71ms/epoch - 5ms/step
+Epoch 26/30
+15/15 - 0s - loss: 0.0326 - val_loss: 0.0304 - 72ms/epoch - 5ms/step
+Epoch 27/30
+15/15 - 0s - loss: 0.0279 - val_loss: 0.0317 - 73ms/epoch - 5ms/step
+Epoch 28/30
+15/15 - 0s - loss: 0.0269 - val_loss: 0.0269 - 72ms/epoch - 5ms/step
+Epoch 29/30
+15/15 - 0s - loss: 0.0248 - val_loss: 0.0376 - 71ms/epoch - 5ms/step
+Epoch 30/30
+15/15 - 0s - loss: 0.0294 - val_loss: 0.0324 - 71ms/epoch - 5ms/step
+COMPRESSED VECTOR SIZE: 499
+Loss in the autoencoder: 0.03235538676381111
+1/7 [===>..........................] - ETA: 0s7/7 [==============================] - 0s 1ms/step
+correlation 0.2505539205670357
+cosine 0.19383617728948593
+MAE: 0.09701001
+RMSE: 0.15207879
+r2: -0.1115479693553193
+RMSE zero-vector: 0.25411352931712494
+['2.5custom_VAE', 'mse', 128, 30, 0.001, 0.4, 499, 0.029356777667999268, 0.03235538676381111, 0.2505539205670357, 0.19383617728948593, 0.09701000899076462, 0.1520787924528122, -0.1115479693553193, 0.25411352931712494] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.5 90 0.001 128 1] 1
+./tmp/ already created.
+Shape of dataset to encode: (2000, 1249)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1249)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 3122)         3902500     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 3122)        12488       ['dense_enc0[0][0]']             
+ alization)                                                                                       
+                                                                                                  
+ re_lu (ReLU)                   (None, 3122)         0           ['batch_normalization[0][0]']    
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 499)          1558377     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 499)          1558377     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 499)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1249)         5725611     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer (VAELossLayer)  (None, 1249)         0           ['input_enc[0][0]',              
+                                                                  'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 12,757,353
+Trainable params: 12,743,867
+Non-trainable params: 13,486
+__________________________________________________________________________________________________
+Epoch 1/90
+slurmstepd: error: *** JOB 36092177 ON mb-icg101 CANCELLED AT 2023-02-17T18:21:39 ***

@@ -1,0 +1,52 @@
+start
+Tue Feb 21 11:42:41 CET 2023
+2023-02-21 11:42:46.451034: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-21 11:42:47.494721: E tensorflow/stream_executor/cuda/cuda_blas.cc:2981] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2023-02-21 11:43:51,267 - modnet - INFO - Loaded <modnet.preprocessing.MODData object at 0x7f14f7c99040> object, created with modnet version 0.1.12
+NAN values: 12054
+NAN values remaining: 0
+        AtomicOrbitals|HOMO_character  ...  BondFractions|B - B bond frac.
+id                                     ...                                
+0                                 3.0  ...                             0.0
+1                                 3.0  ...                             0.0
+2                                 2.0  ...                             0.0
+3                                 2.0  ...                             0.0
+4                                 2.0  ...                             0.0
+...                               ...  ...                             ...
+106108                            3.0  ...                             0.0
+106109                            2.0  ...                             0.0
+106110                            3.0  ...                             0.0
+106111                            3.0  ...                             0.0
+106112                            1.0  ...                             0.0
+
+[106113 rows x 1336 columns]
+/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/pygad/pygad.py:486: UserWarning: The percentage of genes to mutate (mutation_percent_genes=10) resutled in selecting (0) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).
+If you do not want to mutate any gene, please set mutation_type=None.
+  if not self.suppress_warnings: warnings.warn("The percentage of genes to mutate (mutation_percent_genes={mutation_percent}) resutled in selecting ({mutation_num}) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).\nIf you do not want to mutate any gene, please set mutation_type=None.".format(mutation_percent=mutation_percent_genes, mutation_num=mutation_num_genes))
+/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/pygad/pygad.py:764: UserWarning: Starting from PyGAD 2.6.0, the callback_generation parameter is deprecated and will be removed in a later release of PyGAD. Please use the on_generation parameter instead.
+  if not self.suppress_warnings: warnings.warn("Starting from PyGAD 2.6.0, the callback_generation parameter is deprecated and will be removed in a later release of PyGAD. Please use the on_generation parameter instead.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/pygad/pygad.py:820: UserWarning: Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/pygad/pygad.py:828: UserWarning: Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.")
+[[2.0 60 0.001 64 1]
+ [2.0 150 0.0005 128 1]
+ [1.0 210 0.0005 64 2]
+ [2.0 90 0.001 128 1]
+ [0.5 30 0.0005 256 1]
+ [1.0 150 0.001 256 2]
+ [2.5 120 0.001 64 2]
+ [2.0 60 0.001 256 1]
+ [2.0 210 0.001 64 1]
+ [0.5 150 0.001 256 2]]
+[2.0 60 0.001 64 1] 0
+./tmp/ already created.
+Shape of dataset to encode: (106113, 1264)
+2023-02-21 11:43:54.837131: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-21 11:43:56.042497: I tensorflow/core/common_runtime/gpu/gpu_process_state.cc:222] Using CUDA malloc Async allocator for GPU: 0
+2023-02-21 11:43:56.042659: F tensorflow/core/common_runtime/gpu/gpu_cudamallocasync_allocator.cc:123] Disable cuda_malloc_async or update your CUDA driver to a version compatible with CUDA 11.2 or higher. We detected a version compatible with: 11010
+/var/spool/slurmd/job36132238/slurm_script: line 23: 19661 Aborted                 python3 -u genetic.py >> log.txt
+Tue Feb 21 11:43:56 CET 2023
+done

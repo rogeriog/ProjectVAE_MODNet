@@ -1,0 +1,3128 @@
+2023-02-11 00:47:31,756 - modnet - INFO - Loaded <modnet.preprocessing.MODData object at 0x7f2f1cb72610> object, created with modnet version 0.1.12
+[[10 0.001 8 1]
+ [70 0.0005 8 2]
+ [50 0.001 16 2]
+ [50 0.001 32 2]
+ [190 0.0005 16 2]
+ [70 0.001 64 0]
+ [170 0.0005 64 1]
+ [70 0.0005 8 1]
+ [70 0.0005 8 1]
+ [10 0.001 16 1]]
+[10 0.001 8 1] 0
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 510)         2040        ['dense_enc0[0][0]']             
+ alization)                                                                                       
+                                                                                                  
+ re_lu (ReLU)                   (None, 510)          0           ['batch_normalization[0][0]']    
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/10
+17035/17035 - 8s - loss: 0.0219 - val_loss: 0.0180 - 8s/epoch - 470us/sample
+Epoch 2/10
+17035/17035 - 6s - loss: 0.0123 - val_loss: 0.0151 - 6s/epoch - 329us/sample
+Epoch 3/10
+17035/17035 - 6s - loss: 0.0104 - val_loss: 0.0152 - 6s/epoch - 325us/sample
+Epoch 4/10
+17035/17035 - 6s - loss: 0.0091 - val_loss: 0.0140 - 6s/epoch - 327us/sample
+Epoch 5/10
+17035/17035 - 6s - loss: 0.0082 - val_loss: 0.0144 - 6s/epoch - 326us/sample
+Epoch 6/10
+17035/17035 - 6s - loss: 0.0075 - val_loss: 0.0137 - 6s/epoch - 326us/sample
+Epoch 7/10
+17035/17035 - 6s - loss: 0.0070 - val_loss: 0.0135 - 6s/epoch - 328us/sample
+Epoch 8/10
+17035/17035 - 6s - loss: 0.0066 - val_loss: 0.0133 - 6s/epoch - 327us/sample
+Epoch 9/10
+17035/17035 - 6s - loss: 0.0064 - val_loss: 0.0131 - 6s/epoch - 328us/sample
+Epoch 10/10
+17035/17035 - 6s - loss: 0.0062 - val_loss: 0.0125 - 6s/epoch - 327us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.012462206385100857
+correlation 0.027738044987519146
+cosine 0.019267581812746164
+MAE: 0.037833343119277926
+RMSE: 0.10775049325056925
+r2: 0.6663075815131546
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 10, 0.001, 0.2, 204, 0.006184753724588462, 0.012462206385100857, 0.027738044987519146, 0.019267581812746164, 0.037833343119277926, 0.10775049325056925, 0.6663075815131546, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[70 0.0005 8 2] 1
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_3 (BatchNo  (None, 510)         2040        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_3 (ReLU)                 (None, 510)          0           ['batch_normalization_3[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_3[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_3[0][0]']                
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/70
+17035/17035 - 7s - loss: 0.0109 - val_loss: 0.0073 - 7s/epoch - 396us/sample
+Epoch 2/70
+17035/17035 - 6s - loss: 0.0064 - val_loss: 0.0050 - 6s/epoch - 339us/sample
+Epoch 3/70
+17035/17035 - 6s - loss: 0.0054 - val_loss: 0.0044 - 6s/epoch - 338us/sample
+Epoch 4/70
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0041 - 6s/epoch - 337us/sample
+Epoch 5/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0042 - 6s/epoch - 332us/sample
+Epoch 6/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0037 - 6s/epoch - 332us/sample
+Epoch 7/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0039 - 6s/epoch - 333us/sample
+Epoch 8/70
+17035/17035 - 6s - loss: 0.0036 - val_loss: 0.0036 - 6s/epoch - 331us/sample
+Epoch 9/70
+17035/17035 - 6s - loss: 0.0034 - val_loss: 0.0038 - 6s/epoch - 333us/sample
+Epoch 10/70
+17035/17035 - 6s - loss: 0.0033 - val_loss: 0.0036 - 6s/epoch - 332us/sample
+Epoch 11/70
+17035/17035 - 6s - loss: 0.0032 - val_loss: 0.0035 - 6s/epoch - 332us/sample
+Epoch 12/70
+17035/17035 - 6s - loss: 0.0031 - val_loss: 0.0035 - 6s/epoch - 334us/sample
+Epoch 13/70
+17035/17035 - 6s - loss: 0.0030 - val_loss: 0.0036 - 6s/epoch - 338us/sample
+Epoch 14/70
+17035/17035 - 6s - loss: 0.0030 - val_loss: 0.0037 - 6s/epoch - 336us/sample
+Epoch 15/70
+17035/17035 - 6s - loss: 0.0029 - val_loss: 0.0035 - 6s/epoch - 339us/sample
+Epoch 16/70
+17035/17035 - 6s - loss: 0.0029 - val_loss: 0.0032 - 6s/epoch - 338us/sample
+Epoch 17/70
+17035/17035 - 6s - loss: 0.0028 - val_loss: 0.0033 - 6s/epoch - 337us/sample
+Epoch 18/70
+17035/17035 - 6s - loss: 0.0028 - val_loss: 0.0031 - 6s/epoch - 336us/sample
+Epoch 19/70
+17035/17035 - 6s - loss: 0.0027 - val_loss: 0.0030 - 6s/epoch - 338us/sample
+Epoch 20/70
+17035/17035 - 6s - loss: 0.0026 - val_loss: 0.0031 - 6s/epoch - 340us/sample
+Epoch 21/70
+17035/17035 - 6s - loss: 0.0026 - val_loss: 0.0031 - 6s/epoch - 338us/sample
+Epoch 22/70
+17035/17035 - 6s - loss: 0.0026 - val_loss: 0.0030 - 6s/epoch - 337us/sample
+Epoch 23/70
+17035/17035 - 6s - loss: 0.0026 - val_loss: 0.0030 - 6s/epoch - 337us/sample
+Epoch 24/70
+17035/17035 - 6s - loss: 0.0026 - val_loss: 0.0031 - 6s/epoch - 336us/sample
+Epoch 25/70
+17035/17035 - 6s - loss: 0.0025 - val_loss: 0.0029 - 6s/epoch - 336us/sample
+Epoch 26/70
+17035/17035 - 6s - loss: 0.0025 - val_loss: 0.0031 - 6s/epoch - 337us/sample
+Epoch 27/70
+17035/17035 - 6s - loss: 0.0025 - val_loss: 0.0027 - 6s/epoch - 337us/sample
+Epoch 28/70
+17035/17035 - 6s - loss: 0.0025 - val_loss: 0.0026 - 6s/epoch - 335us/sample
+Epoch 29/70
+17035/17035 - 6s - loss: 0.0025 - val_loss: 0.0029 - 6s/epoch - 335us/sample
+Epoch 30/70
+17035/17035 - 6s - loss: 0.0024 - val_loss: 0.0026 - 6s/epoch - 335us/sample
+Epoch 31/70
+17035/17035 - 6s - loss: 0.0024 - val_loss: 0.0027 - 6s/epoch - 336us/sample
+Epoch 32/70
+17035/17035 - 6s - loss: 0.0024 - val_loss: 0.0027 - 6s/epoch - 337us/sample
+Epoch 33/70
+17035/17035 - 6s - loss: 0.0024 - val_loss: 0.0028 - 6s/epoch - 337us/sample
+Epoch 34/70
+17035/17035 - 6s - loss: 0.0024 - val_loss: 0.0025 - 6s/epoch - 335us/sample
+Epoch 35/70
+17035/17035 - 6s - loss: 0.0024 - val_loss: 0.0026 - 6s/epoch - 336us/sample
+Epoch 36/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0025 - 6s/epoch - 335us/sample
+Epoch 37/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0026 - 6s/epoch - 338us/sample
+Epoch 38/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0024 - 6s/epoch - 337us/sample
+Epoch 39/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0026 - 6s/epoch - 336us/sample
+Epoch 40/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0024 - 6s/epoch - 335us/sample
+Epoch 41/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0026 - 6s/epoch - 331us/sample
+Epoch 42/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0028 - 6s/epoch - 333us/sample
+Epoch 43/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0026 - 6s/epoch - 333us/sample
+Epoch 44/70
+17035/17035 - 6s - loss: 0.0023 - val_loss: 0.0027 - 6s/epoch - 334us/sample
+Epoch 45/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0024 - 6s/epoch - 333us/sample
+Epoch 46/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0024 - 6s/epoch - 331us/sample
+Epoch 47/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0025 - 6s/epoch - 332us/sample
+Epoch 48/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0023 - 6s/epoch - 338us/sample
+Epoch 49/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0024 - 6s/epoch - 337us/sample
+Epoch 50/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0023 - 6s/epoch - 338us/sample
+Epoch 51/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0024 - 6s/epoch - 337us/sample
+Epoch 52/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0023 - 6s/epoch - 338us/sample
+Epoch 53/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0026 - 6s/epoch - 340us/sample
+Epoch 54/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0023 - 6s/epoch - 336us/sample
+Epoch 55/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0024 - 6s/epoch - 336us/sample
+Epoch 56/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0026 - 6s/epoch - 338us/sample
+Epoch 57/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0026 - 6s/epoch - 338us/sample
+Epoch 58/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0027 - 6s/epoch - 338us/sample
+Epoch 59/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0025 - 6s/epoch - 338us/sample
+Epoch 60/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0025 - 6s/epoch - 338us/sample
+Epoch 61/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0026 - 6s/epoch - 337us/sample
+Epoch 62/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0025 - 6s/epoch - 335us/sample
+Epoch 63/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0025 - 6s/epoch - 336us/sample
+Epoch 64/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0028 - 6s/epoch - 336us/sample
+Epoch 65/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0023 - 6s/epoch - 335us/sample
+Epoch 66/70
+17035/17035 - 6s - loss: 0.0022 - val_loss: 0.0023 - 6s/epoch - 335us/sample
+Epoch 67/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0025 - 6s/epoch - 335us/sample
+Epoch 68/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0025 - 6s/epoch - 336us/sample
+Epoch 69/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0024 - 6s/epoch - 334us/sample
+Epoch 70/70
+17035/17035 - 6s - loss: 0.0021 - val_loss: 0.0024 - 6s/epoch - 336us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.002421233413260818
+correlation 0.023967223406376442
+cosine 0.01643302270584786
+MAE: 0.030253484860074502
+RMSE: 0.10377025355872778
+r2: 0.6904876097626785
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'logcosh', 8, 70, 0.0005, 0.2, 204, 0.0021101891043745495, 0.002421233413260818, 0.023967223406376442, 0.01643302270584786, 0.030253484860074502, 0.10377025355872778, 0.6904876097626785, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[50 0.001 16 2] 2
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_6 (BatchNo  (None, 510)         2040        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_6 (ReLU)                 (None, 510)          0           ['batch_normalization_6[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_6[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_6[0][0]']                
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/50
+17035/17035 - 4s - loss: 0.0109 - val_loss: 0.0063 - 4s/epoch - 250us/sample
+Epoch 2/50
+17035/17035 - 3s - loss: 0.0059 - val_loss: 0.0046 - 3s/epoch - 188us/sample
+Epoch 3/50
+17035/17035 - 3s - loss: 0.0050 - val_loss: 0.0046 - 3s/epoch - 185us/sample
+Epoch 4/50
+17035/17035 - 3s - loss: 0.0044 - val_loss: 0.0036 - 3s/epoch - 188us/sample
+Epoch 5/50
+17035/17035 - 3s - loss: 0.0041 - val_loss: 0.0034 - 3s/epoch - 188us/sample
+Epoch 6/50
+17035/17035 - 3s - loss: 0.0038 - val_loss: 0.0032 - 3s/epoch - 187us/sample
+Epoch 7/50
+17035/17035 - 3s - loss: 0.0034 - val_loss: 0.0028 - 3s/epoch - 188us/sample
+Epoch 8/50
+17035/17035 - 3s - loss: 0.0032 - val_loss: 0.0028 - 3s/epoch - 184us/sample
+Epoch 9/50
+17035/17035 - 3s - loss: 0.0029 - val_loss: 0.0025 - 3s/epoch - 188us/sample
+Epoch 10/50
+17035/17035 - 3s - loss: 0.0028 - val_loss: 0.0025 - 3s/epoch - 186us/sample
+Epoch 11/50
+17035/17035 - 3s - loss: 0.0026 - val_loss: 0.0024 - 3s/epoch - 188us/sample
+Epoch 12/50
+17035/17035 - 3s - loss: 0.0025 - val_loss: 0.0023 - 3s/epoch - 187us/sample
+Epoch 13/50
+17035/17035 - 3s - loss: 0.0024 - val_loss: 0.0022 - 3s/epoch - 185us/sample
+Epoch 14/50
+17035/17035 - 3s - loss: 0.0023 - val_loss: 0.0021 - 3s/epoch - 187us/sample
+Epoch 15/50
+17035/17035 - 3s - loss: 0.0022 - val_loss: 0.0021 - 3s/epoch - 187us/sample
+Epoch 16/50
+17035/17035 - 3s - loss: 0.0022 - val_loss: 0.0020 - 3s/epoch - 187us/sample
+Epoch 17/50
+17035/17035 - 3s - loss: 0.0021 - val_loss: 0.0021 - 3s/epoch - 186us/sample
+Epoch 18/50
+17035/17035 - 3s - loss: 0.0021 - val_loss: 0.0020 - 3s/epoch - 188us/sample
+Epoch 19/50
+17035/17035 - 3s - loss: 0.0020 - val_loss: 0.0019 - 3s/epoch - 188us/sample
+Epoch 20/50
+17035/17035 - 3s - loss: 0.0020 - val_loss: 0.0019 - 3s/epoch - 186us/sample
+Epoch 21/50
+17035/17035 - 3s - loss: 0.0020 - val_loss: 0.0019 - 3s/epoch - 187us/sample
+Epoch 22/50
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0018 - 3s/epoch - 186us/sample
+Epoch 23/50
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0018 - 3s/epoch - 187us/sample
+Epoch 24/50
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0018 - 3s/epoch - 188us/sample
+Epoch 25/50
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0018 - 3s/epoch - 187us/sample
+Epoch 26/50
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 187us/sample
+Epoch 27/50
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 188us/sample
+Epoch 28/50
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0018 - 3s/epoch - 186us/sample
+Epoch 29/50
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 186us/sample
+Epoch 30/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0017 - 3s/epoch - 185us/sample
+Epoch 31/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0017 - 3s/epoch - 186us/sample
+Epoch 32/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0017 - 3s/epoch - 187us/sample
+Epoch 33/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0017 - 3s/epoch - 185us/sample
+Epoch 34/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 185us/sample
+Epoch 35/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 188us/sample
+Epoch 36/50
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 185us/sample
+Epoch 37/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 188us/sample
+Epoch 38/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 188us/sample
+Epoch 39/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0017 - 3s/epoch - 184us/sample
+Epoch 40/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 185us/sample
+Epoch 41/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 187us/sample
+Epoch 42/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 188us/sample
+Epoch 43/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 187us/sample
+Epoch 44/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0017 - 3s/epoch - 186us/sample
+Epoch 45/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0015 - 3s/epoch - 185us/sample
+Epoch 46/50
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0016 - 3s/epoch - 186us/sample
+Epoch 47/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0015 - 3s/epoch - 188us/sample
+Epoch 48/50
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 185us/sample
+Epoch 49/50
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 187us/sample
+Epoch 50/50
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 187us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.00155519504442996
+correlation 0.013238197958141193
+cosine 0.009076121088524625
+MAE: 0.023567235698711875
+RMSE: 0.09480534422496578
+r2: 0.7416585554452612
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'logcosh', 16, 50, 0.001, 0.2, 204, 0.001565921060672062, 0.00155519504442996, 0.013238197958141193, 0.009076121088524625, 0.023567235698711875, 0.09480534422496578, 0.7416585554452612, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[50 0.001 32 2] 3
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_9 (BatchNo  (None, 510)         2040        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_9 (ReLU)                 (None, 510)          0           ['batch_normalization_9[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_9[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_9[0][0]']                
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/50
+17035/17035 - 3s - loss: 0.0120 - val_loss: 0.0062 - 3s/epoch - 184us/sample
+Epoch 2/50
+17035/17035 - 2s - loss: 0.0058 - val_loss: 0.0052 - 2s/epoch - 113us/sample
+Epoch 3/50
+17035/17035 - 2s - loss: 0.0050 - val_loss: 0.0045 - 2s/epoch - 112us/sample
+Epoch 4/50
+17035/17035 - 2s - loss: 0.0045 - val_loss: 0.0043 - 2s/epoch - 112us/sample
+Epoch 5/50
+17035/17035 - 2s - loss: 0.0041 - val_loss: 0.0035 - 2s/epoch - 112us/sample
+Epoch 6/50
+17035/17035 - 2s - loss: 0.0038 - val_loss: 0.0035 - 2s/epoch - 111us/sample
+Epoch 7/50
+17035/17035 - 2s - loss: 0.0036 - val_loss: 0.0032 - 2s/epoch - 111us/sample
+Epoch 8/50
+17035/17035 - 2s - loss: 0.0034 - val_loss: 0.0031 - 2s/epoch - 111us/sample
+Epoch 9/50
+17035/17035 - 2s - loss: 0.0032 - val_loss: 0.0028 - 2s/epoch - 110us/sample
+Epoch 10/50
+17035/17035 - 2s - loss: 0.0030 - val_loss: 0.0028 - 2s/epoch - 110us/sample
+Epoch 11/50
+17035/17035 - 2s - loss: 0.0029 - val_loss: 0.0027 - 2s/epoch - 110us/sample
+Epoch 12/50
+17035/17035 - 2s - loss: 0.0028 - val_loss: 0.0025 - 2s/epoch - 110us/sample
+Epoch 13/50
+17035/17035 - 2s - loss: 0.0028 - val_loss: 0.0024 - 2s/epoch - 110us/sample
+Epoch 14/50
+17035/17035 - 2s - loss: 0.0026 - val_loss: 0.0023 - 2s/epoch - 110us/sample
+Epoch 15/50
+17035/17035 - 2s - loss: 0.0025 - val_loss: 0.0023 - 2s/epoch - 110us/sample
+Epoch 16/50
+17035/17035 - 2s - loss: 0.0024 - val_loss: 0.0022 - 2s/epoch - 110us/sample
+Epoch 17/50
+17035/17035 - 2s - loss: 0.0023 - val_loss: 0.0021 - 2s/epoch - 111us/sample
+Epoch 18/50
+17035/17035 - 2s - loss: 0.0022 - val_loss: 0.0021 - 2s/epoch - 110us/sample
+Epoch 19/50
+17035/17035 - 2s - loss: 0.0022 - val_loss: 0.0020 - 2s/epoch - 110us/sample
+Epoch 20/50
+17035/17035 - 2s - loss: 0.0021 - val_loss: 0.0020 - 2s/epoch - 110us/sample
+Epoch 21/50
+17035/17035 - 2s - loss: 0.0021 - val_loss: 0.0019 - 2s/epoch - 110us/sample
+Epoch 22/50
+17035/17035 - 2s - loss: 0.0020 - val_loss: 0.0019 - 2s/epoch - 110us/sample
+Epoch 23/50
+17035/17035 - 2s - loss: 0.0019 - val_loss: 0.0019 - 2s/epoch - 110us/sample
+Epoch 24/50
+17035/17035 - 2s - loss: 0.0020 - val_loss: 0.0018 - 2s/epoch - 110us/sample
+Epoch 25/50
+17035/17035 - 2s - loss: 0.0019 - val_loss: 0.0018 - 2s/epoch - 110us/sample
+Epoch 26/50
+17035/17035 - 2s - loss: 0.0019 - val_loss: 0.0018 - 2s/epoch - 110us/sample
+Epoch 27/50
+17035/17035 - 2s - loss: 0.0018 - val_loss: 0.0018 - 2s/epoch - 110us/sample
+Epoch 28/50
+17035/17035 - 2s - loss: 0.0018 - val_loss: 0.0017 - 2s/epoch - 110us/sample
+Epoch 29/50
+17035/17035 - 2s - loss: 0.0017 - val_loss: 0.0017 - 2s/epoch - 110us/sample
+Epoch 30/50
+17035/17035 - 2s - loss: 0.0017 - val_loss: 0.0017 - 2s/epoch - 110us/sample
+Epoch 31/50
+17035/17035 - 2s - loss: 0.0017 - val_loss: 0.0017 - 2s/epoch - 110us/sample
+Epoch 32/50
+17035/17035 - 2s - loss: 0.0017 - val_loss: 0.0017 - 2s/epoch - 111us/sample
+Epoch 33/50
+17035/17035 - 2s - loss: 0.0017 - val_loss: 0.0016 - 2s/epoch - 112us/sample
+Epoch 34/50
+17035/17035 - 2s - loss: 0.0016 - val_loss: 0.0016 - 2s/epoch - 113us/sample
+Epoch 35/50
+17035/17035 - 2s - loss: 0.0016 - val_loss: 0.0016 - 2s/epoch - 112us/sample
+Epoch 36/50
+17035/17035 - 2s - loss: 0.0016 - val_loss: 0.0016 - 2s/epoch - 112us/sample
+Epoch 37/50
+17035/17035 - 2s - loss: 0.0016 - val_loss: 0.0016 - 2s/epoch - 112us/sample
+Epoch 38/50
+17035/17035 - 2s - loss: 0.0015 - val_loss: 0.0015 - 2s/epoch - 112us/sample
+Epoch 39/50
+17035/17035 - 2s - loss: 0.0015 - val_loss: 0.0016 - 2s/epoch - 112us/sample
+Epoch 40/50
+17035/17035 - 2s - loss: 0.0015 - val_loss: 0.0015 - 2s/epoch - 111us/sample
+Epoch 41/50
+17035/17035 - 2s - loss: 0.0016 - val_loss: 0.0016 - 2s/epoch - 111us/sample
+Epoch 42/50
+17035/17035 - 2s - loss: 0.0015 - val_loss: 0.0016 - 2s/epoch - 112us/sample
+Epoch 43/50
+17035/17035 - 2s - loss: 0.0015 - val_loss: 0.0015 - 2s/epoch - 112us/sample
+Epoch 44/50
+17035/17035 - 2s - loss: 0.0015 - val_loss: 0.0015 - 2s/epoch - 112us/sample
+Epoch 45/50
+17035/17035 - 2s - loss: 0.0014 - val_loss: 0.0015 - 2s/epoch - 112us/sample
+Epoch 46/50
+17035/17035 - 2s - loss: 0.0014 - val_loss: 0.0015 - 2s/epoch - 111us/sample
+Epoch 47/50
+17035/17035 - 2s - loss: 0.0014 - val_loss: 0.0014 - 2s/epoch - 113us/sample
+Epoch 48/50
+17035/17035 - 2s - loss: 0.0014 - val_loss: 0.0014 - 2s/epoch - 112us/sample
+Epoch 49/50
+17035/17035 - 2s - loss: 0.0014 - val_loss: 0.0014 - 2s/epoch - 112us/sample
+Epoch 50/50
+17035/17035 - 2s - loss: 0.0014 - val_loss: 0.0014 - 2s/epoch - 113us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.001442509975896364
+correlation 0.01203735939551143
+cosine 0.008235189478805893
+MAE: 0.02313472661769638
+RMSE: 0.09375262155319176
+r2: 0.7473673336074258
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'logcosh', 32, 50, 0.001, 0.2, 204, 0.0013950044183169323, 0.001442509975896364, 0.01203735939551143, 0.008235189478805893, 0.02313472661769638, 0.09375262155319176, 0.7473673336074258, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[190 0.0005 16 2] 4
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_12 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_12 (ReLU)                (None, 510)          0           ['batch_normalization_12[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_12[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_12[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/190
+17035/17035 - 4s - loss: 0.0110 - val_loss: 0.0062 - 4s/epoch - 258us/sample
+Epoch 2/190
+17035/17035 - 3s - loss: 0.0058 - val_loss: 0.0046 - 3s/epoch - 185us/sample
+Epoch 3/190
+17035/17035 - 3s - loss: 0.0049 - val_loss: 0.0041 - 3s/epoch - 183us/sample
+Epoch 4/190
+17035/17035 - 3s - loss: 0.0044 - val_loss: 0.0037 - 3s/epoch - 184us/sample
+Epoch 5/190
+17035/17035 - 3s - loss: 0.0040 - val_loss: 0.0035 - 3s/epoch - 184us/sample
+Epoch 6/190
+17035/17035 - 3s - loss: 0.0037 - val_loss: 0.0031 - 3s/epoch - 184us/sample
+Epoch 7/190
+17035/17035 - 3s - loss: 0.0034 - val_loss: 0.0030 - 3s/epoch - 184us/sample
+Epoch 8/190
+17035/17035 - 3s - loss: 0.0031 - val_loss: 0.0026 - 3s/epoch - 184us/sample
+Epoch 9/190
+17035/17035 - 3s - loss: 0.0029 - val_loss: 0.0026 - 3s/epoch - 184us/sample
+Epoch 10/190
+17035/17035 - 3s - loss: 0.0027 - val_loss: 0.0024 - 3s/epoch - 184us/sample
+Epoch 11/190
+17035/17035 - 3s - loss: 0.0026 - val_loss: 0.0024 - 3s/epoch - 184us/sample
+Epoch 12/190
+17035/17035 - 3s - loss: 0.0025 - val_loss: 0.0022 - 3s/epoch - 184us/sample
+Epoch 13/190
+17035/17035 - 3s - loss: 0.0024 - val_loss: 0.0022 - 3s/epoch - 184us/sample
+Epoch 14/190
+17035/17035 - 3s - loss: 0.0023 - val_loss: 0.0021 - 3s/epoch - 184us/sample
+Epoch 15/190
+17035/17035 - 3s - loss: 0.0022 - val_loss: 0.0021 - 3s/epoch - 184us/sample
+Epoch 16/190
+17035/17035 - 3s - loss: 0.0022 - val_loss: 0.0020 - 3s/epoch - 183us/sample
+Epoch 17/190
+17035/17035 - 3s - loss: 0.0021 - val_loss: 0.0020 - 3s/epoch - 183us/sample
+Epoch 18/190
+17035/17035 - 3s - loss: 0.0020 - val_loss: 0.0019 - 3s/epoch - 183us/sample
+Epoch 19/190
+17035/17035 - 3s - loss: 0.0020 - val_loss: 0.0019 - 3s/epoch - 183us/sample
+Epoch 20/190
+17035/17035 - 3s - loss: 0.0020 - val_loss: 0.0018 - 3s/epoch - 183us/sample
+Epoch 21/190
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0018 - 3s/epoch - 183us/sample
+Epoch 22/190
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0018 - 3s/epoch - 183us/sample
+Epoch 23/190
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0017 - 3s/epoch - 184us/sample
+Epoch 24/190
+17035/17035 - 3s - loss: 0.0019 - val_loss: 0.0017 - 3s/epoch - 183us/sample
+Epoch 25/190
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 184us/sample
+Epoch 26/190
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0018 - 3s/epoch - 183us/sample
+Epoch 27/190
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 183us/sample
+Epoch 28/190
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 184us/sample
+Epoch 29/190
+17035/17035 - 3s - loss: 0.0018 - val_loss: 0.0017 - 3s/epoch - 184us/sample
+Epoch 30/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0017 - 3s/epoch - 183us/sample
+Epoch 31/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0017 - 3s/epoch - 184us/sample
+Epoch 32/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 33/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 186us/sample
+Epoch 34/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 185us/sample
+Epoch 35/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 36/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 37/190
+17035/17035 - 3s - loss: 0.0017 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 38/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 39/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 40/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 41/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 42/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 43/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 44/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0016 - 3s/epoch - 183us/sample
+Epoch 45/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 46/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 47/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 183us/sample
+Epoch 48/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0016 - 3s/epoch - 184us/sample
+Epoch 49/190
+17035/17035 - 3s - loss: 0.0016 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 50/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 51/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 52/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 53/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 54/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 55/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 56/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 183us/sample
+Epoch 57/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 58/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 59/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 60/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 61/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 62/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 63/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 64/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 185us/sample
+Epoch 65/190
+17035/17035 - 3s - loss: 0.0015 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 66/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 67/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 68/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 69/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 70/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 71/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 72/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 73/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 74/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 75/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 76/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 77/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 78/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 79/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 80/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 81/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 82/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 83/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 84/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 85/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0015 - 3s/epoch - 183us/sample
+Epoch 86/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 87/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 88/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 89/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 90/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 186us/sample
+Epoch 91/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 92/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 93/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 94/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 95/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 96/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0015 - 3s/epoch - 183us/sample
+Epoch 97/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 98/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 99/190
+17035/17035 - 3s - loss: 0.0014 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 100/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 101/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 102/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 103/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 104/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 105/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 106/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 107/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0015 - 3s/epoch - 184us/sample
+Epoch 108/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 109/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 110/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 111/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 112/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 185us/sample
+Epoch 113/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 114/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 115/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 116/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 185us/sample
+Epoch 117/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 118/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 119/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 120/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 186us/sample
+Epoch 121/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 122/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 123/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 124/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 125/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 185us/sample
+Epoch 126/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 127/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 128/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 129/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 130/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 183us/sample
+Epoch 131/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 132/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 183us/sample
+Epoch 133/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 134/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 135/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 136/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 181us/sample
+Epoch 137/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 180us/sample
+Epoch 138/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 181us/sample
+Epoch 139/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 180us/sample
+Epoch 140/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 180us/sample
+Epoch 141/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 181us/sample
+Epoch 142/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 180us/sample
+Epoch 143/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 180us/sample
+Epoch 144/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 181us/sample
+Epoch 145/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 182us/sample
+Epoch 146/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 182us/sample
+Epoch 147/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 182us/sample
+Epoch 148/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 182us/sample
+Epoch 149/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 150/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0015 - 3s/epoch - 182us/sample
+Epoch 151/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 183us/sample
+Epoch 152/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 153/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 154/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 155/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 156/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 157/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 158/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 159/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 185us/sample
+Epoch 160/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 161/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 162/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 163/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 164/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 183us/sample
+Epoch 165/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 185us/sample
+Epoch 166/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 167/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 168/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 169/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 183us/sample
+Epoch 170/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 171/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 185us/sample
+Epoch 172/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 183us/sample
+Epoch 173/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 174/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 175/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 186us/sample
+Epoch 176/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 177/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 178/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 179/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 180/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0014 - 3s/epoch - 184us/sample
+Epoch 181/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 182/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 183/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 184/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 185/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 186/190
+17035/17035 - 3s - loss: 0.0013 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 187/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 188/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 189/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+Epoch 190/190
+17035/17035 - 3s - loss: 0.0012 - val_loss: 0.0013 - 3s/epoch - 184us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.001287344797517823
+correlation 0.010113725569551936
+cosine 0.006948108510684779
+MAE: 0.019722936203328715
+RMSE: 0.09221017132925723
+r2: 0.7556077690385868
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'logcosh', 16, 190, 0.0005, 0.2, 204, 0.0012151842523354733, 0.001287344797517823, 0.010113725569551936, 0.006948108510684779, 0.019722936203328715, 0.09221017132925723, 0.7556077690385868, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[70 0.001 64 0] 5
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_15 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_15 (ReLU)                (None, 510)          0           ['batch_normalization_15[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_15[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_15[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/70
+17035/17035 - 3s - loss: 0.9213 - val_loss: 1011263223459.2136 - 3s/epoch - 168us/sample
+Epoch 2/70
+17035/17035 - 1s - loss: 0.7584 - val_loss: 474622719128906240.0000 - 1s/epoch - 77us/sample
+Epoch 3/70
+17035/17035 - 1s - loss: 0.7412 - val_loss: 41318111256690624.0000 - 1s/epoch - 76us/sample
+Epoch 4/70
+17035/17035 - 1s - loss: 0.7713 - val_loss: 113883485669353840.0000 - 1s/epoch - 76us/sample
+Epoch 5/70
+17035/17035 - 1s - loss: 0.8099 - val_loss: 1152727148925.4963 - 1s/epoch - 76us/sample
+Epoch 6/70
+17035/17035 - 1s - loss: 0.8611 - val_loss: 2292812.4409 - 1s/epoch - 76us/sample
+Epoch 7/70
+17035/17035 - 1s - loss: 0.8218 - val_loss: 1104489197650344.1250 - 1s/epoch - 76us/sample
+Epoch 8/70
+17035/17035 - 1s - loss: 0.9274 - val_loss: 307565241372.2969 - 1s/epoch - 76us/sample
+Epoch 9/70
+17035/17035 - 1s - loss: 0.7449 - val_loss: 950.6368 - 1s/epoch - 76us/sample
+Epoch 10/70
+17035/17035 - 1s - loss: 0.6828 - val_loss: 5611481329.9409 - 1s/epoch - 76us/sample
+Epoch 11/70
+17035/17035 - 1s - loss: 0.6788 - val_loss: 223379491.1486 - 1s/epoch - 76us/sample
+Epoch 12/70
+17035/17035 - 1s - loss: 0.6512 - val_loss: 324.8906 - 1s/epoch - 76us/sample
+Epoch 13/70
+17035/17035 - 1s - loss: 0.6220 - val_loss: 175.4503 - 1s/epoch - 76us/sample
+Epoch 14/70
+17035/17035 - 1s - loss: 0.6030 - val_loss: 4.8271 - 1s/epoch - 77us/sample
+Epoch 15/70
+17035/17035 - 1s - loss: 0.6372 - val_loss: 0.7974 - 1s/epoch - 77us/sample
+Epoch 16/70
+17035/17035 - 1s - loss: 0.6105 - val_loss: 1.7165 - 1s/epoch - 76us/sample
+Epoch 17/70
+17035/17035 - 1s - loss: 0.5970 - val_loss: 0.5632 - 1s/epoch - 76us/sample
+Epoch 18/70
+17035/17035 - 1s - loss: 0.6956 - val_loss: 1976517063537.0164 - 1s/epoch - 76us/sample
+Epoch 19/70
+17035/17035 - 1s - loss: 0.7629 - val_loss: 0.7928 - 1s/epoch - 76us/sample
+Epoch 20/70
+17035/17035 - 1s - loss: 0.6171 - val_loss: 0.6058 - 1s/epoch - 76us/sample
+Epoch 21/70
+17035/17035 - 1s - loss: 0.5568 - val_loss: 0.4555 - 1s/epoch - 75us/sample
+Epoch 22/70
+17035/17035 - 1s - loss: 0.5517 - val_loss: 0.5162 - 1s/epoch - 76us/sample
+Epoch 23/70
+17035/17035 - 1s - loss: 0.5450 - val_loss: 1.1919 - 1s/epoch - 76us/sample
+Epoch 24/70
+17035/17035 - 1s - loss: 0.5469 - val_loss: 0.4673 - 1s/epoch - 76us/sample
+Epoch 25/70
+17035/17035 - 1s - loss: 0.5195 - val_loss: 1.5869 - 1s/epoch - 76us/sample
+Epoch 26/70
+17035/17035 - 1s - loss: 0.5867 - val_loss: 0.5833 - 1s/epoch - 76us/sample
+Epoch 27/70
+17035/17035 - 1s - loss: 0.5316 - val_loss: 0.5266 - 1s/epoch - 76us/sample
+Epoch 28/70
+17035/17035 - 1s - loss: 0.5140 - val_loss: 0.4742 - 1s/epoch - 76us/sample
+Epoch 29/70
+17035/17035 - 1s - loss: 0.5676 - val_loss: 871649988.0462 - 1s/epoch - 76us/sample
+Epoch 30/70
+17035/17035 - 1s - loss: 0.5689 - val_loss: 0.5174 - 1s/epoch - 76us/sample
+Epoch 31/70
+17035/17035 - 1s - loss: 0.5248 - val_loss: 4.8290 - 1s/epoch - 78us/sample
+Epoch 32/70
+17035/17035 - 1s - loss: 0.4950 - val_loss: 0.4805 - 1s/epoch - 76us/sample
+Epoch 33/70
+17035/17035 - 1s - loss: 0.5094 - val_loss: 0.4908 - 1s/epoch - 76us/sample
+Epoch 34/70
+17035/17035 - 1s - loss: 0.4783 - val_loss: 0.4617 - 1s/epoch - 76us/sample
+Epoch 35/70
+17035/17035 - 1s - loss: 0.4895 - val_loss: 0.4633 - 1s/epoch - 76us/sample
+Epoch 36/70
+17035/17035 - 1s - loss: 0.4991 - val_loss: 0.6245 - 1s/epoch - 76us/sample
+Epoch 37/70
+17035/17035 - 1s - loss: 0.4954 - val_loss: 0.5178 - 1s/epoch - 75us/sample
+Epoch 38/70
+17035/17035 - 1s - loss: 0.4976 - val_loss: 1321.7108 - 1s/epoch - 76us/sample
+Epoch 39/70
+17035/17035 - 1s - loss: 0.4768 - val_loss: 0.4197 - 1s/epoch - 76us/sample
+Epoch 40/70
+17035/17035 - 1s - loss: 0.4690 - val_loss: 0.4550 - 1s/epoch - 76us/sample
+Epoch 41/70
+17035/17035 - 1s - loss: 0.4793 - val_loss: 3.3843 - 1s/epoch - 76us/sample
+Epoch 42/70
+17035/17035 - 1s - loss: 0.5089 - val_loss: 4575.3130 - 1s/epoch - 76us/sample
+Epoch 43/70
+17035/17035 - 1s - loss: 0.4801 - val_loss: 68.1952 - 1s/epoch - 77us/sample
+Epoch 44/70
+17035/17035 - 1s - loss: 0.4724 - val_loss: 551.8002 - 1s/epoch - 77us/sample
+Epoch 45/70
+17035/17035 - 1s - loss: 0.5160 - val_loss: 50417244594.2622 - 1s/epoch - 76us/sample
+Epoch 46/70
+17035/17035 - 1s - loss: 0.4879 - val_loss: 3880485.4765 - 1s/epoch - 77us/sample
+Epoch 47/70
+17035/17035 - 1s - loss: 0.4634 - val_loss: 340824.8963 - 1s/epoch - 76us/sample
+Epoch 48/70
+17035/17035 - 1s - loss: 0.4613 - val_loss: 8.8412 - 1s/epoch - 77us/sample
+Epoch 49/70
+17035/17035 - 1s - loss: 0.4508 - val_loss: 54.2267 - 1s/epoch - 76us/sample
+Epoch 50/70
+17035/17035 - 1s - loss: 0.4508 - val_loss: 207.6104 - 1s/epoch - 76us/sample
+Epoch 51/70
+17035/17035 - 1s - loss: 0.4521 - val_loss: 0.4436 - 1s/epoch - 76us/sample
+Epoch 52/70
+17035/17035 - 1s - loss: 0.4440 - val_loss: 0.4066 - 1s/epoch - 76us/sample
+Epoch 53/70
+17035/17035 - 1s - loss: 0.4351 - val_loss: 0.4077 - 1s/epoch - 76us/sample
+Epoch 54/70
+17035/17035 - 1s - loss: 0.4500 - val_loss: 0.4080 - 1s/epoch - 76us/sample
+Epoch 55/70
+17035/17035 - 1s - loss: 0.4428 - val_loss: 0.3949 - 1s/epoch - 76us/sample
+Epoch 56/70
+17035/17035 - 1s - loss: 0.4420 - val_loss: 0.4363 - 1s/epoch - 76us/sample
+Epoch 57/70
+17035/17035 - 1s - loss: 0.4523 - val_loss: 0.4061 - 1s/epoch - 76us/sample
+Epoch 58/70
+17035/17035 - 1s - loss: 0.4487 - val_loss: 0.3893 - 1s/epoch - 76us/sample
+Epoch 59/70
+17035/17035 - 1s - loss: 0.4309 - val_loss: 0.3837 - 1s/epoch - 76us/sample
+Epoch 60/70
+17035/17035 - 1s - loss: 0.4309 - val_loss: 0.3764 - 1s/epoch - 76us/sample
+Epoch 61/70
+17035/17035 - 1s - loss: 0.4197 - val_loss: 0.4372 - 1s/epoch - 77us/sample
+Epoch 62/70
+17035/17035 - 1s - loss: 0.4226 - val_loss: 0.3809 - 1s/epoch - 76us/sample
+Epoch 63/70
+17035/17035 - 1s - loss: 0.4705 - val_loss: 0.4079 - 1s/epoch - 77us/sample
+Epoch 64/70
+17035/17035 - 1s - loss: 0.4459 - val_loss: 0.4160 - 1s/epoch - 77us/sample
+Epoch 65/70
+17035/17035 - 1s - loss: 0.4342 - val_loss: 0.4868 - 1s/epoch - 76us/sample
+Epoch 66/70
+17035/17035 - 1s - loss: 0.4351 - val_loss: 0.3572 - 1s/epoch - 76us/sample
+Epoch 67/70
+17035/17035 - 1s - loss: 0.4168 - val_loss: 0.3854 - 1s/epoch - 76us/sample
+Epoch 68/70
+17035/17035 - 1s - loss: 0.4197 - val_loss: 0.6658 - 1s/epoch - 77us/sample
+Epoch 69/70
+17035/17035 - 1s - loss: 0.4516 - val_loss: 0.7869 - 1s/epoch - 76us/sample
+Epoch 70/70
+17035/17035 - 1s - loss: 0.4216 - val_loss: 0.3774 - 1s/epoch - 77us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.3773829788205741
+correlation 0.20706990246439277
+cosine 0.3236546286421645
+MAE: 0.36539177744827717
+RMSE: 1.8196074313593766
+r2: -92.42476974787516
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'binary_crossentropy', 64, 70, 0.001, 0.2, 204, 0.42162433065624927, 0.3773829788205741, 0.20706990246439277, 0.3236546286421645, 0.36539177744827717, 1.8196074313593766, -92.42476974787516, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[170 0.0005 64 1] 6
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_18 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_18 (ReLU)                (None, 510)          0           ['batch_normalization_18[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_18[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_18[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/170
+17035/17035 - 3s - loss: 0.0313 - val_loss: 0.0201 - 3s/epoch - 169us/sample
+Epoch 2/170
+17035/17035 - 1s - loss: 0.0115 - val_loss: 0.0182 - 1s/epoch - 74us/sample
+Epoch 3/170
+17035/17035 - 1s - loss: 0.0096 - val_loss: 0.0166 - 1s/epoch - 73us/sample
+Epoch 4/170
+17035/17035 - 1s - loss: 0.0086 - val_loss: 0.0152 - 1s/epoch - 72us/sample
+Epoch 5/170
+17035/17035 - 1s - loss: 0.0076 - val_loss: 0.0146 - 1s/epoch - 73us/sample
+Epoch 6/170
+17035/17035 - 1s - loss: 0.0073 - val_loss: 0.0139 - 1s/epoch - 72us/sample
+Epoch 7/170
+17035/17035 - 1s - loss: 0.0069 - val_loss: 0.0136 - 1s/epoch - 73us/sample
+Epoch 8/170
+17035/17035 - 1s - loss: 0.0065 - val_loss: 0.0134 - 1s/epoch - 72us/sample
+Epoch 9/170
+17035/17035 - 1s - loss: 0.0062 - val_loss: 0.0136 - 1s/epoch - 72us/sample
+Epoch 10/170
+17035/17035 - 1s - loss: 0.0064 - val_loss: 0.0128 - 1s/epoch - 72us/sample
+Epoch 11/170
+17035/17035 - 1s - loss: 0.0058 - val_loss: 0.0125 - 1s/epoch - 72us/sample
+Epoch 12/170
+17035/17035 - 1s - loss: 0.0057 - val_loss: 0.0122 - 1s/epoch - 72us/sample
+Epoch 13/170
+17035/17035 - 1s - loss: 0.0054 - val_loss: 0.0122 - 1s/epoch - 72us/sample
+Epoch 14/170
+17035/17035 - 1s - loss: 0.0054 - val_loss: 0.0119 - 1s/epoch - 72us/sample
+Epoch 15/170
+17035/17035 - 1s - loss: 0.0051 - val_loss: 0.0134 - 1s/epoch - 72us/sample
+Epoch 16/170
+17035/17035 - 1s - loss: 0.0059 - val_loss: 0.0120 - 1s/epoch - 72us/sample
+Epoch 17/170
+17035/17035 - 1s - loss: 0.0050 - val_loss: 0.0115 - 1s/epoch - 72us/sample
+Epoch 18/170
+17035/17035 - 1s - loss: 0.0049 - val_loss: 0.0115 - 1s/epoch - 72us/sample
+Epoch 19/170
+17035/17035 - 1s - loss: 0.0047 - val_loss: 0.0113 - 1s/epoch - 72us/sample
+Epoch 20/170
+17035/17035 - 1s - loss: 0.0046 - val_loss: 0.0113 - 1s/epoch - 72us/sample
+Epoch 21/170
+17035/17035 - 1s - loss: 0.0045 - val_loss: 0.0113 - 1s/epoch - 72us/sample
+Epoch 22/170
+17035/17035 - 1s - loss: 0.0045 - val_loss: 0.0112 - 1s/epoch - 72us/sample
+Epoch 23/170
+17035/17035 - 1s - loss: 0.0044 - val_loss: 0.0113 - 1s/epoch - 72us/sample
+Epoch 24/170
+17035/17035 - 1s - loss: 0.0043 - val_loss: 0.0110 - 1s/epoch - 72us/sample
+Epoch 25/170
+17035/17035 - 1s - loss: 0.0042 - val_loss: 0.0108 - 1s/epoch - 72us/sample
+Epoch 26/170
+17035/17035 - 1s - loss: 0.0041 - val_loss: 0.0107 - 1s/epoch - 72us/sample
+Epoch 27/170
+17035/17035 - 1s - loss: 0.0039 - val_loss: 0.0107 - 1s/epoch - 72us/sample
+Epoch 28/170
+17035/17035 - 1s - loss: 0.0039 - val_loss: 0.0107 - 1s/epoch - 73us/sample
+Epoch 29/170
+17035/17035 - 1s - loss: 0.0041 - val_loss: 0.0108 - 1s/epoch - 72us/sample
+Epoch 30/170
+17035/17035 - 1s - loss: 0.0038 - val_loss: 0.0106 - 1s/epoch - 72us/sample
+Epoch 31/170
+17035/17035 - 1s - loss: 0.0037 - val_loss: 0.0104 - 1s/epoch - 72us/sample
+Epoch 32/170
+17035/17035 - 1s - loss: 0.0036 - val_loss: 0.0103 - 1s/epoch - 73us/sample
+Epoch 33/170
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0110 - 1s/epoch - 72us/sample
+Epoch 34/170
+17035/17035 - 1s - loss: 0.0043 - val_loss: 0.0104 - 1s/epoch - 74us/sample
+Epoch 35/170
+17035/17035 - 1s - loss: 0.0036 - val_loss: 0.0102 - 1s/epoch - 72us/sample
+Epoch 36/170
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0101 - 1s/epoch - 73us/sample
+Epoch 37/170
+17035/17035 - 1s - loss: 0.0034 - val_loss: 0.0101 - 1s/epoch - 72us/sample
+Epoch 38/170
+17035/17035 - 1s - loss: 0.0033 - val_loss: 0.0101 - 1s/epoch - 72us/sample
+Epoch 39/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0100 - 1s/epoch - 73us/sample
+Epoch 40/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0099 - 1s/epoch - 72us/sample
+Epoch 41/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0101 - 1s/epoch - 72us/sample
+Epoch 42/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0102 - 1s/epoch - 73us/sample
+Epoch 43/170
+17035/17035 - 1s - loss: 0.0036 - val_loss: 0.0100 - 1s/epoch - 73us/sample
+Epoch 44/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0099 - 1s/epoch - 73us/sample
+Epoch 45/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0099 - 1s/epoch - 73us/sample
+Epoch 46/170
+17035/17035 - 1s - loss: 0.0033 - val_loss: 0.0099 - 1s/epoch - 73us/sample
+Epoch 47/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0098 - 1s/epoch - 73us/sample
+Epoch 48/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0098 - 1s/epoch - 72us/sample
+Epoch 49/170
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0098 - 1s/epoch - 72us/sample
+Epoch 50/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0098 - 1s/epoch - 72us/sample
+Epoch 51/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0097 - 1s/epoch - 72us/sample
+Epoch 52/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0096 - 1s/epoch - 73us/sample
+Epoch 53/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0095 - 1s/epoch - 72us/sample
+Epoch 54/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0098 - 1s/epoch - 72us/sample
+Epoch 55/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0096 - 1s/epoch - 73us/sample
+Epoch 56/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0095 - 1s/epoch - 73us/sample
+Epoch 57/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0095 - 1s/epoch - 72us/sample
+Epoch 58/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 72us/sample
+Epoch 59/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 73us/sample
+Epoch 60/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 72us/sample
+Epoch 61/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0096 - 1s/epoch - 73us/sample
+Epoch 62/170
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0094 - 1s/epoch - 72us/sample
+Epoch 63/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0093 - 1s/epoch - 73us/sample
+Epoch 64/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 73us/sample
+Epoch 65/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0093 - 1s/epoch - 72us/sample
+Epoch 66/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 73us/sample
+Epoch 67/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0094 - 1s/epoch - 72us/sample
+Epoch 68/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 72us/sample
+Epoch 69/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0093 - 1s/epoch - 73us/sample
+Epoch 70/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 72us/sample
+Epoch 71/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 72/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 73/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 74/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0094 - 1s/epoch - 72us/sample
+Epoch 75/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 76/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 77/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 78/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 73us/sample
+Epoch 79/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 73us/sample
+Epoch 80/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 73us/sample
+Epoch 81/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0093 - 1s/epoch - 72us/sample
+Epoch 82/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0091 - 1s/epoch - 72us/sample
+Epoch 83/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 73us/sample
+Epoch 84/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 73us/sample
+Epoch 85/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 73us/sample
+Epoch 86/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 73us/sample
+Epoch 87/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 88/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 72us/sample
+Epoch 89/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 72us/sample
+Epoch 90/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 91/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 72us/sample
+Epoch 92/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 93/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 72us/sample
+Epoch 94/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 72us/sample
+Epoch 95/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 96/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0091 - 1s/epoch - 73us/sample
+Epoch 97/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 98/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 99/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 73us/sample
+Epoch 100/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 73us/sample
+Epoch 101/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 102/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 103/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 104/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 73us/sample
+Epoch 105/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0090 - 1s/epoch - 73us/sample
+Epoch 106/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 107/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 108/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 109/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 110/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 111/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 72us/sample
+Epoch 112/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 113/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 114/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 74us/sample
+Epoch 115/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 116/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 117/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 118/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 119/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 120/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 121/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 122/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 72us/sample
+Epoch 123/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 124/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 125/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 126/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 127/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 73us/sample
+Epoch 128/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 129/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 130/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 131/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 132/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 133/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 134/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 135/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 136/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 73us/sample
+Epoch 137/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0090 - 1s/epoch - 72us/sample
+Epoch 138/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 139/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 140/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 141/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 142/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 143/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 144/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 145/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 146/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 147/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 148/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 149/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 150/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 151/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 152/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 153/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 154/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 155/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 156/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 157/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 158/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 159/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 160/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 161/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 162/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 163/170
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 164/170
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 165/170
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 166/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 72us/sample
+Epoch 167/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 168/170
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0088 - 1s/epoch - 72us/sample
+Epoch 169/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+Epoch 170/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 73us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.008701527270434816
+correlation 0.00791228833319824
+cosine 0.005432661881080617
+MAE: 0.01859598083519167
+RMSE: 0.09025627831938968
+r2: 0.7658562833874033
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 64, 170, 0.0005, 0.2, 204, 0.0017719580305590986, 0.008701527270434816, 0.00791228833319824, 0.005432661881080617, 0.01859598083519167, 0.09025627831938968, 0.7658562833874033, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[70 0.0005 8 1] 7
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_21 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_21 (ReLU)                (None, 510)          0           ['batch_normalization_21[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_21[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_21[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/70
+17035/17035 - 8s - loss: 0.0220 - val_loss: 0.0179 - 8s/epoch - 466us/sample
+Epoch 2/70
+17035/17035 - 6s - loss: 0.0123 - val_loss: 0.0153 - 6s/epoch - 355us/sample
+Epoch 3/70
+17035/17035 - 6s - loss: 0.0105 - val_loss: 0.0143 - 6s/epoch - 357us/sample
+Epoch 4/70
+17035/17035 - 6s - loss: 0.0090 - val_loss: 0.0147 - 6s/epoch - 355us/sample
+Epoch 5/70
+17035/17035 - 6s - loss: 0.0080 - val_loss: 0.0136 - 6s/epoch - 348us/sample
+Epoch 6/70
+17035/17035 - 6s - loss: 0.0074 - val_loss: 0.0135 - 6s/epoch - 348us/sample
+Epoch 7/70
+17035/17035 - 6s - loss: 0.0070 - val_loss: 0.0131 - 6s/epoch - 351us/sample
+Epoch 8/70
+17035/17035 - 6s - loss: 0.0066 - val_loss: 0.0129 - 6s/epoch - 348us/sample
+Epoch 9/70
+17035/17035 - 6s - loss: 0.0064 - val_loss: 0.0128 - 6s/epoch - 352us/sample
+Epoch 10/70
+17035/17035 - 6s - loss: 0.0061 - val_loss: 0.0134 - 6s/epoch - 350us/sample
+Epoch 11/70
+17035/17035 - 6s - loss: 0.0060 - val_loss: 0.0129 - 6s/epoch - 350us/sample
+Epoch 12/70
+17035/17035 - 6s - loss: 0.0057 - val_loss: 0.0124 - 6s/epoch - 352us/sample
+Epoch 13/70
+17035/17035 - 6s - loss: 0.0057 - val_loss: 0.0123 - 6s/epoch - 353us/sample
+Epoch 14/70
+17035/17035 - 6s - loss: 0.0055 - val_loss: 0.0119 - 6s/epoch - 356us/sample
+Epoch 15/70
+17035/17035 - 6s - loss: 0.0054 - val_loss: 0.0126 - 6s/epoch - 353us/sample
+Epoch 16/70
+17035/17035 - 6s - loss: 0.0052 - val_loss: 0.0131 - 6s/epoch - 352us/sample
+Epoch 17/70
+17035/17035 - 6s - loss: 0.0052 - val_loss: 0.0121 - 6s/epoch - 353us/sample
+Epoch 18/70
+17035/17035 - 6s - loss: 0.0051 - val_loss: 0.0120 - 6s/epoch - 349us/sample
+Epoch 19/70
+17035/17035 - 6s - loss: 0.0050 - val_loss: 0.0122 - 6s/epoch - 353us/sample
+Epoch 20/70
+17035/17035 - 6s - loss: 0.0049 - val_loss: 0.0123 - 6s/epoch - 352us/sample
+Epoch 21/70
+17035/17035 - 6s - loss: 0.0049 - val_loss: 0.0120 - 6s/epoch - 352us/sample
+Epoch 22/70
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0137 - 6s/epoch - 352us/sample
+Epoch 23/70
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0127 - 6s/epoch - 352us/sample
+Epoch 24/70
+17035/17035 - 6s - loss: 0.0047 - val_loss: 0.0137 - 6s/epoch - 351us/sample
+Epoch 25/70
+17035/17035 - 6s - loss: 0.0047 - val_loss: 0.0134 - 6s/epoch - 352us/sample
+Epoch 26/70
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0159 - 6s/epoch - 354us/sample
+Epoch 27/70
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0167 - 6s/epoch - 350us/sample
+Epoch 28/70
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0161 - 6s/epoch - 351us/sample
+Epoch 29/70
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0137 - 6s/epoch - 351us/sample
+Epoch 30/70
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0151 - 6s/epoch - 349us/sample
+Epoch 31/70
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0132 - 6s/epoch - 354us/sample
+Epoch 32/70
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0115 - 6s/epoch - 353us/sample
+Epoch 33/70
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0123 - 6s/epoch - 353us/sample
+Epoch 34/70
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0115 - 6s/epoch - 354us/sample
+Epoch 35/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0114 - 6s/epoch - 353us/sample
+Epoch 36/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0121 - 6s/epoch - 356us/sample
+Epoch 37/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0123 - 6s/epoch - 353us/sample
+Epoch 38/70
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0118 - 6s/epoch - 349us/sample
+Epoch 39/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0114 - 6s/epoch - 344us/sample
+Epoch 40/70
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0119 - 6s/epoch - 348us/sample
+Epoch 41/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0115 - 6s/epoch - 348us/sample
+Epoch 42/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0119 - 6s/epoch - 349us/sample
+Epoch 43/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0114 - 6s/epoch - 347us/sample
+Epoch 44/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0116 - 6s/epoch - 352us/sample
+Epoch 45/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0115 - 6s/epoch - 346us/sample
+Epoch 46/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0111 - 6s/epoch - 354us/sample
+Epoch 47/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0117 - 6s/epoch - 355us/sample
+Epoch 48/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0115 - 6s/epoch - 356us/sample
+Epoch 49/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0115 - 6s/epoch - 351us/sample
+Epoch 50/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0111 - 6s/epoch - 356us/sample
+Epoch 51/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0111 - 6s/epoch - 354us/sample
+Epoch 52/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0114 - 6s/epoch - 351us/sample
+Epoch 53/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0116 - 6s/epoch - 353us/sample
+Epoch 54/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0119 - 6s/epoch - 353us/sample
+Epoch 55/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0116 - 6s/epoch - 354us/sample
+Epoch 56/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0114 - 6s/epoch - 352us/sample
+Epoch 57/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0118 - 6s/epoch - 353us/sample
+Epoch 58/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0117 - 6s/epoch - 356us/sample
+Epoch 59/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0113 - 6s/epoch - 353us/sample
+Epoch 60/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0117 - 6s/epoch - 353us/sample
+Epoch 61/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0116 - 6s/epoch - 354us/sample
+Epoch 62/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0125 - 6s/epoch - 353us/sample
+Epoch 63/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0119 - 6s/epoch - 354us/sample
+Epoch 64/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0118 - 6s/epoch - 353us/sample
+Epoch 65/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0117 - 6s/epoch - 351us/sample
+Epoch 66/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0119 - 6s/epoch - 353us/sample
+Epoch 67/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0122 - 6s/epoch - 354us/sample
+Epoch 68/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0120 - 6s/epoch - 354us/sample
+Epoch 69/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0126 - 6s/epoch - 352us/sample
+Epoch 70/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0117 - 6s/epoch - 353us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.01169070355484446
+correlation 0.02293934540467317
+cosine 0.015909391776660585
+MAE: 0.031012818623958
+RMSE: 0.10525395386585547
+r2: 0.6815747010759883
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 70, 0.0005, 0.2, 204, 0.0037169956351489064, 0.01169070355484446, 0.02293934540467317, 0.015909391776660585, 0.031012818623958, 0.10525395386585547, 0.6815747010759883, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[70 0.0005 8 1] 8
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_24 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_24 (ReLU)                (None, 510)          0           ['batch_normalization_24[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_24[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_24[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+File test_geneticVAE_OFM_custom_VAE0.5_cr0.2_bs8_ep70_loss_mse_lr0.0005_AutoEncoder.h5 exists in folder already, skiping this calculation.
+correlation 0.022995028670229307
+cosine 0.01594765476016526
+MAE: 0.03104066977829017
+RMSE: 0.10529287062784073
+r2: 0.6813392279281346
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 70, 0.0005, 0.2, 204, '--', '--', 0.022995028670229307, 0.01594765476016526, 0.03104066977829017, 0.10529287062784073, 0.6813392279281346, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'str'>, <class 'str'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[10 0.001 16 1] 9
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_27 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_27 (ReLU)                (None, 510)          0           ['batch_normalization_27[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_27[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_27[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/10
+17035/17035 - 6s - loss: 0.0225 - val_loss: 0.0173 - 6s/epoch - 331us/sample
+Epoch 2/10
+17035/17035 - 3s - loss: 0.0111 - val_loss: 0.0151 - 3s/epoch - 193us/sample
+Epoch 3/10
+17035/17035 - 3s - loss: 0.0092 - val_loss: 0.0138 - 3s/epoch - 191us/sample
+Epoch 4/10
+17035/17035 - 3s - loss: 0.0082 - val_loss: 0.0132 - 3s/epoch - 193us/sample
+Epoch 5/10
+17035/17035 - 3s - loss: 0.0075 - val_loss: 0.0132 - 3s/epoch - 191us/sample
+Epoch 6/10
+17035/17035 - 3s - loss: 0.0070 - val_loss: 0.0123 - 3s/epoch - 192us/sample
+Epoch 7/10
+17035/17035 - 3s - loss: 0.0065 - val_loss: 0.0119 - 3s/epoch - 191us/sample
+Epoch 8/10
+17035/17035 - 3s - loss: 0.0061 - val_loss: 0.0121 - 3s/epoch - 192us/sample
+Epoch 9/10
+17035/17035 - 3s - loss: 0.0055 - val_loss: 0.0116 - 3s/epoch - 191us/sample
+Epoch 10/10
+17035/17035 - 3s - loss: 0.0051 - val_loss: 0.0111 - 3s/epoch - 192us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.011149213437288134
+correlation 0.021467522474731347
+cosine 0.01465256314382524
+MAE: 0.03286405776189947
+RMSE: 0.10150719082136848
+r2: 0.7038583151407047
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 16, 10, 0.001, 0.2, 204, 0.0051490994987094686, 0.011149213437288134, 0.021467522474731347, 0.01465256314382524, 0.03286405776189947, 0.10150719082136848, 0.7038583151407047, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[65 0.00030000000000000003 8 1] 1
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_30 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_30 (ReLU)                (None, 510)          0           ['batch_normalization_30[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_30[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_30[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/65
+17035/17035 - 9s - loss: 0.0222 - val_loss: 0.0175 - 9s/epoch - 512us/sample
+Epoch 2/65
+17035/17035 - 6s - loss: 0.0124 - val_loss: 0.0155 - 6s/epoch - 362us/sample
+Epoch 3/65
+17035/17035 - 6s - loss: 0.0105 - val_loss: 0.0150 - 6s/epoch - 366us/sample
+Epoch 4/65
+17035/17035 - 6s - loss: 0.0092 - val_loss: 0.0148 - 6s/epoch - 364us/sample
+Epoch 5/65
+17035/17035 - 6s - loss: 0.0082 - val_loss: 0.0144 - 6s/epoch - 361us/sample
+Epoch 6/65
+17035/17035 - 6s - loss: 0.0075 - val_loss: 0.0139 - 6s/epoch - 360us/sample
+Epoch 7/65
+17035/17035 - 6s - loss: 0.0071 - val_loss: 0.0135 - 6s/epoch - 366us/sample
+Epoch 8/65
+17035/17035 - 6s - loss: 0.0068 - val_loss: 0.0136 - 6s/epoch - 360us/sample
+Epoch 9/65
+17035/17035 - 6s - loss: 0.0065 - val_loss: 0.0144 - 6s/epoch - 361us/sample
+Epoch 10/65
+17035/17035 - 6s - loss: 0.0062 - val_loss: 0.0137 - 6s/epoch - 363us/sample
+Epoch 11/65
+17035/17035 - 6s - loss: 0.0060 - val_loss: 0.0133 - 6s/epoch - 364us/sample
+Epoch 12/65
+17035/17035 - 6s - loss: 0.0059 - val_loss: 0.0130 - 6s/epoch - 362us/sample
+Epoch 13/65
+17035/17035 - 6s - loss: 0.0057 - val_loss: 0.0126 - 6s/epoch - 363us/sample
+Epoch 14/65
+17035/17035 - 6s - loss: 0.0056 - val_loss: 0.0125 - 6s/epoch - 359us/sample
+Epoch 15/65
+17035/17035 - 6s - loss: 0.0055 - val_loss: 0.0128 - 6s/epoch - 363us/sample
+Epoch 16/65
+17035/17035 - 6s - loss: 0.0053 - val_loss: 0.0123 - 6s/epoch - 366us/sample
+Epoch 17/65
+17035/17035 - 6s - loss: 0.0053 - val_loss: 0.0121 - 6s/epoch - 361us/sample
+Epoch 18/65
+17035/17035 - 6s - loss: 0.0052 - val_loss: 0.0122 - 6s/epoch - 363us/sample
+Epoch 19/65
+17035/17035 - 6s - loss: 0.0051 - val_loss: 0.0120 - 6s/epoch - 360us/sample
+Epoch 20/65
+17035/17035 - 6s - loss: 0.0051 - val_loss: 0.0122 - 6s/epoch - 356us/sample
+Epoch 21/65
+17035/17035 - 6s - loss: 0.0049 - val_loss: 0.0121 - 6s/epoch - 357us/sample
+Epoch 22/65
+17035/17035 - 6s - loss: 0.0049 - val_loss: 0.0120 - 6s/epoch - 359us/sample
+Epoch 23/65
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0120 - 6s/epoch - 359us/sample
+Epoch 24/65
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0122 - 6s/epoch - 360us/sample
+Epoch 25/65
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0127 - 6s/epoch - 359us/sample
+Epoch 26/65
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0125 - 6s/epoch - 363us/sample
+Epoch 27/65
+17035/17035 - 6s - loss: 0.0047 - val_loss: 0.0126 - 6s/epoch - 365us/sample
+Epoch 28/65
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0124 - 6s/epoch - 360us/sample
+Epoch 29/65
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0128 - 6s/epoch - 368us/sample
+Epoch 30/65
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0125 - 6s/epoch - 366us/sample
+Epoch 31/65
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0123 - 6s/epoch - 364us/sample
+Epoch 32/65
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0126 - 6s/epoch - 364us/sample
+Epoch 33/65
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0121 - 6s/epoch - 365us/sample
+Epoch 34/65
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0122 - 6s/epoch - 360us/sample
+Epoch 35/65
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0122 - 6s/epoch - 366us/sample
+Epoch 36/65
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0122 - 6s/epoch - 360us/sample
+Epoch 37/65
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0119 - 6s/epoch - 365us/sample
+Epoch 38/65
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0117 - 6s/epoch - 363us/sample
+Epoch 39/65
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0120 - 6s/epoch - 364us/sample
+Epoch 40/65
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0122 - 6s/epoch - 363us/sample
+Epoch 41/65
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0117 - 6s/epoch - 363us/sample
+Epoch 42/65
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0115 - 6s/epoch - 360us/sample
+Epoch 43/65
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0122 - 6s/epoch - 361us/sample
+Epoch 44/65
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0120 - 6s/epoch - 361us/sample
+Epoch 45/65
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0118 - 6s/epoch - 362us/sample
+Epoch 46/65
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0121 - 6s/epoch - 363us/sample
+Epoch 47/65
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0136 - 6s/epoch - 362us/sample
+Epoch 48/65
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0120 - 6s/epoch - 360us/sample
+Epoch 49/65
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0121 - 6s/epoch - 365us/sample
+Epoch 50/65
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0118 - 6s/epoch - 362us/sample
+Epoch 51/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0129 - 6s/epoch - 360us/sample
+Epoch 52/65
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0118 - 6s/epoch - 360us/sample
+Epoch 53/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0116 - 6s/epoch - 358us/sample
+Epoch 54/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0119 - 6s/epoch - 361us/sample
+Epoch 55/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0121 - 6s/epoch - 362us/sample
+Epoch 56/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0115 - 6s/epoch - 356us/sample
+Epoch 57/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0121 - 6s/epoch - 358us/sample
+Epoch 58/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0114 - 6s/epoch - 360us/sample
+Epoch 59/65
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0115 - 6s/epoch - 362us/sample
+Epoch 60/65
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0110 - 6s/epoch - 364us/sample
+Epoch 61/65
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0112 - 6s/epoch - 363us/sample
+Epoch 62/65
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0119 - 6s/epoch - 363us/sample
+Epoch 63/65
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0109 - 6s/epoch - 365us/sample
+Epoch 64/65
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0120 - 6s/epoch - 361us/sample
+Epoch 65/65
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0109 - 6s/epoch - 364us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.010913954538893893
+correlation 0.02067533631455147
+cosine 0.014206611476710044
+MAE: 0.029525911098052266
+RMSE: 0.1015304708689472
+r2: 0.7037055319123938
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 65, 0.00030000000000000003, 0.2, 204, 0.0038257768315336626, 0.010913954538893893, 0.02067533631455147, 0.014206611476710044, 0.029525911098052266, 0.1015304708689472, 0.7037055319123938, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[70 0.00030000000000000003 8 1] 2
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_33 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_33 (ReLU)                (None, 510)          0           ['batch_normalization_33[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_33[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_33[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/70
+17035/17035 - 9s - loss: 0.0220 - val_loss: 0.0196 - 9s/epoch - 534us/sample
+Epoch 2/70
+17035/17035 - 6s - loss: 0.0124 - val_loss: 0.0161 - 6s/epoch - 364us/sample
+Epoch 3/70
+17035/17035 - 6s - loss: 0.0105 - val_loss: 0.0152 - 6s/epoch - 363us/sample
+Epoch 4/70
+17035/17035 - 6s - loss: 0.0090 - val_loss: 0.0144 - 6s/epoch - 362us/sample
+Epoch 5/70
+17035/17035 - 6s - loss: 0.0080 - val_loss: 0.0142 - 6s/epoch - 362us/sample
+Epoch 6/70
+17035/17035 - 6s - loss: 0.0075 - val_loss: 0.0141 - 6s/epoch - 364us/sample
+Epoch 7/70
+17035/17035 - 6s - loss: 0.0070 - val_loss: 0.0133 - 6s/epoch - 365us/sample
+Epoch 8/70
+17035/17035 - 6s - loss: 0.0067 - val_loss: 0.0138 - 6s/epoch - 363us/sample
+Epoch 9/70
+17035/17035 - 6s - loss: 0.0064 - val_loss: 0.0129 - 6s/epoch - 365us/sample
+Epoch 10/70
+17035/17035 - 6s - loss: 0.0061 - val_loss: 0.0129 - 6s/epoch - 364us/sample
+Epoch 11/70
+17035/17035 - 6s - loss: 0.0060 - val_loss: 0.0130 - 6s/epoch - 364us/sample
+Epoch 12/70
+17035/17035 - 6s - loss: 0.0058 - val_loss: 0.0124 - 6s/epoch - 363us/sample
+Epoch 13/70
+17035/17035 - 6s - loss: 0.0057 - val_loss: 0.0127 - 6s/epoch - 363us/sample
+Epoch 14/70
+17035/17035 - 6s - loss: 0.0056 - val_loss: 0.0127 - 6s/epoch - 363us/sample
+Epoch 15/70
+17035/17035 - 6s - loss: 0.0055 - val_loss: 0.0124 - 6s/epoch - 364us/sample
+Epoch 16/70
+17035/17035 - 6s - loss: 0.0053 - val_loss: 0.0124 - 6s/epoch - 361us/sample
+Epoch 17/70
+17035/17035 - 6s - loss: 0.0052 - val_loss: 0.0119 - 6s/epoch - 362us/sample
+Epoch 18/70
+17035/17035 - 6s - loss: 0.0051 - val_loss: 0.0120 - 6s/epoch - 363us/sample
+Epoch 19/70
+17035/17035 - 6s - loss: 0.0051 - val_loss: 0.0121 - 6s/epoch - 363us/sample
+Epoch 20/70
+17035/17035 - 6s - loss: 0.0050 - val_loss: 0.0119 - 6s/epoch - 365us/sample
+Epoch 21/70
+17035/17035 - 6s - loss: 0.0049 - val_loss: 0.0119 - 6s/epoch - 366us/sample
+Epoch 22/70
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0119 - 6s/epoch - 365us/sample
+Epoch 23/70
+17035/17035 - 6s - loss: 0.0048 - val_loss: 0.0120 - 6s/epoch - 366us/sample
+Epoch 24/70
+17035/17035 - 6s - loss: 0.0047 - val_loss: 0.0117 - 6s/epoch - 363us/sample
+Epoch 25/70
+17035/17035 - 6s - loss: 0.0047 - val_loss: 0.0120 - 6s/epoch - 364us/sample
+Epoch 26/70
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0117 - 6s/epoch - 362us/sample
+Epoch 27/70
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0115 - 6s/epoch - 364us/sample
+Epoch 28/70
+17035/17035 - 6s - loss: 0.0046 - val_loss: 0.0114 - 6s/epoch - 362us/sample
+Epoch 29/70
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0115 - 6s/epoch - 366us/sample
+Epoch 30/70
+17035/17035 - 6s - loss: 0.0045 - val_loss: 0.0115 - 6s/epoch - 364us/sample
+Epoch 31/70
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0118 - 6s/epoch - 361us/sample
+Epoch 32/70
+17035/17035 - 6s - loss: 0.0044 - val_loss: 0.0120 - 6s/epoch - 363us/sample
+Epoch 33/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0117 - 6s/epoch - 364us/sample
+Epoch 34/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0114 - 6s/epoch - 364us/sample
+Epoch 35/70
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0116 - 6s/epoch - 366us/sample
+Epoch 36/70
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0124 - 6s/epoch - 362us/sample
+Epoch 37/70
+17035/17035 - 6s - loss: 0.0043 - val_loss: 0.0116 - 6s/epoch - 365us/sample
+Epoch 38/70
+17035/17035 - 6s - loss: 0.0042 - val_loss: 0.0117 - 6s/epoch - 365us/sample
+Epoch 39/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0119 - 6s/epoch - 364us/sample
+Epoch 40/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0117 - 6s/epoch - 364us/sample
+Epoch 41/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0118 - 6s/epoch - 365us/sample
+Epoch 42/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0119 - 6s/epoch - 360us/sample
+Epoch 43/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0119 - 6s/epoch - 361us/sample
+Epoch 44/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0121 - 6s/epoch - 357us/sample
+Epoch 45/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0115 - 6s/epoch - 363us/sample
+Epoch 46/70
+17035/17035 - 6s - loss: 0.0041 - val_loss: 0.0117 - 6s/epoch - 359us/sample
+Epoch 47/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0114 - 6s/epoch - 359us/sample
+Epoch 48/70
+17035/17035 - 6s - loss: 0.0040 - val_loss: 0.0117 - 6s/epoch - 358us/sample
+Epoch 49/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0115 - 6s/epoch - 360us/sample
+Epoch 50/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0116 - 6s/epoch - 365us/sample
+Epoch 51/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0117 - 6s/epoch - 365us/sample
+Epoch 52/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0115 - 6s/epoch - 366us/sample
+Epoch 53/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0113 - 6s/epoch - 367us/sample
+Epoch 54/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0118 - 6s/epoch - 367us/sample
+Epoch 55/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0117 - 6s/epoch - 366us/sample
+Epoch 56/70
+17035/17035 - 6s - loss: 0.0039 - val_loss: 0.0113 - 6s/epoch - 363us/sample
+Epoch 57/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0111 - 6s/epoch - 361us/sample
+Epoch 58/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0115 - 6s/epoch - 359us/sample
+Epoch 59/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0113 - 6s/epoch - 362us/sample
+Epoch 60/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0110 - 6s/epoch - 361us/sample
+Epoch 61/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0116 - 6s/epoch - 363us/sample
+Epoch 62/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0114 - 6s/epoch - 360us/sample
+Epoch 63/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0117 - 6s/epoch - 363us/sample
+Epoch 64/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0117 - 6s/epoch - 367us/sample
+Epoch 65/70
+17035/17035 - 6s - loss: 0.0038 - val_loss: 0.0116 - 6s/epoch - 363us/sample
+Epoch 66/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0114 - 6s/epoch - 361us/sample
+Epoch 67/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0114 - 6s/epoch - 367us/sample
+Epoch 68/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0112 - 6s/epoch - 364us/sample
+Epoch 69/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0114 - 6s/epoch - 365us/sample
+Epoch 70/70
+17035/17035 - 6s - loss: 0.0037 - val_loss: 0.0112 - 6s/epoch - 362us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.011233005372830014
+correlation 0.02261207503295061
+cosine 0.015603677268960399
+MAE: 0.030310543969132544
+RMSE: 0.1031597960790157
+r2: 0.694119972364922
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 70, 0.00030000000000000003, 0.2, 204, 0.0036523413803129907, 0.011233005372830014, 0.02261207503295061, 0.015603677268960399, 0.030310543969132544, 0.1031597960790157, 0.694119972364922, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[170 0.00030000000000000003 64 1] 3
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_36 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_36 (ReLU)                (None, 510)          0           ['batch_normalization_36[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_36[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_36[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/170
+17035/17035 - 4s - loss: 0.0313 - val_loss: 0.0212 - 4s/epoch - 250us/sample
+Epoch 2/170
+17035/17035 - 1s - loss: 0.0114 - val_loss: 0.0176 - 1s/epoch - 80us/sample
+Epoch 3/170
+17035/17035 - 1s - loss: 0.0093 - val_loss: 0.0172 - 1s/epoch - 78us/sample
+Epoch 4/170
+17035/17035 - 1s - loss: 0.0085 - val_loss: 0.0156 - 1s/epoch - 78us/sample
+Epoch 5/170
+17035/17035 - 1s - loss: 0.0079 - val_loss: 0.0146 - 1s/epoch - 78us/sample
+Epoch 6/170
+17035/17035 - 1s - loss: 0.0074 - val_loss: 0.0137 - 1s/epoch - 79us/sample
+Epoch 7/170
+17035/17035 - 1s - loss: 0.0069 - val_loss: 0.0143 - 1s/epoch - 78us/sample
+Epoch 8/170
+17035/17035 - 1s - loss: 0.0066 - val_loss: 0.0130 - 1s/epoch - 79us/sample
+Epoch 9/170
+17035/17035 - 1s - loss: 0.0064 - val_loss: 0.0131 - 1s/epoch - 80us/sample
+Epoch 10/170
+17035/17035 - 1s - loss: 0.0060 - val_loss: 0.0132 - 1s/epoch - 78us/sample
+Epoch 11/170
+17035/17035 - 1s - loss: 0.0058 - val_loss: 0.0125 - 1s/epoch - 78us/sample
+Epoch 12/170
+17035/17035 - 1s - loss: 0.0055 - val_loss: 0.0124 - 1s/epoch - 78us/sample
+Epoch 13/170
+17035/17035 - 1s - loss: 0.0054 - val_loss: 0.0125 - 1s/epoch - 79us/sample
+Epoch 14/170
+17035/17035 - 1s - loss: 0.0053 - val_loss: 0.0119 - 1s/epoch - 79us/sample
+Epoch 15/170
+17035/17035 - 1s - loss: 0.0051 - val_loss: 0.0119 - 1s/epoch - 78us/sample
+Epoch 16/170
+17035/17035 - 1s - loss: 0.0050 - val_loss: 0.0117 - 1s/epoch - 78us/sample
+Epoch 17/170
+17035/17035 - 1s - loss: 0.0049 - val_loss: 0.0115 - 1s/epoch - 78us/sample
+Epoch 18/170
+17035/17035 - 1s - loss: 0.0050 - val_loss: 0.0119 - 1s/epoch - 79us/sample
+Epoch 19/170
+17035/17035 - 1s - loss: 0.0047 - val_loss: 0.0114 - 1s/epoch - 78us/sample
+Epoch 20/170
+17035/17035 - 1s - loss: 0.0047 - val_loss: 0.0112 - 1s/epoch - 78us/sample
+Epoch 21/170
+17035/17035 - 1s - loss: 0.0045 - val_loss: 0.0111 - 1s/epoch - 78us/sample
+Epoch 22/170
+17035/17035 - 1s - loss: 0.0044 - val_loss: 0.0111 - 1s/epoch - 78us/sample
+Epoch 23/170
+17035/17035 - 1s - loss: 0.0043 - val_loss: 0.0111 - 1s/epoch - 78us/sample
+Epoch 24/170
+17035/17035 - 1s - loss: 0.0042 - val_loss: 0.0112 - 1s/epoch - 79us/sample
+Epoch 25/170
+17035/17035 - 1s - loss: 0.0045 - val_loss: 0.0110 - 1s/epoch - 79us/sample
+Epoch 26/170
+17035/17035 - 1s - loss: 0.0041 - val_loss: 0.0109 - 1s/epoch - 79us/sample
+Epoch 27/170
+17035/17035 - 1s - loss: 0.0040 - val_loss: 0.0107 - 1s/epoch - 79us/sample
+Epoch 28/170
+17035/17035 - 1s - loss: 0.0039 - val_loss: 0.0106 - 1s/epoch - 78us/sample
+Epoch 29/170
+17035/17035 - 1s - loss: 0.0038 - val_loss: 0.0105 - 1s/epoch - 79us/sample
+Epoch 30/170
+17035/17035 - 1s - loss: 0.0037 - val_loss: 0.0105 - 1s/epoch - 78us/sample
+Epoch 31/170
+17035/17035 - 1s - loss: 0.0037 - val_loss: 0.0106 - 1s/epoch - 78us/sample
+Epoch 32/170
+17035/17035 - 1s - loss: 0.0037 - val_loss: 0.0103 - 1s/epoch - 79us/sample
+Epoch 33/170
+17035/17035 - 1s - loss: 0.0036 - val_loss: 0.0104 - 1s/epoch - 78us/sample
+Epoch 34/170
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0104 - 1s/epoch - 79us/sample
+Epoch 35/170
+17035/17035 - 1s - loss: 0.0038 - val_loss: 0.0102 - 1s/epoch - 79us/sample
+Epoch 36/170
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0102 - 1s/epoch - 79us/sample
+Epoch 37/170
+17035/17035 - 1s - loss: 0.0034 - val_loss: 0.0101 - 1s/epoch - 78us/sample
+Epoch 38/170
+17035/17035 - 1s - loss: 0.0033 - val_loss: 0.0103 - 1s/epoch - 79us/sample
+Epoch 39/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0100 - 1s/epoch - 79us/sample
+Epoch 40/170
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0100 - 1s/epoch - 79us/sample
+Epoch 41/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0100 - 1s/epoch - 79us/sample
+Epoch 42/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0099 - 1s/epoch - 78us/sample
+Epoch 43/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0099 - 1s/epoch - 78us/sample
+Epoch 44/170
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0099 - 1s/epoch - 78us/sample
+Epoch 45/170
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0098 - 1s/epoch - 79us/sample
+Epoch 46/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0098 - 1s/epoch - 78us/sample
+Epoch 47/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0097 - 1s/epoch - 79us/sample
+Epoch 48/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0097 - 1s/epoch - 78us/sample
+Epoch 49/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 50/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 51/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 52/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 53/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0096 - 1s/epoch - 79us/sample
+Epoch 54/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 55/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 56/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0097 - 1s/epoch - 78us/sample
+Epoch 57/170
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0096 - 1s/epoch - 79us/sample
+Epoch 58/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0095 - 1s/epoch - 79us/sample
+Epoch 59/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 60/170
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0095 - 1s/epoch - 79us/sample
+Epoch 61/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 62/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0096 - 1s/epoch - 79us/sample
+Epoch 63/170
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 64/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 65/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 79us/sample
+Epoch 66/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 67/170
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 68/170
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 69/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 70/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 79us/sample
+Epoch 71/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0092 - 1s/epoch - 79us/sample
+Epoch 72/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 73/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 79us/sample
+Epoch 74/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 75/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 79us/sample
+Epoch 76/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 79us/sample
+Epoch 77/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 79us/sample
+Epoch 78/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 79/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 80/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 81/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 82/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 83/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 84/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0092 - 1s/epoch - 77us/sample
+Epoch 85/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 86/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 87/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 88/170
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 89/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0091 - 1s/epoch - 77us/sample
+Epoch 90/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 91/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 92/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 79us/sample
+Epoch 93/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 94/170
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 95/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 96/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 97/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 98/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 99/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 100/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 101/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 102/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 103/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 104/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0090 - 1s/epoch - 79us/sample
+Epoch 105/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 106/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 107/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 79us/sample
+Epoch 108/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 109/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 110/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 111/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 112/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 113/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 114/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 115/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 116/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0090 - 1s/epoch - 79us/sample
+Epoch 117/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 79us/sample
+Epoch 118/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 119/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 120/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 121/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0090 - 1s/epoch - 79us/sample
+Epoch 122/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 123/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 79us/sample
+Epoch 124/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 79us/sample
+Epoch 125/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 79us/sample
+Epoch 126/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 79us/sample
+Epoch 127/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 128/170
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 79us/sample
+Epoch 129/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 130/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 131/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 132/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 133/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 134/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0090 - 1s/epoch - 77us/sample
+Epoch 135/170
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 136/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 137/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 138/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 139/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 140/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 141/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 142/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 143/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 144/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 145/170
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 146/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 147/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 148/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 149/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 150/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 151/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 152/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 79us/sample
+Epoch 153/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 154/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 155/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 156/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 157/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 158/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 159/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 160/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 161/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 162/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 163/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 164/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 165/170
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 79us/sample
+Epoch 166/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 79us/sample
+Epoch 167/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 168/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 79us/sample
+Epoch 169/170
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 170/170
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.008754599806916596
+correlation 0.008032308069385808
+cosine 0.0055238602471806295
+MAE: 0.01872318945605861
+RMSE: 0.09041808698686438
+r2: 0.7650156356134223
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 64, 170, 0.00030000000000000003, 0.2, 204, 0.0017969918942736642, 0.008754599806916596, 0.008032308069385808, 0.0055238602471806295, 0.01872318945605861, 0.09041808698686438, 0.7650156356134223, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[165 0.0005 64 1] 4
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_39 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_39 (ReLU)                (None, 510)          0           ['batch_normalization_39[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_39[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_39[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/165
+17035/17035 - 4s - loss: 0.0312 - val_loss: 0.0208 - 4s/epoch - 264us/sample
+Epoch 2/165
+17035/17035 - 1s - loss: 0.0112 - val_loss: 0.0175 - 1s/epoch - 80us/sample
+Epoch 3/165
+17035/17035 - 1s - loss: 0.0094 - val_loss: 0.0156 - 1s/epoch - 78us/sample
+Epoch 4/165
+17035/17035 - 1s - loss: 0.0083 - val_loss: 0.0145 - 1s/epoch - 78us/sample
+Epoch 5/165
+17035/17035 - 1s - loss: 0.0077 - val_loss: 0.0142 - 1s/epoch - 78us/sample
+Epoch 6/165
+17035/17035 - 1s - loss: 0.0071 - val_loss: 0.0140 - 1s/epoch - 78us/sample
+Epoch 7/165
+17035/17035 - 1s - loss: 0.0067 - val_loss: 0.0135 - 1s/epoch - 78us/sample
+Epoch 8/165
+17035/17035 - 1s - loss: 0.0064 - val_loss: 0.0130 - 1s/epoch - 78us/sample
+Epoch 9/165
+17035/17035 - 1s - loss: 0.0061 - val_loss: 0.0128 - 1s/epoch - 78us/sample
+Epoch 10/165
+17035/17035 - 1s - loss: 0.0059 - val_loss: 0.0125 - 1s/epoch - 78us/sample
+Epoch 11/165
+17035/17035 - 1s - loss: 0.0056 - val_loss: 0.0124 - 1s/epoch - 78us/sample
+Epoch 12/165
+17035/17035 - 1s - loss: 0.0054 - val_loss: 0.0122 - 1s/epoch - 77us/sample
+Epoch 13/165
+17035/17035 - 1s - loss: 0.0053 - val_loss: 0.0121 - 1s/epoch - 78us/sample
+Epoch 14/165
+17035/17035 - 1s - loss: 0.0052 - val_loss: 0.0120 - 1s/epoch - 77us/sample
+Epoch 15/165
+17035/17035 - 1s - loss: 0.0050 - val_loss: 0.0115 - 1s/epoch - 77us/sample
+Epoch 16/165
+17035/17035 - 1s - loss: 0.0049 - val_loss: 0.0116 - 1s/epoch - 78us/sample
+Epoch 17/165
+17035/17035 - 1s - loss: 0.0048 - val_loss: 0.0114 - 1s/epoch - 78us/sample
+Epoch 18/165
+17035/17035 - 1s - loss: 0.0047 - val_loss: 0.0114 - 1s/epoch - 77us/sample
+Epoch 19/165
+17035/17035 - 1s - loss: 0.0045 - val_loss: 0.0117 - 1s/epoch - 77us/sample
+Epoch 20/165
+17035/17035 - 1s - loss: 0.0048 - val_loss: 0.0111 - 1s/epoch - 78us/sample
+Epoch 21/165
+17035/17035 - 1s - loss: 0.0043 - val_loss: 0.0111 - 1s/epoch - 78us/sample
+Epoch 22/165
+17035/17035 - 1s - loss: 0.0043 - val_loss: 0.0111 - 1s/epoch - 77us/sample
+Epoch 23/165
+17035/17035 - 1s - loss: 0.0043 - val_loss: 0.0110 - 1s/epoch - 78us/sample
+Epoch 24/165
+17035/17035 - 1s - loss: 0.0042 - val_loss: 0.0110 - 1s/epoch - 78us/sample
+Epoch 25/165
+17035/17035 - 1s - loss: 0.0042 - val_loss: 0.0110 - 1s/epoch - 77us/sample
+Epoch 26/165
+17035/17035 - 1s - loss: 0.0040 - val_loss: 0.0107 - 1s/epoch - 77us/sample
+Epoch 27/165
+17035/17035 - 1s - loss: 0.0039 - val_loss: 0.0105 - 1s/epoch - 77us/sample
+Epoch 28/165
+17035/17035 - 1s - loss: 0.0038 - val_loss: 0.0108 - 1s/epoch - 78us/sample
+Epoch 29/165
+17035/17035 - 1s - loss: 0.0041 - val_loss: 0.0106 - 1s/epoch - 78us/sample
+Epoch 30/165
+17035/17035 - 1s - loss: 0.0037 - val_loss: 0.0105 - 1s/epoch - 78us/sample
+Epoch 31/165
+17035/17035 - 1s - loss: 0.0037 - val_loss: 0.0104 - 1s/epoch - 78us/sample
+Epoch 32/165
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0102 - 1s/epoch - 78us/sample
+Epoch 33/165
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0104 - 1s/epoch - 78us/sample
+Epoch 34/165
+17035/17035 - 1s - loss: 0.0034 - val_loss: 0.0101 - 1s/epoch - 77us/sample
+Epoch 35/165
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0102 - 1s/epoch - 78us/sample
+Epoch 36/165
+17035/17035 - 1s - loss: 0.0033 - val_loss: 0.0101 - 1s/epoch - 80us/sample
+Epoch 37/165
+17035/17035 - 1s - loss: 0.0033 - val_loss: 0.0100 - 1s/epoch - 78us/sample
+Epoch 38/165
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0101 - 1s/epoch - 78us/sample
+Epoch 39/165
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0100 - 1s/epoch - 78us/sample
+Epoch 40/165
+17035/17035 - 1s - loss: 0.0032 - val_loss: 0.0100 - 1s/epoch - 77us/sample
+Epoch 41/165
+17035/17035 - 1s - loss: 0.0031 - val_loss: 0.0098 - 1s/epoch - 77us/sample
+Epoch 42/165
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0098 - 1s/epoch - 78us/sample
+Epoch 43/165
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0099 - 1s/epoch - 78us/sample
+Epoch 44/165
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0098 - 1s/epoch - 78us/sample
+Epoch 45/165
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0104 - 1s/epoch - 77us/sample
+Epoch 46/165
+17035/17035 - 1s - loss: 0.0035 - val_loss: 0.0099 - 1s/epoch - 78us/sample
+Epoch 47/165
+17035/17035 - 1s - loss: 0.0030 - val_loss: 0.0097 - 1s/epoch - 78us/sample
+Epoch 48/165
+17035/17035 - 1s - loss: 0.0029 - val_loss: 0.0097 - 1s/epoch - 77us/sample
+Epoch 49/165
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 50/165
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 51/165
+17035/17035 - 1s - loss: 0.0028 - val_loss: 0.0096 - 1s/epoch - 78us/sample
+Epoch 52/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 53/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 54/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0095 - 1s/epoch - 77us/sample
+Epoch 55/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0095 - 1s/epoch - 77us/sample
+Epoch 56/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0095 - 1s/epoch - 78us/sample
+Epoch 57/165
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 58/165
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 77us/sample
+Epoch 59/165
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 77us/sample
+Epoch 60/165
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 61/165
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 62/165
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0094 - 1s/epoch - 77us/sample
+Epoch 63/165
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 64/165
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0093 - 1s/epoch - 77us/sample
+Epoch 65/165
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 66/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 77us/sample
+Epoch 67/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 68/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 77us/sample
+Epoch 69/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 78us/sample
+Epoch 70/165
+17035/17035 - 1s - loss: 0.0025 - val_loss: 0.0092 - 1s/epoch - 77us/sample
+Epoch 71/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0093 - 1s/epoch - 77us/sample
+Epoch 72/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0094 - 1s/epoch - 78us/sample
+Epoch 73/165
+17035/17035 - 1s - loss: 0.0027 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 74/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0092 - 1s/epoch - 77us/sample
+Epoch 75/165
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 76/165
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 77/165
+17035/17035 - 1s - loss: 0.0026 - val_loss: 0.0092 - 1s/epoch - 78us/sample
+Epoch 78/165
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 77us/sample
+Epoch 79/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 80/165
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 81/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 79us/sample
+Epoch 82/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 83/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 84/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 85/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 77us/sample
+Epoch 86/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 87/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 77us/sample
+Epoch 88/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 77us/sample
+Epoch 89/165
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 90/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 91/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 92/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0091 - 1s/epoch - 77us/sample
+Epoch 93/165
+17035/17035 - 1s - loss: 0.0024 - val_loss: 0.0091 - 1s/epoch - 78us/sample
+Epoch 94/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 95/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 96/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0089 - 1s/epoch - 79us/sample
+Epoch 97/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 77us/sample
+Epoch 98/165
+17035/17035 - 1s - loss: 0.0022 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 99/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0090 - 1s/epoch - 78us/sample
+Epoch 100/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 78us/sample
+Epoch 101/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 102/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 103/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 104/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 105/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 106/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 107/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 108/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 109/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 110/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 111/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 112/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 76us/sample
+Epoch 113/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 114/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 115/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 116/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 117/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 118/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 119/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 120/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 121/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 122/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 123/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 124/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 125/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0089 - 1s/epoch - 77us/sample
+Epoch 126/165
+17035/17035 - 1s - loss: 0.0023 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 127/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 128/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 129/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 130/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 131/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 132/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 133/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 134/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 135/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 136/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 137/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 138/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 76us/sample
+Epoch 139/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 77us/sample
+Epoch 140/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 141/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0088 - 1s/epoch - 76us/sample
+Epoch 142/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 143/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 144/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 145/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 146/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 147/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 79us/sample
+Epoch 148/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 149/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 150/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 151/165
+17035/17035 - 1s - loss: 0.0019 - val_loss: 0.0087 - 1s/epoch - 80us/sample
+Epoch 152/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 153/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 154/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 155/165
+17035/17035 - 1s - loss: 0.0021 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 156/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 157/165
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 158/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 159/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 160/165
+17035/17035 - 1s - loss: 0.0020 - val_loss: 0.0088 - 1s/epoch - 78us/sample
+Epoch 161/165
+17035/17035 - 1s - loss: 0.0018 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 162/165
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 77us/sample
+Epoch 163/165
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 79us/sample
+Epoch 164/165
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0087 - 1s/epoch - 78us/sample
+Epoch 165/165
+17035/17035 - 1s - loss: 0.0017 - val_loss: 0.0086 - 1s/epoch - 77us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.00864059807826424
+correlation 0.007428420350975556
+cosine 0.005116072742474915
+MAE: 0.01767585404196566
+RMSE: 0.08987550765515867
+r2: 0.7678281437745935
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 64, 165, 0.0005, 0.2, 204, 0.001714071098975848, 0.00864059807826424, 0.007428420350975556, 0.005116072742474915, 0.01767585404196566, 0.08987550765515867, 0.7678281437745935, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'numpy.int64'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[15 0.001 32 1] 5
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_42 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_42 (ReLU)                (None, 510)          0           ['batch_normalization_42[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_42[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_42[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/15
+17035/17035 - 6s - loss: 0.0241 - val_loss: 0.0183 - 6s/epoch - 323us/sample
+Epoch 2/15
+17035/17035 - 2s - loss: 0.0109 - val_loss: 0.0161 - 2s/epoch - 122us/sample
+Epoch 3/15
+17035/17035 - 2s - loss: 0.0092 - val_loss: 0.0143 - 2s/epoch - 122us/sample
+Epoch 4/15
+17035/17035 - 2s - loss: 0.0080 - val_loss: 0.0134 - 2s/epoch - 122us/sample
+Epoch 5/15
+17035/17035 - 2s - loss: 0.0074 - val_loss: 0.0132 - 2s/epoch - 121us/sample
+Epoch 6/15
+17035/17035 - 2s - loss: 0.0068 - val_loss: 0.0128 - 2s/epoch - 121us/sample
+Epoch 7/15
+17035/17035 - 2s - loss: 0.0063 - val_loss: 0.0126 - 2s/epoch - 123us/sample
+Epoch 8/15
+17035/17035 - 2s - loss: 0.0061 - val_loss: 0.0123 - 2s/epoch - 122us/sample
+Epoch 9/15
+17035/17035 - 2s - loss: 0.0058 - val_loss: 0.0119 - 2s/epoch - 121us/sample
+Epoch 10/15
+17035/17035 - 2s - loss: 0.0056 - val_loss: 0.0118 - 2s/epoch - 121us/sample
+Epoch 11/15
+17035/17035 - 2s - loss: 0.0053 - val_loss: 0.0120 - 2s/epoch - 122us/sample
+Epoch 12/15
+17035/17035 - 2s - loss: 0.0051 - val_loss: 0.0114 - 2s/epoch - 122us/sample
+Epoch 13/15
+17035/17035 - 2s - loss: 0.0049 - val_loss: 0.0112 - 2s/epoch - 122us/sample
+Epoch 14/15
+17035/17035 - 2s - loss: 0.0047 - val_loss: 0.0110 - 2s/epoch - 121us/sample
+Epoch 15/15
+17035/17035 - 2s - loss: 0.0045 - val_loss: 0.0108 - 2s/epoch - 122us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.010801696151886598
+correlation 0.02004179204099485
+cosine 0.01363129881028609
+MAE: 0.03179598347997609
+RMSE: 0.10005676388727217
+r2: 0.7122570193841857
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 32, 15, 0.001, 0.2, 204, 0.004462060549451978, 0.010801696151886598, 0.02004179204099485, 0.01363129881028609, 0.03179598347997609, 0.10005676388727217, 0.7122570193841857, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'numpy.int64'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[15 0.001 16 2] 6
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_45 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_45 (ReLU)                (None, 510)          0           ['batch_normalization_45[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_45[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_45[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/15
+17035/17035 - 8s - loss: 0.0110 - val_loss: 0.0063 - 8s/epoch - 452us/sample
+Epoch 2/15
+17035/17035 - 4s - loss: 0.0059 - val_loss: 0.0047 - 4s/epoch - 207us/sample
+Epoch 3/15
+17035/17035 - 4s - loss: 0.0050 - val_loss: 0.0041 - 4s/epoch - 208us/sample
+Epoch 4/15
+17035/17035 - 4s - loss: 0.0044 - val_loss: 0.0037 - 4s/epoch - 208us/sample
+Epoch 5/15
+17035/17035 - 4s - loss: 0.0041 - val_loss: 0.0034 - 4s/epoch - 208us/sample
+Epoch 6/15
+17035/17035 - 4s - loss: 0.0037 - val_loss: 0.0031 - 4s/epoch - 208us/sample
+Epoch 7/15
+17035/17035 - 4s - loss: 0.0034 - val_loss: 0.0029 - 4s/epoch - 207us/sample
+Epoch 8/15
+17035/17035 - 4s - loss: 0.0032 - val_loss: 0.0028 - 4s/epoch - 207us/sample
+Epoch 9/15
+17035/17035 - 4s - loss: 0.0029 - val_loss: 0.0025 - 4s/epoch - 208us/sample
+Epoch 10/15
+17035/17035 - 4s - loss: 0.0028 - val_loss: 0.0024 - 4s/epoch - 208us/sample
+Epoch 11/15
+17035/17035 - 4s - loss: 0.0026 - val_loss: 0.0023 - 4s/epoch - 208us/sample
+Epoch 12/15
+17035/17035 - 4s - loss: 0.0025 - val_loss: 0.0022 - 4s/epoch - 208us/sample
+Epoch 13/15
+17035/17035 - 4s - loss: 0.0024 - val_loss: 0.0022 - 4s/epoch - 208us/sample
+Epoch 14/15
+17035/17035 - 4s - loss: 0.0023 - val_loss: 0.0021 - 4s/epoch - 208us/sample
+Epoch 15/15
+17035/17035 - 4s - loss: 0.0022 - val_loss: 0.0021 - 4s/epoch - 208us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.0020856894836827474
+correlation 0.019565943234334634
+cosine 0.013339523938766038
+MAE: 0.029911165352666816
+RMSE: 0.09972637997863254
+r2: 0.7141420215888425
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'logcosh', 16, 15, 0.001, 0.2, 204, 0.0022293417596583242, 0.0020856894836827474, 0.019565943234334634, 0.013339523938766038, 0.029911165352666816, 0.09972637997863254, 0.7141420215888425, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[10 0.0012000000000000001 8 1] 7
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_48 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_48 (ReLU)                (None, 510)          0           ['batch_normalization_48[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_48[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_48[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+Train on 17035 samples, validate on 1893 samples
+Epoch 1/10
+17035/17035 - 11s - loss: 0.0222 - val_loss: 0.0182 - 11s/epoch - 628us/sample
+Epoch 2/10
+17035/17035 - 7s - loss: 0.0122 - val_loss: 0.0166 - 7s/epoch - 383us/sample
+Epoch 3/10
+17035/17035 - 6s - loss: 0.0104 - val_loss: 0.0145 - 6s/epoch - 381us/sample
+Epoch 4/10
+17035/17035 - 6s - loss: 0.0091 - val_loss: 0.0149 - 6s/epoch - 380us/sample
+Epoch 5/10
+17035/17035 - 6s - loss: 0.0081 - val_loss: 0.0143 - 6s/epoch - 380us/sample
+Epoch 6/10
+17035/17035 - 6s - loss: 0.0075 - val_loss: 0.0141 - 6s/epoch - 379us/sample
+Epoch 7/10
+17035/17035 - 6s - loss: 0.0070 - val_loss: 0.0140 - 6s/epoch - 381us/sample
+Epoch 8/10
+17035/17035 - 6s - loss: 0.0067 - val_loss: 0.0137 - 6s/epoch - 380us/sample
+Epoch 9/10
+17035/17035 - 6s - loss: 0.0064 - val_loss: 0.0135 - 6s/epoch - 379us/sample
+Epoch 10/10
+17035/17035 - 6s - loss: 0.0061 - val_loss: 0.0127 - 6s/epoch - 379us/sample
+COMPRESSED VECTOR SIZE: 204
+Loss in the autoencoder: 0.012744923658487945
+correlation 0.029559479680356163
+cosine 0.02047646315814899
+MAE: 0.038750947155461096
+RMSE: 0.10905285417445607
+r2: 0.6581783181811351
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 10, 0.0012000000000000001, 0.2, 204, 0.006085208018830017, 0.012744923658487945, 0.029559479680356163, 0.02047646315814899, 0.038750947155461096, 0.10905285417445607, 0.6581783181811351, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'numpy.int64'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[10 0.0012000000000000001 8 1] 8
+./tmp/ already created.
+Shape of dataset to encode: (18928, 1020)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1020)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 510)          520710      ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_51 (BatchN  (None, 510)         2040        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_51 (ReLU)                (None, 510)          0           ['batch_normalization_51[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 204)          104244      ['re_lu_51[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 204)          104244      ['re_lu_51[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 204)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1020)         670446      ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 1,401,684
+Trainable params: 1,399,236
+Non-trainable params: 2,448
+__________________________________________________________________________________________________
+File test_geneticVAE_OFM_custom_VAE0.5_cr0.2_bs8_ep10_loss_mse_lr0.0012000000000000001_AutoEncoder.h5 exists in folder already, skiping this calculation.
+correlation 0.029556521490298308
+cosine 0.02046981658754963
+MAE: 0.038778245655001896
+RMSE: 0.10902774567993241
+r2: 0.6583357101934494
+RMSE zero-vector: 0.34573518857430263
+['0.5custom_VAE', 'mse', 8, 10, 0.0012000000000000001, 0.2, 204, '--', '--', 0.029556521490298308, 0.02046981658754963, 0.038778245655001896, 0.10902774567993241, 0.6583357101934494, 0.34573518857430263] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'str'>, <class 'str'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+Generation = 1
+Fitness    = 56.57115217594455

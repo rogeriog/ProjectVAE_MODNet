@@ -1,0 +1,436 @@
+start
+Thu Feb 16 19:21:48 CET 2023
+2023-02-16 19:21:49.558592: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-16 19:21:49.692040: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2023-02-16 19:22:22,849 - modnet - INFO - Loaded <modnet.preprocessing.MODData object at 0x7fcb4517bd90> object, created with modnet version 0.1.12
+NAN values: 12054
+NAN values remaining: 0
+        AtomicOrbitals|HOMO_character  ...  BondFractions|B - B bond frac.
+id                                     ...                                
+0                                 3.0  ...                             0.0
+1                                 3.0  ...                             0.0
+2                                 2.0  ...                             0.0
+3                                 2.0  ...                             0.0
+4                                 2.0  ...                             0.0
+...                               ...  ...                             ...
+106108                            3.0  ...                             0.0
+106109                            2.0  ...                             0.0
+106110                            3.0  ...                             0.0
+106111                            3.0  ...                             0.0
+106112                            1.0  ...                             0.0
+
+[106113 rows x 1336 columns]
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:486: UserWarning: The percentage of genes to mutate (mutation_percent_genes=10) resutled in selecting (0) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).
+If you do not want to mutate any gene, please set mutation_type=None.
+  if not self.suppress_warnings: warnings.warn("The percentage of genes to mutate (mutation_percent_genes={mutation_percent}) resutled in selecting ({mutation_num}) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).\nIf you do not want to mutate any gene, please set mutation_type=None.".format(mutation_percent=mutation_percent_genes, mutation_num=mutation_num_genes))
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:820: UserWarning: Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:828: UserWarning: Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.")
+[[2.5 180 0.001 64 1]
+ [1.5 150 0.002 64 2]
+ [1.0 30 0.001 128 2]
+ [1.5 90 0.002 128 2]
+ [1.0 180 0.001 64 2]
+ [1.0 30 0.001 128 2]
+ [1.5 120 0.0005 128 1]
+ [2.0 60 0.0005 128 1]
+ [2.5 90 0.002 256 2]
+ [2.0 180 0.0005 64 1]]
+[2.5 180 0.001 64 1] 0
+./tmp/ already created.
+Shape of dataset to encode: (106113, 1264)
+2023-02-16 19:22:26.539709: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-16 19:22:27.044443: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 9634 MB memory:  -> device: 0, name: GeForce RTX 2080 Ti, pci bus id: 0000:1b:00.0, compute capability: 7.5
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 1264)]       0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 3160)         3997400     ['input_enc[0][0]']              
+                                                                                                  
+ dropout (Dropout)              (None, 3160)         0           ['dense_enc0[0][0]']             
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 3160)        12640       ['dropout[0][0]']                
+ alization)                                                                                       
+                                                                                                  
+ re_lu (ReLU)                   (None, 3160)         0           ['batch_normalization[0][0]']    
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 632)          1997752     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 632)          1997752     ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck (SamplingLayer)     (None, 632)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 1264)         6411008     ['bottleneck[0][0]']             
+                                                                                                  
+ vae_loss_layer (VAELossLayer)  (None, 1264)         0           ['input_enc[0][0]',              
+                                                                  'decoder_model[0][0]',          
+                                                                  'bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+==================================================================================================
+Total params: 14,416,552
+Trainable params: 14,402,648
+Non-trainable params: 13,904
+__________________________________________________________________________________________________
+Epoch 1/180
+2023-02-16 19:22:31.111323: I tensorflow/compiler/xla/service/service.cc:173] XLA service 0x7fc808014010 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-02-16 19:22:31.111384: I tensorflow/compiler/xla/service/service.cc:181]   StreamExecutor device (0): GeForce RTX 2080 Ti, Compute Capability 7.5
+2023-02-16 19:22:31.122946: I tensorflow/compiler/mlir/tensorflow/utils/dump_mlir_util.cc:268] disabling MLIR crash reproducer, set env var `MLIR_CRASH_REPRODUCER_DIRECTORY` to enable.
+2023-02-16 19:22:31.974868: I tensorflow/compiler/jit/xla_compilation_cache.cc:477] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+1493/1493 - 11s - loss: 0.0395 - val_loss: 0.0156 - 11s/epoch - 8ms/step
+Epoch 2/180
+1493/1493 - 6s - loss: 0.0149 - val_loss: 0.0140 - 6s/epoch - 4ms/step
+Epoch 3/180
+1493/1493 - 6s - loss: 0.0143 - val_loss: 0.0141 - 6s/epoch - 4ms/step
+Epoch 4/180
+1493/1493 - 6s - loss: 0.0131 - val_loss: 0.0142 - 6s/epoch - 4ms/step
+Epoch 5/180
+1493/1493 - 6s - loss: 0.0130 - val_loss: 0.0142 - 6s/epoch - 4ms/step
+Epoch 6/180
+1493/1493 - 6s - loss: 0.0129 - val_loss: 0.0143 - 6s/epoch - 4ms/step
+Epoch 7/180
+1493/1493 - 6s - loss: 0.0128 - val_loss: 0.0146 - 6s/epoch - 4ms/step
+Epoch 8/180
+1493/1493 - 5s - loss: 0.0127 - val_loss: 0.0149 - 5s/epoch - 4ms/step
+Epoch 9/180
+1493/1493 - 6s - loss: 0.0127 - val_loss: 0.0146 - 6s/epoch - 4ms/step
+Epoch 10/180
+1493/1493 - 6s - loss: 0.0126 - val_loss: 0.0143 - 6s/epoch - 4ms/step
+Epoch 11/180
+1493/1493 - 5s - loss: 0.0126 - val_loss: 0.0147 - 5s/epoch - 4ms/step
+Epoch 12/180
+1493/1493 - 6s - loss: 0.0126 - val_loss: 0.0146 - 6s/epoch - 4ms/step
+Epoch 13/180
+1493/1493 - 6s - loss: 0.0125 - val_loss: 0.0145 - 6s/epoch - 4ms/step
+Epoch 14/180
+1493/1493 - 6s - loss: 0.0125 - val_loss: 0.0145 - 6s/epoch - 4ms/step
+Epoch 15/180
+1493/1493 - 6s - loss: 0.0124 - val_loss: 0.0142 - 6s/epoch - 4ms/step
+Epoch 16/180
+1493/1493 - 6s - loss: 0.0122 - val_loss: 0.0140 - 6s/epoch - 4ms/step
+Epoch 17/180
+1493/1493 - 5s - loss: 0.0120 - val_loss: 0.0138 - 5s/epoch - 4ms/step
+Epoch 18/180
+1493/1493 - 6s - loss: 0.0118 - val_loss: 0.0136 - 6s/epoch - 4ms/step
+Epoch 19/180
+1493/1493 - 6s - loss: 0.0118 - val_loss: 0.0137 - 6s/epoch - 4ms/step
+Epoch 20/180
+1493/1493 - 6s - loss: 0.0117 - val_loss: 0.0136 - 6s/epoch - 4ms/step
+Epoch 21/180
+1493/1493 - 6s - loss: 0.0117 - val_loss: 0.0134 - 6s/epoch - 4ms/step
+Epoch 22/180
+1493/1493 - 6s - loss: 0.0116 - val_loss: 0.0135 - 6s/epoch - 4ms/step
+Epoch 23/180
+1493/1493 - 6s - loss: 0.0116 - val_loss: 0.0135 - 6s/epoch - 4ms/step
+Epoch 24/180
+1493/1493 - 6s - loss: 0.0115 - val_loss: 0.0132 - 6s/epoch - 4ms/step
+Epoch 25/180
+1493/1493 - 6s - loss: 0.0115 - val_loss: 0.0134 - 6s/epoch - 4ms/step
+Epoch 26/180
+1493/1493 - 6s - loss: 0.0114 - val_loss: 0.0132 - 6s/epoch - 4ms/step
+Epoch 27/180
+1493/1493 - 6s - loss: 0.0114 - val_loss: 0.0131 - 6s/epoch - 4ms/step
+Epoch 28/180
+1493/1493 - 6s - loss: 0.0113 - val_loss: 0.0131 - 6s/epoch - 4ms/step
+Epoch 29/180
+1493/1493 - 6s - loss: 0.0113 - val_loss: 0.0129 - 6s/epoch - 4ms/step
+Epoch 30/180
+1493/1493 - 6s - loss: 0.0112 - val_loss: 0.0130 - 6s/epoch - 4ms/step
+Epoch 31/180
+1493/1493 - 6s - loss: 0.0112 - val_loss: 0.0129 - 6s/epoch - 4ms/step
+Epoch 32/180
+1493/1493 - 6s - loss: 0.0112 - val_loss: 0.0130 - 6s/epoch - 4ms/step
+Epoch 33/180
+1493/1493 - 6s - loss: 0.0112 - val_loss: 0.0128 - 6s/epoch - 4ms/step
+Epoch 34/180
+1493/1493 - 6s - loss: 0.0111 - val_loss: 0.0128 - 6s/epoch - 4ms/step
+Epoch 35/180
+1493/1493 - 6s - loss: 0.0111 - val_loss: 0.0128 - 6s/epoch - 4ms/step
+Epoch 36/180
+1493/1493 - 6s - loss: 0.0111 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 37/180
+1493/1493 - 6s - loss: 0.0111 - val_loss: 0.0128 - 6s/epoch - 4ms/step
+Epoch 38/180
+1493/1493 - 6s - loss: 0.0111 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 39/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0127 - 6s/epoch - 4ms/step
+Epoch 40/180
+1493/1493 - 6s - loss: 0.0111 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 41/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0128 - 6s/epoch - 4ms/step
+Epoch 42/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 43/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0128 - 6s/epoch - 4ms/step
+Epoch 44/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 45/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 46/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 47/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 48/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 49/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 50/180
+1493/1493 - 6s - loss: 0.0110 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 51/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 52/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 53/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 54/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 55/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 56/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 57/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 58/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 59/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 60/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 61/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 62/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 63/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 64/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0126 - 6s/epoch - 4ms/step
+Epoch 65/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 66/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 67/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 68/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 69/180
+1493/1493 - 6s - loss: 0.0109 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 70/180
+1493/1493 - 6s - loss: 0.0108 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 71/180
+1493/1493 - 6s - loss: 0.0108 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 72/180
+1493/1493 - 6s - loss: 0.0108 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 73/180
+1493/1493 - 6s - loss: 0.0108 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 74/180
+1493/1493 - 6s - loss: 0.0108 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 75/180
+1493/1493 - 6s - loss: 0.0108 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 76/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 77/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 78/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 79/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 80/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 81/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 82/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 83/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 84/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 85/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 86/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 87/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 88/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 89/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 90/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0121 - 6s/epoch - 4ms/step
+Epoch 91/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0120 - 6s/epoch - 4ms/step
+Epoch 92/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 93/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 94/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 95/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 96/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 97/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 98/180
+1493/1493 - 6s - loss: 0.0107 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 99/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 100/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 101/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 102/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 103/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 104/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 105/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 106/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 107/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 108/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0120 - 6s/epoch - 4ms/step
+Epoch 109/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 110/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0120 - 6s/epoch - 4ms/step
+Epoch 111/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 112/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 113/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 114/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0121 - 6s/epoch - 4ms/step
+Epoch 115/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 116/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 117/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 118/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 119/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 120/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 121/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 122/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0121 - 6s/epoch - 4ms/step
+Epoch 123/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 124/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 125/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 126/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 127/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 128/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 129/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 130/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 131/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 132/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 133/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 134/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 135/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 136/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 137/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 138/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 139/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 140/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 141/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 142/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 143/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 144/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0120 - 6s/epoch - 4ms/step
+Epoch 145/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 146/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 147/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 148/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 149/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 150/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 151/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0121 - 6s/epoch - 4ms/step
+Epoch 152/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 153/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0121 - 6s/epoch - 4ms/step
+Epoch 154/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 155/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 156/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 157/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 158/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 159/180
+1493/1493 - 6s - loss: 0.0106 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 160/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 161/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 162/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 163/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0121 - 6s/epoch - 4ms/step
+Epoch 164/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 165/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 166/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 167/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 168/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 169/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 170/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 171/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 172/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0124 - 6s/epoch - 4ms/step
+Epoch 173/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0125 - 6s/epoch - 4ms/step
+Epoch 174/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0123 - 6s/epoch - 4ms/step
+Epoch 175/180
+1493/1493 - 6s - loss: 0.0105 - val_loss: 0.0122 - 6s/epoch - 4ms/step
+Epoch 176/180
+slurmstepd: error: *** JOB 36078116 ON mb-cas001 CANCELLED AT 2023-02-16T19:39:07 ***

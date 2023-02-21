@@ -1,0 +1,1000 @@
+  148  tail log.txt
+  149  sq
+  150  ls
+  151  pwd
+  152  sq
+  153  ls
+  154  scancel 36077585
+  155  ls tmp
+  156  cd /globalscratch/users/r/g/rgouvea/AutoencoderTools/ && python3 setup.py install && cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/ && python3 genetic.py 
+  157  ls
+  158  tail log.txt
+  159  ls
+  160  tail submit.sh 
+  161  sq
+  162  scancel 36077811
+  163  ls
+  164  sq
+  165  ls
+  166  sbatch submit.sh 
+  167  sq
+  168  ls
+  169  pwd
+  170  ls tmp
+  171  ls
+  172  sq
+  173  ls
+  174  tail log.txt
+  175  pwd
+  176  tail log.txt
+  177  sq
+  178  ls
+  179  pwd
+  180  cd ..
+  181  ls
+  182  cd cr_0.5/
+  183  ls
+  184  sbatch submit.sh 
+  185  sq
+  186  ls
+  187  cd ..
+  188  ls
+  189  pwd
+  190  cd -
+  191  cd ..
+  192  pwd
+  193  sq
+  194  ls
+  195  cd cr_0.2/
+  196  ls
+  197  tail log.txt
+  198  grep MAE log.txt
+  199  ls
+  200  sbatch submit.sh 
+  201  sq
+  202  cd /globalscratch/users/r/g/rgouvea/featurize_OFM/remainingOFMfeats
+  203  ls
+  204  mkdir OFMremaining
+  205  mv remaining_mp_gap_OFM* OFMremaining/
+  206  ls
+  207  tail log.txt 
+  208  ls
+  209  sq
+  210  scancel 36078116 36078124
+  211  sq
+  212  ls
+  213  sbatch submit.sh 
+  214  sbatch submit2.sh 
+  215  sbatch submit3.sh 
+  216  sbatch submit4.sh 
+  217  ls
+  218  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6
+  219  ls
+  220  sbatch submit.sh 
+  221  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  222  ls
+  223  sbatch submit.sh 
+  224  sq
+  225  scancel 36078443 36078439
+  226  sq
+  227  pwd
+  228  ls
+  229  cd /globalscratch/users/r/g/rgouvea/AutoencoderTools/ && python3 setup.py install && cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/ && python3 genetic.py 
+  230  ls
+  231  rm -rf tmp
+  232  sbatch submit.sh 
+  233  sq
+  234  cd ../cr_0.2/
+  235  ls
+  236  cat submit.sh 
+  237  ls
+  238  tail log.txt
+  239  sq
+  240  ls
+  241  pwd
+  242  ls
+  243  rm -rf tmp/
+  244  sbatch submit.sh 
+  245  sq
+  246  ls
+  247  cd /globalscratch/users/r/g/rgouvea/featurize_OFM/remainingOFMfeats/
+  248  ls
+  249  sq
+  250  scancel  36078408 36078405 36078406 36078407
+  251  sq
+  252  ls
+  253  sq
+  254  ls
+  255  sbatch submit.sh submit2.sh submit3.sh submit4.sh 
+  256  sq
+  257  scancel 36078645
+  258  sq
+  259  ls
+  260  sbatch submit.sh
+  261  sbatch submit2.sh
+  262  sbatch submit3.sh
+  263  sbatch submit4.sh
+  264  sq
+  265  exit
+  266  conda activate env_modnetmod
+  267  ls
+  268  sq
+  269  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/
+  270  grep MAE log.txt
+  271  ls
+  272  tail submit.sh 
+  273  ls
+  274  sq
+  275  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  276  ls
+  277  sq
+  278  ls
+  279  grep MAE log.txt
+  280  sq
+  281  ls
+  282  sbatch submit.sh 
+  283  sq
+  284  nvcc --version
+  285  pip install cudatoolkit==11.2
+  286  pip install cudatoolkit==11.3.1
+  287  pip install cudatoolkit
+  288  pip update cudatoolkit
+  289  conda install cudatoolkit=11.2
+  290  pip install cudatoolkit
+  291  pip update cudatoolkit
+  292  conda install -c anaconda cudatoolkit
+  293  conda install -c conda-forge cudatoolkit=11.2.2 
+  294  ls
+  295  conda env remove env_modnet
+  296  conda env remove -n env_modnet
+  297  conda deactivate
+  298  conda env remove -n env_modnet
+  299  rm -rf /home/ucl/modl/rgouvea/anaconda3/envs/env_modnet
+  300  conda activate env_modnetmod
+  301  conda install -c conda-forge cudatoolkit=11.2.2 
+  302  conda env list
+  303  ls
+  304  tail log.txt
+  305  sbatch submit.sh 
+  306  sq
+  307  tail log.txt
+  308  sq
+  309  cd ..
+  310  ls
+  311  cd cr_0.6/
+  312  ls
+  313  sbatch submit.sh 
+  314  sq
+  315  cd ..
+  316  ls
+  317  cd cr_0.4/
+  318  ls
+  319  tail log.txt 
+  320  ls
+  321  sbatch submit.sh 
+  322  sq
+  323  ls
+  324  sq
+  325  nvdia-smi
+  326  module load nvdia-smi
+  327  nvidia-smi
+  328  module load nvtop
+  329  nvtop
+  330  sq
+  331  exit
+  332  module load nvtop
+  333  nvtop
+  334  sq
+  335  nvtop
+  336  sq
+  337  ls
+  338  exit
+  339  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2
+  340  sbatch submit.sh 
+  341  sq
+  342  conda activate env_modnetmod
+  343  sq
+  344  ls
+  345  tail log.txt
+  346  sq
+  347  ssh mb-rom103
+  348  ls
+  349  sq
+  350  ssh mb-rom103
+  351  ls
+  352  conda activate env_modnetmod
+  353  pwd
+  354  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  355  cd /globalscratch/users/r/g/rgouvea/AutoencoderTools/ && python3 setup.py install && cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/ && python3 genetic.py 
+  356  ls
+  357  sbatch submit.sh 
+  358  sq
+  359  ls
+  360  tail log.txt
+  361  ls
+  362  sq
+  363  pwd
+  364  conda install cudatoolkit=11.2
+  365  conda install -c conda-forge cudatoolkit=11.2.2 
+  366  conda update -n base -c conda-forge conda
+  367  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  368  ls
+  369  sbatch submit.sh 
+  370  sq
+  371  tail log.txt
+  372  grep MAE log.txt
+  373  grep r2 log.txt
+  374  sq
+  375  tail log.txt
+  376  sq
+  377  tail log.txt
+  378  grep r2 log.txt
+  379  grep MAE log.txt
+  380  grep r2 log.txt
+  381  grep MAE log.txt
+  382  grep r2 log.txt
+  383  grep MAE log.txt
+  384  sq
+  385  grep MAE log.txt
+  386  grep r2 log.txt
+  387  grep MAE log.txt
+  388  grep r2 log.txt
+  389  tail log.txt
+  390  grep r2 log.txt
+  391  grep MAE log.txt
+  392  grep r2 log.txt
+  393  grep MAE log.txt
+  394  grep r2 log.txt
+  395  grep MAE log.txt
+  396  tail log.txt
+  397  sq
+  398  tail log.txt
+  399  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4/
+  400  ls
+  401  tail log.txt
+  402  ls
+  403  grep MAE log.txt 
+  404  mv log.txt log.txt_old
+  405  ls
+  406  sbatch submit.sh
+  407  sq
+  408  tail log.txt
+  409  sq
+  410  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  411  ls
+  412  grep MAE log.txt
+  413  l
+  414  ls
+  415  sq
+  416  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4/
+  417  ls
+  418  tail log.txt
+  419  ls
+  420  grep MAE log.txt
+  421  sq
+  422  ssh mb-rom103
+  423  ls
+  424  pwd
+  425  ls
+  426  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  427  ls
+  428  sbatch submit.sh 
+  429  sq
+  430  mv log.txt log.txt_old3
+  431  ls
+  432  sq
+  433  ls
+  434  sq
+  435  ls
+  436  sq
+  437  ls
+  438  sbatch submit.sh 
+  439  sq
+  440  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/testGenetic
+  441  ls
+  442  cp /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4/submit.sh .
+  443  ls
+  444  pwd
+  445  ls
+  446  sbatch submit.sh 
+  447  sq
+  448  ls
+  449  tail log.txt 
+  450  pwd
+  451  ls
+  452  tail log.txt 
+  453  sbatch submit.sh 
+  454  sq
+  455  ls
+  456  tail log.txt 
+  457  sbatch submit.sh 
+  458  sq
+  459  ls
+  460  tail log.txt 
+  461  sq
+  462  tail log.txt 
+  463  ls
+  464  tail log.txt 
+  465  python3 genetic.py 
+  466  sbatch submit.sh 
+  467  sq
+  468  ls
+  469  tail log.txt 
+  470  sbatch submit.sh 
+  471  sq
+  472  ls
+  473  tail log.txt 
+  474  sbatch submit.sh 
+  475  sq
+  476  ls
+  477  tail log.txt 
+  478  sq
+  479  ls
+  480  sq
+  481  tail log.txt 
+  482  sbatch submit.sh 
+  483  sq
+  484  tail log.txt 
+  485  sbatch submit.sh 
+  486  sq
+  487  tail log.txt 
+  488  sbatch submit.sh 
+  489  sq
+  490  ls
+  491  tail log.txt 
+  492  sq
+  493  tail log.txt 
+  494  sq
+  495  sbatch submit.sh 
+  496  sq
+  497  tail log.txt 
+  498  ls
+  499  python3 genetic.py 
+  500  ls
+  501  tail log.txt 
+  502  mv log.txt log.txt_old
+  503  ls
+  504  sbatch submit.sh 
+  505  sq
+  506  ls
+  507  tail log.txt
+  508  ls
+  509  rm ga_instance_generation_*
+  510  ls
+  511  sbatch submit.sh 
+  512  sq
+  513  ls
+  514  tail log.txt
+  515  sq
+  516  ls
+  517  ls tmp/
+  518  ls tmp/train_ids.txt 
+  519  tail tmp/train_ids.txt 
+  520  ls
+  521  tail tmp/train_ids.txt 
+  522  ls
+  523  tail log.txt
+  524  sq
+  525  tail log.txt
+  526  ls tmp/
+  527  ls
+  528  sq
+  529  ls
+  530  tail log.txt
+  531  ls
+  532  tail log.txt
+  533  sbatch submit.sh 
+  534  sq
+  535  pwd
+  536  sq
+  537  scancel 36092177
+  538  sq
+  539  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4/
+  540  tail log.txt
+  541  grep MAE
+  542  grep MAE log.txt
+  543  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.2/
+  544  ls
+  545  sq
+  546  ls
+  547  grep MAE log.txt
+  548  ls
+  549  sbatch submit.sh 
+  550  sq
+  551  ls
+  552  tail log.txt
+  553  pwd
+  554  sq
+  555  cd /globalscratch/users/r/g/rgouvea/featurize_OFM/remainingOFMfeats/
+  556  ls
+  557  mv remaining_mp_gap_OFM* OFMremaining/
+  558  ls
+  559  sq
+  560  ls
+  561  tail log*.txt
+  562  ls
+  563  ls OFMremaining/
+  564  ls
+  565  vi missing_files.py
+  566  ls
+  567  python3 missing_files.py 
+  568  sq
+  569  scancel 36078649 36078648 36078647
+  570  sq
+  571  ls
+  572  mv remaining_mp_gap_OFM* OFMremaining/
+  573  ls
+  574  python3 missing_files.py 
+  575  ls
+  576  python3 missing_files.py 
+  577  sbatch submit.sh 
+  578  sq
+  579  pwd
+  580  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/
+  581  ls
+  582  sbatch submit.sh 
+  583  sq
+  584  scancel 36093284
+  585  sbatch submit.sh 
+  586  sq
+  587  ls
+  588  quota
+  589  ls
+  590  sq
+  591  gs
+  592  ls
+  593  cd GeneticAlgorithmTest/
+  594  ls
+  595  cd GeneticVAE_MMmpgap/cr_0.2
+  596  ls
+  597  tail log.txt
+  598  exit
+  599  ls
+  600  gs
+  601  ls
+  602  cd GeneticAlgorithmTest/
+  603  ls
+  604  cd GeneticVAE_MMmpgap/
+  605  ls
+  606  cd cr_0.2
+  607  ls
+  608  tail log.txt
+  609  cd ..
+  610  ls
+  611  cd cr_0.4
+  612  ls
+  613  mv log.txt log.txt_old
+  614  ls
+  615  tail log.txt_old 
+  616  ls
+  617  vi genetic.py 
+  618  ls
+  619  sbatch submit.sh 
+  620  sq
+  621  ls
+  622  cd ..
+  623  ls
+  624  cd cr_0.6
+  625  ls
+  626  tail log.txt
+  627  ls
+  628  mv log.txt log.txt_old2
+  629  ls
+  630  vi genetic.py 
+  631  ls
+  632  vi genetic.py 
+  633  ls
+  634  tail tmp
+  635  ls
+  636  cp genetic.py genetic2.py 
+  637  ls
+  638  cp ../cr_0.2/genetic.py .
+  639  ls
+  640  cat genetic.py 
+  641  ls
+  642  vi genetic.py 
+  643  ls
+  644  sbatch submit.sh 
+  645  sq
+  646  ls
+  647  tail tmp/
+  648  ls
+  649  ls tmp/
+  650  exit
+  651  sq
+  652  gs
+  653  ls
+  654  cd GeneticAlgorithmTest/
+  655  ls
+  656  cd GeneticVAE_MMmpgap/
+  657  ls
+  658  cd cr_0.2
+  659  vi log.txt
+  660  ls
+  661  vi genetic.py 
+  662  cat ../../genetic_hypertune.py 
+  663  ls tmp/ga_instance_generation_5.pkl 
+  664  vi genetic.py 
+  665  ls
+  666  mv log.txt_old4
+  667  mv log.txt log.txt_old4
+  668  ls
+  669  sbatch submit.sh 
+  670  ls
+  671  vi genetic.py 
+  672  ls
+  673  tail log.txt
+  674  vi log.txt
+  675  ls
+  676  vi log.txt
+  677  ls
+  678  cd ..
+  679  ls
+  680  cd cr_0.4/
+  681  ls
+  682  tail log.txt
+  683  ls
+  684  cat genetic.py 
+  685  ls
+  686  ls tmp/
+  687  ls
+  688  grep MAE log.txt
+  689  ls
+  690  sq
+  691  ls
+  692  gs
+  693  ls
+  694  cd GeneticAlgorithmTest/
+  695  ls
+  696  cd GeneticVAE_MMmpgap/
+  697  ls
+  698  cd cr_0.2/
+  699  ls
+  700  tail log.txt
+  701  grep MAE log.txt
+  702  ls -lt tmp/
+  703  ls -lt tmp/gene*
+  704  ls -lt tmp/ga*
+  705  grep MAE log.txt
+  706  ls
+  707  cd ..
+  708  ls
+  709  gs
+  710  ls
+  711  cd GeneticAlgorithmTest/
+  712  ls
+  713  cd GeneticVAE_
+  714  cd GeneticVAE_MMmpgap/
+  715  ls
+  716  cd cr_0.2/
+  717  ls
+  718  ll -t tmp/ga_instance_generation_*
+  719  ls
+  720  cd ..
+  721  ls
+  722  cd cr_0.4/
+  723  ls
+  724  ls -la tmp/ga_instance_generation_*
+  725  ls
+  726  grep MAE log.txt
+  727  cd ..
+  728  ls
+  729  cd cr_0.6/
+  730  ls
+  731  grep MAE tmp/ga_instance_generation_*
+  732  ls tmp/ga_instance_generation_*
+  733  ls -la tmp/ga_instance_generation_*
+  734  ls66
+  735  cp log.txt log.txt_old3
+  736  ls
+  737  tail 
+  738  ls
+  739  tail log.txt
+  740  ls
+  741  ls tmp/ga_instance_generation_*
+  742  vi genetic2.py 
+  743  ls
+  744  ls tmp/ga_instance_generation_*
+  745  vi genetic.py 
+  746  ls
+  747  ls tmp/ga_instance_generation_*
+  748  ls
+  749  sbatch submit.sh 
+  750  sq
+  751  ls
+  752  cd ..
+  753  ls
+  754  cd -
+  755  ls
+  756  cd cr_0.4/
+  757  ls
+  758  mv log.txt log.txt_old2
+  759  ls tmp/
+  760  ls
+  761  ls tmp/ga_instance_generation_*
+  762  vi genetic.py 
+  763  ls
+  764  mv genetic.py genetic2.py 
+  765  ls
+  766  ll tmp/
+  767  ls
+  768  cp ../cr_0.6/genetic.py .
+  769  ls -l tmp/ga*
+  770  vi genetic.py
+  771  vi genetic2.py 
+  772  vi genetic.py 
+  773  ls
+  774  tail genetic.py 
+  775  ll -t tmp/geneticVAE_MMmp_gap_*
+  776  ll -t tmp/ga*
+  777  ls
+  778  sbatch submit.sh 
+  779  sq
+  780  ls
+  781  cd ..
+  782  ls
+  783  cd cr_0.2
+  784  sq
+  785  ls
+  786  tail genetic.py 
+  787  ls
+  788  ls -l tmp/ga_instance_generation_*
+  789  ls
+  790  mv log.txt log.txtold5
+  791  ls
+  792  sq
+  793  ls
+  794  tail genetic.py 
+  795  vi genetic.py 
+  796  ls
+  797  tail genetic.py 
+  798  ls
+  799  sbatch submit.sh 
+  800  sq
+  801  exit
+  802  s
+  803  q
+  804  sq
+  805  ls
+  806  sq
+  807  gs
+  808  cd GeneticAlgorithmTest/GeneticVAE_MMmpgap/
+  809  ls
+  810  cd cr_0.2/
+  811  ls
+  812  grep MAE log.txt
+  813  ls
+  814  pwd
+  815  gs
+  816  ls
+  817  cd GeneticAlgorithmTest/
+  818  ls
+  819  cd GeneticVAE_MMmpgap/
+  820  ls
+  821  cd cr_0.2
+  822  ls
+  823  ls tmp/ga*
+  824  ls
+  825  vi genetic.py submit.sh 
+  826  ls
+  827  tail genetic.py 
+  828  ls
+  829  sbatch submit.sh 
+  830  ls
+  831  cd ..
+  832  ls
+  833  cd cr_0.4/
+  834  ls
+  835  ls tmp/ga*
+  836  vi genetic.py 
+  837  ls
+  838  grep MAE log.txt
+  839  ls
+  840  ls tmp/
+  841  ls -lt tmp/ga*
+  842  ls
+  843  vi genetic2.py 
+  844  ls
+  845  vi genetic.py 
+  846  ls
+  847  mv log.txt log.txtold3
+  848  ls
+  849  sbatch submit.sh 
+  850  cd 
+  851  cd -
+  852  ls
+  853  cd ..
+  854  ls
+  855  cd cr_0.2/
+  856  ls
+  857  tail log.txt
+  858  ls
+  859  ls -lt tmp/ga*
+  860  ls
+  861  tail genetic.py 
+  862  ls
+  863  cd ..
+  864  ls
+  865  cd cr_0.6
+  866  ls
+  867  tail genetic.py 
+  868  ls
+  869  ls -lt tmp
+  870  ls -lt tmp/ga_instance_generation_*
+  871  ls
+  872  tail genetic.py 
+  873  ls
+  874  vi genetic.py 
+  875  ls
+  876  mv log.txt log.txtold4
+  877  sbatch submit.sh 
+  878  sq
+  879  exit
+  880  gs
+  881  cd GeneticAlgorithmTest/
+  882  ls
+  883  cd GeneticVAE_MMmpgap/cr_0.2
+  884  ls
+  885  tail log.txt
+  886  grep MAE log.txt
+  887  ls
+  888  mv log.txt log.txtold6
+  889  sq
+  890  ls
+  891  sq
+  892  ls
+  893  module load nvtop
+  894  nvtop
+  895  sq
+  896  exit
+  897  sq
+  898  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4
+  899  grep MAE log.txt
+  900  ls
+  901  tail tmp/ga_instance_generation_*
+  902  ls tmp/ga_instance_generation_*
+  903  ls -lt tmp/ga_instance_generation_*
+  904  ls
+  905  grep MAE log.txt
+  906  ls
+  907  tail log.txt
+  908  sq
+  909  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4/
+  910  ls
+  911  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.4/
+  912  du -sh tmp/
+  913  ls tmp/
+  914  ls
+  915  du -sh tmp/*
+  916  ls
+  917  tail log.txt
+  918  mv log.txt log.txt_finalold
+  919  ls
+  920  rm tmp/ga_instance_generation_*
+  921  ls
+  922  sq
+  923  ls
+  924  tail genetic2.py 
+  925  ls
+  926  tail genetic.py 
+  927  ls
+  928  tail submit.sh 
+  929  sbatch submit.sh 
+  930  sq
+  931  ls
+  932  sq
+  933  ls
+  934  sq
+  935  ls
+  936  tail log.txt
+  937  sq
+  938  tail log.txt
+  939  sq
+  940  ls
+  941  sq
+  942  ls
+  943  ssh mb-cas001
+  944  ls
+  945  sq
+  946  grep MAE log.txt
+  947  pwd
+  948  cd ..
+  949  ls
+  950  cd cr_0.6/
+  951  ls
+  952  grep MAE log.txt
+  953  ls -l tmp/ga_instance_generation_*
+  954  sq
+  955  ls
+  956  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/
+  957  ls
+  958  tail log.txt
+  959  ls
+  960  tail genetic.py 
+  961  ls -la tmp/ga*
+  962  ls
+  963  mv log.txt log.txt_oldold6
+  964  ls
+  965  tail log.txt
+  966  ls
+  967  sq
+  968  ls
+  969  ls -lt tmp/ga*
+  970  ls
+  971  sbatch submit.sh 
+  972  sq
+  973  exit
+  974  ls
+  975  gs
+  976  ls
+  977  pwd
+  978  conda activate env_modnetmod
+  979  ls
+  980  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/
+  981  ls
+  982  vi tff.py
+  983  python3 tff.py 
+  984  conda list
+  985  conda activate env_modnet
+  986  conda deactivate
+  987  conda activate env_modnetmod
+  988  conda deactivate
+  989  conda activate env_modnetmod
+  990  conda list
+  991  conda deactivate
+  992  conda env remove -n env_modnetmod
+  993  rm -rf /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod
+  994  exit
+  995  rm -rf /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod
+  996  conda deactivate
+  997  rm -rf /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/
+  998  lsof +D /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/
+  999  kill 21755 
+ 1000  lsof +D /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/
+ 1001  rm -rf /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/
+ 1002  conda create -n env_tfmodnet
+ 1003  conda activate env_tfmodnet
+ 1004  conda activate modnet
+ 1005  pip install modnet
+ 1006  pip install modnet
+ 1007  pip install env_modnetmod
+ 1008* pip install env_modne
+ 1009  pip install modnet
+ 1010  pip install --upgrade pip
+ 1011  pip install tensorflow
+ 1012  conda deactivate
+ 1013  conda activate env_tfmodnet
+ 1014  ls
+ 1015  pip pip install --upgrade pip
+ 1016  pip install --upgrade pip
+ 1017  conda deactivate
+ 1018  ls
+ 1019  conda env remove -n python3
+ 1020  conda env remove -n env_tfmodnet
+ 1021  ls
+ 1022  conda env remove -n env_tfmodnet
+ 1023  conda create -n env_tfmodnet python=3.11
+ 1024  conda activate env_tfmodnet
+ 1025  pip install tensorflow tensorflow-gpu
+ 1026  pip remove tensorflow tensorflow-gpu
+ 1027  pip update
+ 1028  pip upgrade
+ 1029  pip update
+ 1030  pip install --upgrade pip
+ 1031  python -m pip install --upgrade pip
+ 1032  pip install tensorflow tensorflow-gpu
+ 1033  pip install tensorflow=2.11.0rc0 tensorflow-gpu=2.10.1
+ 1034  pip install tensorflow==2.11.0rc0 tensorflow-gpu==2.10.1
+ 1035  pip install tensorflow==2.11.0 tensorflow-gpu==2.10.1
+ 1036  pip install tensorflow==2.11 tensorflow-gpu==2.10.1
+ 1037  pip install tensorflow==2.10 tensorflow-gpu==2.10.1
+ 1038  pip install tensorflow tensorflow-gpu==2.10.1
+ 1039  pip install tensorflow tensorflow-gpu
+ 1040  conda deactivate
+ 1041  conda env remove -n env_tfmodnet
+ 1042  conda env create -n env_tfmodnet python==3.8
+ 1043  conda env create -n env_tfmodnet python=3.8
+ 1044  conda create --name my_env python=3.8
+ 1045  conda create --name env_tfmodnet python=3.8
+ 1046  pip install tensorflow tensorflow-gpu==2.10.1
+ 1047  conda activate env_tfmodnet
+ 1048  pip install tensorflow tensorflow-gpu==2.10.1
+ 1049  pip install tensorflow-probability
+ 1050  pip install modnet
+ 1051  ls
+ 1052  conda env list
+ 1053  conda list
+ 1054  ls
+ 1055  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/
+ 1056  ls
+ 1057* 
+ 1058  ls
+ 1059  grep MAE log.txt
+ 1060  python3 -m pudb genetic.py
+ 1061  pip install pudb
+ 1062  python3 -m pudb genetic.py
+ 1063  pip install pygad
+ 1064  python3 -m pudb genetic.py
+ 1065  ls
+ 1066  cd /globalscratch/users/r/g/rgouvea/AutoencoderTools
+ 1067  ls
+ 1068  python3 setup.py install
+ 1069  cd /globalscratch/users/r/g/rgouvea/MEGNetModelTools
+ 1070  ls
+ 1071  python3 setup.py install
+ 1072  cd -
+ 1073  cd /globalscratch/users/r/g/rgouvea/GeneticAlgorithmTest/GeneticVAE_MMmpgap/cr_0.6/
+ 1074  ls
+ 1075  python3 genetic.py 
+ 1076  pip install dill
+ 1077  python3 genetic.py 
+ 1078  pip install
+ 1079  python3 
+ 1080  pip install numpy==1.20
+ 1081  python3 genetic.py 
+ 1082  pip install numpy==1.20.3
+ 1083  python3 genetic.py 
+ 1084  pip install pymatgen
+ 1085  python3 genetic.py 
+ 1086  python3
+ 1087  pip install pymatgen==2023.1.30
+ 1088  python3 genetic.py 
+ 1089  vi /home/ucl/modl/rgouvea/.local/lib/python3.8/site-packages/modnet-0.1.12-py3.8.egg/modnet/preprocessing.py
+ 1090  python3 genetic.py 
+ 1091  vi /home/ucl/modl/rgouvea/.local/lib/python3.8/site-packages/modnet-0.1.12-py3.8.egg/modnet/preprocessing.py
+ 1092  pip install nvidia-tensorrt
+ 1093  pip install --upgrade nvidia-tensorrt
+ 1094  ls
+ 1095  vi ~/.bashrc 
+ 1096  python3 genetic.py 
+ 1097  apt-file search libcuda.so.1
+ 1098  ls /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages
+ 1099  ls /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/
+ 1100  ls /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/
+ 1101  ls /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/cuda_runtime/*
+ 1102  find . -iname /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/* 
+ 1103  find /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/* -name *cuda*
+ 1104  find /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/* -name *cuda*.so
+ 1105  find /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/* -name *cuda*.so*
+ 1106  vi ~/.bashrc 
+ 1107  source ~/.bashrc 
+ 1108  conda activate env_tfmodnet
+ 1109  ls
+ 1110  python3 genetic.py 
+ 1111  find /home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8** -name *libcuda*
+ 1112  find /home/ucl/modl/rgouvea/anaconda3/* -name *libcuda*
+ 1113  vi ~/.bashrc 
+ 1114  source ~/.bashrc && conda activate env_tfmodnet
+ 1115  python3 genetic.py 
+ 1116  find /home/ucl/modl/rgouvea/anaconda3/* -name *libcuda*
+ 1117  locate libcuda.so*
+ 1118  module load CUDA
+ 1119  locate libcuda.so*
+ 1120  module load cuDNN/8.0.4.30-CUDA-11.1.1
+ 1121  locate libcuda.so*
+ 1122  pip install nvidia-pyindex
+ 1123  python3 genetic.py 
+ 1124  locate *cuda*
+ 1125  locate lib*cuda*
+ 1126  locate libcuda*
+ 1127  locate *cuda*
+ 1128  locate *cuda*.so*
+ 1129  locate cuda*.so*
+ 1130  locate *.so*
+ 1131  locate *cuda*.so*
+ 1132  pip install pycuda
+ 1133  locate *cuda*.so*
+ 1134  python3 genetic.py 
+ 1135  libcuda.so.1
+ 1136  locate *cuda*.so*
+ 1137  locate *libcuda*.so*
+ 1138  pip install cuda-python
+ 1139  locate *libcuda*.so*
+ 1140  python3 genetic.py 
+ 1141  conda install -c conda-forge cudatoolkit=11.2.2 cudnn=8.1.0
+ 1142  conda install -c conda-forge cudatoolkit cudnn
+ 1143  python3 genetic.py 
+ 1144  vi submit.sh 
+ 1145  history > history.txt
+ 1146  vi history.txt 
+ 1147  history > history.txt

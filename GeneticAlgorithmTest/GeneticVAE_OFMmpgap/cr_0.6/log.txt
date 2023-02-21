@@ -1,0 +1,889 @@
+start
+Wed Feb 15 10:24:55 CET 2023
+2023-02-15 10:25:01.857569: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-15 10:25:03.582847: I tensorflow/core/util/port.cc:104] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+         OFM: s^1 - s^1  OFM: s^1 - s^2  ...  OFM: f^14 - f^13  OFM: f^14 - f^14
+id                                       ...                                    
+id40482        0.000000        0.000000  ...               0.0          0.000000
+id40486        0.000000        0.000000  ...               0.0          0.000000
+id40487        0.000000        0.000000  ...               0.0          0.000022
+id40490        0.000000        0.080160  ...               0.0          0.000000
+id40496        0.000000        0.000000  ...               0.0          0.000000
+...                 ...             ...  ...               ...               ...
+id83741        0.174544        0.746256  ...               0.0          0.000000
+id83742        0.000000        0.000000  ...               0.0          1.815492
+id83743        0.007311        0.241355  ...               0.0          0.000000
+id83744        0.000000        0.000000  ...               0.0          0.439306
+id83745        0.000000        0.203940  ...               0.0          0.000000
+
+[93419 rows x 1024 columns]
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:486: UserWarning: The percentage of genes to mutate (mutation_percent_genes=10) resutled in selecting (0) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).
+If you do not want to mutate any gene, please set mutation_type=None.
+  if not self.suppress_warnings: warnings.warn("The percentage of genes to mutate (mutation_percent_genes={mutation_percent}) resutled in selecting ({mutation_num}) genes. The number of genes to mutate is set to 1 (mutation_num_genes=1).\nIf you do not want to mutate any gene, please set mutation_type=None.".format(mutation_percent=mutation_percent_genes, mutation_num=mutation_num_genes))
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:820: UserWarning: Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_best_solutions' parameter with caution as it may cause memory overflow when either the number of generations or number of genes is large.")
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/pygad/pygad.py:828: UserWarning: Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.
+  if not self.suppress_warnings: warnings.warn("Use the 'save_solutions' parameter with caution as it may cause memory overflow when either the number of generations, number of genes, or number of solutions in population is large.")
+[[2.0 90 0.001 64 1]
+ [2.1 90 0.001 64 1]
+ [1.5 70 0.0005 16 0]
+ [2.5 50 0.0005 64 2]
+ [2.0 110 0.0005 8 0]
+ [2.0 170 0.0005 16 0]
+ [2.0 25 0.001 16 1]
+ [1.5 90 0.001 32 1]
+ [0.5 25 0.001 64 0]
+ [1.5 30 0.0005 8 1]]
+[2.0 90 0.001 64 1] 0
+Shape of dataset to encode: (93419, 943)
+WARNING:tensorflow:From /home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/layers/normalization/batch_normalization.py:561: _colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 943)]        0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 1886)         1780384     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 1886)        7544        ['dense_enc0[0][0]']             
+ alization)                                                                                       
+                                                                                                  
+ re_lu (ReLU)                   (None, 1886)         0           ['batch_normalization[0][0]']    
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 471)          888777      ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 471)          888777      ['re_lu[0][0]']                  
+                                                                                                  
+ bottleneck (Lambda)            (None, 471)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 943)          2901373     ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 6,466,855
+Trainable params: 6,458,369
+Non-trainable params: 8,486
+__________________________________________________________________________________________________
+Train on 84077 samples, validate on 9342 samples
+Epoch 1/90
+WARNING:tensorflow:OMP_NUM_THREADS is no longer used by the default Keras config. To configure the number of threads, use tf.config.threading APIs.
+2023-02-15 10:25:59.644073: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F AVX512_VNNI FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2023-02-15 10:26:02.615821: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 20633 MB memory:  -> device: 0, name: NVIDIA A10, pci bus id: 0000:84:00.0, compute capability: 8.6
+2023-02-15 10:26:02.617690: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1613] Created device /job:localhost/replica:0/task:0/device:GPU:1 with 20633 MB memory:  -> device: 1, name: NVIDIA A10, pci bus id: 0000:a2:00.0, compute capability: 8.6
+2023-02-15 10:26:02.680783: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:357] MLIR V1 optimization pass is not enabled
+2023-02-15 10:26:03.174664: W tensorflow/c/c_api.cc:291] Operation '{name:'training/Adam/batch_normalization_1/beta/v/Assign' id:1090 op device:{requested: '', assigned: ''} def:{{{node training/Adam/batch_normalization_1/beta/v/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](training/Adam/batch_normalization_1/beta/v, training/Adam/batch_normalization_1/beta/v/Initializer/zeros)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+2023-02-15 10:26:06.616731: I tensorflow/compiler/xla/stream_executor/cuda/cuda_blas.cc:630] TensorFloat-32 will be used for the matrix multiplication. This will only be logged once.
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2333: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates = self.state_updates
+2023-02-15 10:26:11.866216: W tensorflow/c/c_api.cc:291] Operation '{name:'loss/mul' id:450 op device:{requested: '', assigned: ''} def:{{{node loss/mul}} = Mul[T=DT_FLOAT, _has_manual_control_dependencies=true](loss/mul/x, loss/decoder_model_loss/value)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+84077/84077 - 13s - loss: 0.0070 - val_loss: 0.0015 - 13s/epoch - 149us/sample
+Epoch 2/90
+84077/84077 - 4s - loss: 0.0015 - val_loss: 0.0018 - 4s/epoch - 53us/sample
+Epoch 3/90
+84077/84077 - 4s - loss: 0.0015 - val_loss: 9.1850e-04 - 4s/epoch - 53us/sample
+Epoch 4/90
+84077/84077 - 4s - loss: 0.0012 - val_loss: 6.7805e-04 - 4s/epoch - 53us/sample
+Epoch 5/90
+84077/84077 - 4s - loss: 6.7119e-04 - val_loss: 5.6671e-04 - 4s/epoch - 53us/sample
+Epoch 6/90
+84077/84077 - 4s - loss: 5.6871e-04 - val_loss: 4.7881e-04 - 4s/epoch - 53us/sample
+Epoch 7/90
+84077/84077 - 4s - loss: 5.9860e-04 - val_loss: 4.0503e-04 - 4s/epoch - 53us/sample
+Epoch 8/90
+84077/84077 - 4s - loss: 4.2326e-04 - val_loss: 3.3672e-04 - 4s/epoch - 53us/sample
+Epoch 9/90
+84077/84077 - 4s - loss: 3.6658e-04 - val_loss: 2.8755e-04 - 4s/epoch - 53us/sample
+Epoch 10/90
+84077/84077 - 4s - loss: 3.2838e-04 - val_loss: 2.6971e-04 - 4s/epoch - 53us/sample
+Epoch 11/90
+84077/84077 - 4s - loss: 2.8615e-04 - val_loss: 2.3135e-04 - 4s/epoch - 53us/sample
+Epoch 12/90
+84077/84077 - 4s - loss: 2.5908e-04 - val_loss: 2.1335e-04 - 4s/epoch - 53us/sample
+Epoch 13/90
+84077/84077 - 4s - loss: 2.4667e-04 - val_loss: 2.0616e-04 - 4s/epoch - 53us/sample
+Epoch 14/90
+84077/84077 - 4s - loss: 2.3245e-04 - val_loss: 1.9776e-04 - 4s/epoch - 53us/sample
+Epoch 15/90
+84077/84077 - 4s - loss: 2.1683e-04 - val_loss: 2.3717e-04 - 4s/epoch - 53us/sample
+Epoch 16/90
+84077/84077 - 4s - loss: 2.0478e-04 - val_loss: 1.7865e-04 - 4s/epoch - 53us/sample
+Epoch 17/90
+84077/84077 - 4s - loss: 1.9509e-04 - val_loss: 1.6898e-04 - 4s/epoch - 53us/sample
+Epoch 18/90
+84077/84077 - 4s - loss: 1.8601e-04 - val_loss: 1.7272e-04 - 4s/epoch - 53us/sample
+Epoch 19/90
+84077/84077 - 4s - loss: 1.7977e-04 - val_loss: 1.5996e-04 - 4s/epoch - 53us/sample
+Epoch 20/90
+84077/84077 - 4s - loss: 1.7855e-04 - val_loss: 1.5764e-04 - 4s/epoch - 53us/sample
+Epoch 21/90
+84077/84077 - 4s - loss: 1.6881e-04 - val_loss: 1.5680e-04 - 4s/epoch - 53us/sample
+Epoch 22/90
+84077/84077 - 4s - loss: 1.6638e-04 - val_loss: 1.4347e-04 - 4s/epoch - 53us/sample
+Epoch 23/90
+84077/84077 - 4s - loss: 1.6098e-04 - val_loss: 1.4527e-04 - 4s/epoch - 53us/sample
+Epoch 24/90
+84077/84077 - 4s - loss: 1.6387e-04 - val_loss: 1.4529e-04 - 4s/epoch - 53us/sample
+Epoch 25/90
+84077/84077 - 4s - loss: 1.5711e-04 - val_loss: 1.3703e-04 - 4s/epoch - 53us/sample
+Epoch 26/90
+84077/84077 - 4s - loss: 1.5718e-04 - val_loss: 1.3550e-04 - 4s/epoch - 53us/sample
+Epoch 27/90
+84077/84077 - 4s - loss: 1.4950e-04 - val_loss: 1.3967e-04 - 4s/epoch - 53us/sample
+Epoch 28/90
+84077/84077 - 4s - loss: 1.7397e-04 - val_loss: 1.5569e-04 - 4s/epoch - 53us/sample
+Epoch 29/90
+84077/84077 - 4s - loss: 1.5378e-04 - val_loss: 1.3078e-04 - 4s/epoch - 53us/sample
+Epoch 30/90
+84077/84077 - 4s - loss: 1.4634e-04 - val_loss: 1.3182e-04 - 4s/epoch - 53us/sample
+Epoch 31/90
+84077/84077 - 4s - loss: 1.4313e-04 - val_loss: 1.3301e-04 - 4s/epoch - 53us/sample
+Epoch 32/90
+84077/84077 - 4s - loss: 1.4147e-04 - val_loss: 1.2767e-04 - 4s/epoch - 53us/sample
+Epoch 33/90
+84077/84077 - 4s - loss: 1.3805e-04 - val_loss: 1.2917e-04 - 4s/epoch - 53us/sample
+Epoch 34/90
+84077/84077 - 4s - loss: 1.3962e-04 - val_loss: 1.2546e-04 - 4s/epoch - 53us/sample
+Epoch 35/90
+84077/84077 - 4s - loss: 1.3643e-04 - val_loss: 1.2081e-04 - 4s/epoch - 53us/sample
+Epoch 36/90
+84077/84077 - 4s - loss: 1.3614e-04 - val_loss: 1.2288e-04 - 4s/epoch - 53us/sample
+Epoch 37/90
+84077/84077 - 4s - loss: 1.3580e-04 - val_loss: 1.2386e-04 - 4s/epoch - 53us/sample
+Epoch 38/90
+84077/84077 - 4s - loss: 1.3377e-04 - val_loss: 1.2213e-04 - 4s/epoch - 53us/sample
+Epoch 39/90
+84077/84077 - 4s - loss: 1.3311e-04 - val_loss: 1.2146e-04 - 4s/epoch - 53us/sample
+Epoch 40/90
+84077/84077 - 4s - loss: 1.3051e-04 - val_loss: 1.1825e-04 - 4s/epoch - 53us/sample
+Epoch 41/90
+84077/84077 - 4s - loss: 1.2895e-04 - val_loss: 1.1748e-04 - 4s/epoch - 53us/sample
+Epoch 42/90
+84077/84077 - 4s - loss: 1.3554e-04 - val_loss: 1.2703e-04 - 4s/epoch - 53us/sample
+Epoch 43/90
+84077/84077 - 4s - loss: 1.2943e-04 - val_loss: 1.1682e-04 - 4s/epoch - 53us/sample
+Epoch 44/90
+84077/84077 - 4s - loss: 1.2658e-04 - val_loss: 1.1714e-04 - 4s/epoch - 53us/sample
+Epoch 45/90
+84077/84077 - 4s - loss: 1.2666e-04 - val_loss: 1.1516e-04 - 4s/epoch - 53us/sample
+Epoch 46/90
+84077/84077 - 4s - loss: 1.2614e-04 - val_loss: 1.1330e-04 - 4s/epoch - 53us/sample
+Epoch 47/90
+84077/84077 - 4s - loss: 1.2645e-04 - val_loss: 1.1711e-04 - 4s/epoch - 53us/sample
+Epoch 48/90
+84077/84077 - 4s - loss: 1.2551e-04 - val_loss: 1.1364e-04 - 4s/epoch - 53us/sample
+Epoch 49/90
+84077/84077 - 4s - loss: 1.2565e-04 - val_loss: 1.1603e-04 - 4s/epoch - 53us/sample
+Epoch 50/90
+84077/84077 - 4s - loss: 1.2289e-04 - val_loss: 1.1439e-04 - 4s/epoch - 53us/sample
+Epoch 51/90
+84077/84077 - 4s - loss: 1.2144e-04 - val_loss: 1.1355e-04 - 4s/epoch - 53us/sample
+Epoch 52/90
+84077/84077 - 4s - loss: 1.2183e-04 - val_loss: 1.1299e-04 - 4s/epoch - 53us/sample
+Epoch 53/90
+84077/84077 - 4s - loss: 1.3811e-04 - val_loss: 1.1614e-04 - 4s/epoch - 53us/sample
+Epoch 54/90
+84077/84077 - 4s - loss: 1.2144e-04 - val_loss: 1.1113e-04 - 4s/epoch - 53us/sample
+Epoch 55/90
+84077/84077 - 4s - loss: 1.1983e-04 - val_loss: 1.1169e-04 - 4s/epoch - 53us/sample
+Epoch 56/90
+84077/84077 - 4s - loss: 1.1952e-04 - val_loss: 1.1029e-04 - 4s/epoch - 53us/sample
+Epoch 57/90
+84077/84077 - 4s - loss: 1.1913e-04 - val_loss: 1.1060e-04 - 4s/epoch - 53us/sample
+Epoch 58/90
+84077/84077 - 4s - loss: 1.1767e-04 - val_loss: 1.1079e-04 - 4s/epoch - 53us/sample
+Epoch 59/90
+84077/84077 - 4s - loss: 1.1734e-04 - val_loss: 1.0757e-04 - 4s/epoch - 53us/sample
+Epoch 60/90
+84077/84077 - 4s - loss: 1.1813e-04 - val_loss: 1.1039e-04 - 4s/epoch - 53us/sample
+Epoch 61/90
+84077/84077 - 4s - loss: 1.1691e-04 - val_loss: 1.0845e-04 - 4s/epoch - 53us/sample
+Epoch 62/90
+84077/84077 - 4s - loss: 1.1912e-04 - val_loss: 1.0811e-04 - 4s/epoch - 53us/sample
+Epoch 63/90
+84077/84077 - 4s - loss: 1.2192e-04 - val_loss: 1.0921e-04 - 4s/epoch - 53us/sample
+Epoch 64/90
+84077/84077 - 4s - loss: 1.2298e-04 - val_loss: 1.1150e-04 - 4s/epoch - 53us/sample
+Epoch 65/90
+84077/84077 - 4s - loss: 1.1701e-04 - val_loss: 1.0651e-04 - 4s/epoch - 53us/sample
+Epoch 66/90
+84077/84077 - 4s - loss: 1.1514e-04 - val_loss: 1.0546e-04 - 4s/epoch - 53us/sample
+Epoch 67/90
+84077/84077 - 4s - loss: 1.1487e-04 - val_loss: 1.0584e-04 - 4s/epoch - 53us/sample
+Epoch 68/90
+84077/84077 - 4s - loss: 1.1516e-04 - val_loss: 1.0651e-04 - 4s/epoch - 53us/sample
+Epoch 69/90
+84077/84077 - 4s - loss: 1.1278e-04 - val_loss: 1.0381e-04 - 4s/epoch - 53us/sample
+Epoch 70/90
+84077/84077 - 4s - loss: 1.1349e-04 - val_loss: 1.0328e-04 - 4s/epoch - 53us/sample
+Epoch 71/90
+84077/84077 - 4s - loss: 1.1552e-04 - val_loss: 1.0567e-04 - 4s/epoch - 53us/sample
+Epoch 72/90
+84077/84077 - 4s - loss: 1.1299e-04 - val_loss: 1.0488e-04 - 4s/epoch - 53us/sample
+Epoch 73/90
+84077/84077 - 4s - loss: 1.1279e-04 - val_loss: 1.0424e-04 - 4s/epoch - 53us/sample
+Epoch 74/90
+84077/84077 - 4s - loss: 1.1455e-04 - val_loss: 1.0298e-04 - 4s/epoch - 53us/sample
+Epoch 75/90
+84077/84077 - 4s - loss: 1.1261e-04 - val_loss: 1.0356e-04 - 4s/epoch - 53us/sample
+Epoch 76/90
+84077/84077 - 4s - loss: 1.1418e-04 - val_loss: 1.0637e-04 - 4s/epoch - 53us/sample
+Epoch 77/90
+84077/84077 - 4s - loss: 1.1206e-04 - val_loss: 1.0442e-04 - 4s/epoch - 53us/sample
+Epoch 78/90
+84077/84077 - 4s - loss: 1.1070e-04 - val_loss: 1.0505e-04 - 4s/epoch - 53us/sample
+Epoch 79/90
+84077/84077 - 4s - loss: 1.1492e-04 - val_loss: 1.0462e-04 - 4s/epoch - 53us/sample
+Epoch 80/90
+84077/84077 - 4s - loss: 1.1253e-04 - val_loss: 1.0910e-04 - 4s/epoch - 53us/sample
+Epoch 81/90
+84077/84077 - 4s - loss: 1.1114e-04 - val_loss: 1.0377e-04 - 4s/epoch - 53us/sample
+Epoch 82/90
+84077/84077 - 4s - loss: 1.0943e-04 - val_loss: 1.0117e-04 - 4s/epoch - 53us/sample
+Epoch 83/90
+84077/84077 - 4s - loss: 1.0955e-04 - val_loss: 1.0174e-04 - 4s/epoch - 53us/sample
+Epoch 84/90
+84077/84077 - 4s - loss: 1.1076e-04 - val_loss: 1.0261e-04 - 4s/epoch - 53us/sample
+Epoch 85/90
+84077/84077 - 4s - loss: 1.1157e-04 - val_loss: 1.0580e-04 - 4s/epoch - 53us/sample
+Epoch 86/90
+84077/84077 - 4s - loss: 1.1003e-04 - val_loss: 1.0062e-04 - 4s/epoch - 53us/sample
+Epoch 87/90
+84077/84077 - 4s - loss: 1.0948e-04 - val_loss: 1.0133e-04 - 4s/epoch - 53us/sample
+Epoch 88/90
+84077/84077 - 4s - loss: 1.0851e-04 - val_loss: 1.0167e-04 - 4s/epoch - 53us/sample
+Epoch 89/90
+84077/84077 - 4s - loss: 1.0782e-04 - val_loss: 1.0143e-04 - 4s/epoch - 53us/sample
+Epoch 90/90
+84077/84077 - 4s - loss: 1.0821e-04 - val_loss: 1.0078e-04 - 4s/epoch - 53us/sample
+COMPRESSED VECTOR SIZE: 471
+Loss in the autoencoder: 0.00010077824441770556
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2357: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates=self.state_updates,
+2023-02-15 10:32:51.906159: W tensorflow/c/c_api.cc:291] Operation '{name:'decoder_model/outputlayer/BiasAdd' id:421 op device:{requested: '', assigned: ''} def:{{{node decoder_model/outputlayer/BiasAdd}} = BiasAdd[T=DT_FLOAT, _has_manual_control_dependencies=true, data_format="NHWC"](decoder_model/outputlayer/MatMul, decoder_model/outputlayer/BiasAdd/ReadVariableOp)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+correlation 0.012088531982900472
+cosine 0.011938030061135465
+MAE: 0.0016867692409029277
+RMSE: 0.0064320832691869365
+r2: 0.9680157100526621
+RMSE zero-vector: 0.04004287452915337
+['2.0custom_VAE', 'mse', 64, 90, 0.001, 0.5, 471, 0.00010821185929589286, 0.00010077824441770556, 0.012088531982900472, 0.011938030061135465, 0.0016867692409029277, 0.0064320832691869365, 0.9680157100526621, 0.04004287452915337] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.1 90 0.001 64 1] 1
+./tmp/ already created.
+Shape of dataset to encode: (93419, 943)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 943)]        0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 1980)         1869120     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_3 (BatchNo  (None, 1980)        7920        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_3 (ReLU)                 (None, 1980)         0           ['batch_normalization_3[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 471)          933051      ['re_lu_3[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 471)          933051      ['re_lu_3[0][0]']                
+                                                                                                  
+ bottleneck (Lambda)            (None, 471)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 943)          3034759     ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 6,777,901
+Trainable params: 6,769,039
+Non-trainable params: 8,862
+__________________________________________________________________________________________________
+Train on 84077 samples, validate on 9342 samples
+Epoch 1/90
+2023-02-15 10:32:56.678395: W tensorflow/c/c_api.cc:291] Operation '{name:'training_2/Adam/dense_enc0_1/bias/m/Assign' id:2174 op device:{requested: '', assigned: ''} def:{{{node training_2/Adam/dense_enc0_1/bias/m/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](training_2/Adam/dense_enc0_1/bias/m, training_2/Adam/dense_enc0_1/bias/m/Initializer/zeros)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2333: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates = self.state_updates
+2023-02-15 10:33:01.434266: W tensorflow/c/c_api.cc:291] Operation '{name:'loss_1/mul' id:1711 op device:{requested: '', assigned: ''} def:{{{node loss_1/mul}} = Mul[T=DT_FLOAT, _has_manual_control_dependencies=true](loss_1/mul/x, loss_1/decoder_model_loss/value)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+84077/84077 - 5s - loss: 0.0083 - val_loss: 0.0016 - 5s/epoch - 62us/sample
+Epoch 2/90
+84077/84077 - 5s - loss: 0.1029 - val_loss: 0.0091 - 5s/epoch - 54us/sample
+Epoch 3/90
+84077/84077 - 5s - loss: 0.0015 - val_loss: 0.0012 - 5s/epoch - 54us/sample
+Epoch 4/90
+84077/84077 - 5s - loss: 0.0289 - val_loss: 0.0011 - 5s/epoch - 54us/sample
+Epoch 5/90
+84077/84077 - 5s - loss: 8.9374e-04 - val_loss: 8.1392e-04 - 5s/epoch - 54us/sample
+Epoch 6/90
+84077/84077 - 5s - loss: 0.0027 - val_loss: 6.3725e-04 - 5s/epoch - 54us/sample
+Epoch 7/90
+84077/84077 - 5s - loss: 6.5744e-04 - val_loss: 6.4781e-04 - 5s/epoch - 54us/sample
+Epoch 8/90
+84077/84077 - 5s - loss: 5.9647e-04 - val_loss: 4.3660e-04 - 5s/epoch - 54us/sample
+Epoch 9/90
+84077/84077 - 5s - loss: 5.2946e-04 - val_loss: 3.7471e-04 - 5s/epoch - 54us/sample
+Epoch 10/90
+84077/84077 - 5s - loss: 3.9964e-04 - val_loss: 3.3050e-04 - 5s/epoch - 54us/sample
+Epoch 11/90
+84077/84077 - 5s - loss: 3.5713e-04 - val_loss: 3.0063e-04 - 5s/epoch - 54us/sample
+Epoch 12/90
+84077/84077 - 5s - loss: 3.3121e-04 - val_loss: 2.8108e-04 - 5s/epoch - 54us/sample
+Epoch 13/90
+84077/84077 - 5s - loss: 2.9755e-04 - val_loss: 2.7178e-04 - 5s/epoch - 54us/sample
+Epoch 14/90
+84077/84077 - 5s - loss: 2.7912e-04 - val_loss: 2.4477e-04 - 5s/epoch - 54us/sample
+Epoch 15/90
+84077/84077 - 5s - loss: 2.5601e-04 - val_loss: 2.2830e-04 - 5s/epoch - 54us/sample
+Epoch 16/90
+84077/84077 - 5s - loss: 2.5112e-04 - val_loss: 2.0971e-04 - 5s/epoch - 54us/sample
+Epoch 17/90
+84077/84077 - 5s - loss: 2.3357e-04 - val_loss: 2.0522e-04 - 5s/epoch - 54us/sample
+Epoch 18/90
+84077/84077 - 5s - loss: 2.1786e-04 - val_loss: 1.8711e-04 - 5s/epoch - 54us/sample
+Epoch 19/90
+84077/84077 - 5s - loss: 2.0715e-04 - val_loss: 1.7865e-04 - 5s/epoch - 54us/sample
+Epoch 20/90
+84077/84077 - 5s - loss: 1.9559e-04 - val_loss: 1.8294e-04 - 5s/epoch - 54us/sample
+Epoch 21/90
+84077/84077 - 5s - loss: 1.8881e-04 - val_loss: 1.6949e-04 - 5s/epoch - 54us/sample
+Epoch 22/90
+84077/84077 - 5s - loss: 1.8039e-04 - val_loss: 1.5745e-04 - 5s/epoch - 54us/sample
+Epoch 23/90
+84077/84077 - 5s - loss: 1.7373e-04 - val_loss: 1.5389e-04 - 5s/epoch - 54us/sample
+Epoch 24/90
+84077/84077 - 5s - loss: 1.6538e-04 - val_loss: 1.4656e-04 - 5s/epoch - 54us/sample
+Epoch 25/90
+84077/84077 - 5s - loss: 1.6127e-04 - val_loss: 1.4587e-04 - 5s/epoch - 54us/sample
+Epoch 26/90
+84077/84077 - 5s - loss: 1.5770e-04 - val_loss: 1.4100e-04 - 5s/epoch - 54us/sample
+Epoch 27/90
+84077/84077 - 5s - loss: 1.5391e-04 - val_loss: 1.3822e-04 - 5s/epoch - 54us/sample
+Epoch 28/90
+84077/84077 - 5s - loss: 1.4998e-04 - val_loss: 1.3680e-04 - 5s/epoch - 54us/sample
+Epoch 29/90
+84077/84077 - 5s - loss: 1.4711e-04 - val_loss: 1.3616e-04 - 5s/epoch - 54us/sample
+Epoch 30/90
+84077/84077 - 5s - loss: 1.4430e-04 - val_loss: 1.3035e-04 - 5s/epoch - 54us/sample
+Epoch 31/90
+84077/84077 - 5s - loss: 1.4216e-04 - val_loss: 1.3296e-04 - 5s/epoch - 54us/sample
+Epoch 32/90
+84077/84077 - 5s - loss: 1.4116e-04 - val_loss: 1.4278e-04 - 5s/epoch - 54us/sample
+Epoch 33/90
+84077/84077 - 5s - loss: 1.4574e-04 - val_loss: 1.2902e-04 - 5s/epoch - 54us/sample
+Epoch 34/90
+84077/84077 - 5s - loss: 1.3891e-04 - val_loss: 1.2743e-04 - 5s/epoch - 54us/sample
+Epoch 35/90
+84077/84077 - 5s - loss: 1.3548e-04 - val_loss: 1.2358e-04 - 5s/epoch - 54us/sample
+Epoch 36/90
+84077/84077 - 5s - loss: 1.3722e-04 - val_loss: 1.2315e-04 - 5s/epoch - 54us/sample
+Epoch 37/90
+84077/84077 - 5s - loss: 1.3316e-04 - val_loss: 1.2455e-04 - 5s/epoch - 54us/sample
+Epoch 38/90
+84077/84077 - 5s - loss: 1.3182e-04 - val_loss: 1.2199e-04 - 5s/epoch - 54us/sample
+Epoch 39/90
+84077/84077 - 5s - loss: 1.3032e-04 - val_loss: 1.2032e-04 - 5s/epoch - 54us/sample
+Epoch 40/90
+84077/84077 - 5s - loss: 1.2899e-04 - val_loss: 1.1956e-04 - 5s/epoch - 54us/sample
+Epoch 41/90
+84077/84077 - 5s - loss: 1.2824e-04 - val_loss: 1.1949e-04 - 5s/epoch - 54us/sample
+Epoch 42/90
+84077/84077 - 5s - loss: 1.2771e-04 - val_loss: 1.1747e-04 - 5s/epoch - 54us/sample
+Epoch 43/90
+84077/84077 - 5s - loss: 1.2634e-04 - val_loss: 1.1558e-04 - 5s/epoch - 54us/sample
+Epoch 44/90
+84077/84077 - 5s - loss: 1.2514e-04 - val_loss: 1.1693e-04 - 5s/epoch - 54us/sample
+Epoch 45/90
+84077/84077 - 5s - loss: 1.2388e-04 - val_loss: 1.1588e-04 - 5s/epoch - 54us/sample
+Epoch 46/90
+84077/84077 - 5s - loss: 1.2358e-04 - val_loss: 1.1539e-04 - 5s/epoch - 54us/sample
+Epoch 47/90
+84077/84077 - 5s - loss: 1.2393e-04 - val_loss: 1.1714e-04 - 5s/epoch - 54us/sample
+Epoch 48/90
+84077/84077 - 5s - loss: 1.2197e-04 - val_loss: 1.1411e-04 - 5s/epoch - 54us/sample
+Epoch 49/90
+84077/84077 - 5s - loss: 1.2268e-04 - val_loss: 1.1478e-04 - 5s/epoch - 54us/sample
+Epoch 50/90
+84077/84077 - 5s - loss: 1.2063e-04 - val_loss: 1.1263e-04 - 5s/epoch - 54us/sample
+Epoch 51/90
+84077/84077 - 5s - loss: 1.1933e-04 - val_loss: 1.1302e-04 - 5s/epoch - 54us/sample
+Epoch 52/90
+84077/84077 - 5s - loss: 1.1925e-04 - val_loss: 1.1230e-04 - 5s/epoch - 54us/sample
+Epoch 53/90
+84077/84077 - 5s - loss: 1.1895e-04 - val_loss: 1.1220e-04 - 5s/epoch - 54us/sample
+Epoch 54/90
+84077/84077 - 5s - loss: 1.1916e-04 - val_loss: 1.1069e-04 - 5s/epoch - 54us/sample
+Epoch 55/90
+84077/84077 - 5s - loss: 1.1709e-04 - val_loss: 1.0969e-04 - 5s/epoch - 54us/sample
+Epoch 56/90
+84077/84077 - 5s - loss: 1.1768e-04 - val_loss: 1.1095e-04 - 5s/epoch - 54us/sample
+Epoch 57/90
+84077/84077 - 5s - loss: 1.1674e-04 - val_loss: 1.0987e-04 - 5s/epoch - 54us/sample
+Epoch 58/90
+84077/84077 - 5s - loss: 1.1567e-04 - val_loss: 1.0969e-04 - 5s/epoch - 54us/sample
+Epoch 59/90
+84077/84077 - 5s - loss: 1.1565e-04 - val_loss: 1.0898e-04 - 5s/epoch - 54us/sample
+Epoch 60/90
+84077/84077 - 5s - loss: 1.1436e-04 - val_loss: 1.1014e-04 - 5s/epoch - 54us/sample
+Epoch 61/90
+84077/84077 - 5s - loss: 1.1443e-04 - val_loss: 1.0827e-04 - 5s/epoch - 54us/sample
+Epoch 62/90
+84077/84077 - 5s - loss: 1.1445e-04 - val_loss: 1.0798e-04 - 5s/epoch - 54us/sample
+Epoch 63/90
+84077/84077 - 5s - loss: 1.1335e-04 - val_loss: 1.0689e-04 - 5s/epoch - 54us/sample
+Epoch 64/90
+84077/84077 - 5s - loss: 1.1301e-04 - val_loss: 1.0625e-04 - 5s/epoch - 54us/sample
+Epoch 65/90
+84077/84077 - 5s - loss: 1.1327e-04 - val_loss: 1.0671e-04 - 5s/epoch - 54us/sample
+Epoch 66/90
+84077/84077 - 5s - loss: 1.1267e-04 - val_loss: 1.0637e-04 - 5s/epoch - 54us/sample
+Epoch 67/90
+84077/84077 - 5s - loss: 1.1222e-04 - val_loss: 1.0582e-04 - 5s/epoch - 54us/sample
+Epoch 68/90
+84077/84077 - 5s - loss: 1.1204e-04 - val_loss: 1.0709e-04 - 5s/epoch - 54us/sample
+Epoch 69/90
+84077/84077 - 5s - loss: 1.1101e-04 - val_loss: 1.0601e-04 - 5s/epoch - 54us/sample
+Epoch 70/90
+84077/84077 - 5s - loss: 1.1105e-04 - val_loss: 1.0366e-04 - 5s/epoch - 54us/sample
+Epoch 71/90
+84077/84077 - 5s - loss: 1.1078e-04 - val_loss: 1.0474e-04 - 5s/epoch - 54us/sample
+Epoch 72/90
+84077/84077 - 5s - loss: 1.1039e-04 - val_loss: 1.0995e-04 - 5s/epoch - 54us/sample
+Epoch 73/90
+84077/84077 - 5s - loss: 1.1075e-04 - val_loss: 1.0288e-04 - 5s/epoch - 54us/sample
+Epoch 74/90
+84077/84077 - 5s - loss: 1.0951e-04 - val_loss: 1.0530e-04 - 5s/epoch - 54us/sample
+Epoch 75/90
+84077/84077 - 5s - loss: 1.0993e-04 - val_loss: 1.0548e-04 - 5s/epoch - 54us/sample
+Epoch 76/90
+84077/84077 - 5s - loss: 1.0954e-04 - val_loss: 1.0444e-04 - 5s/epoch - 54us/sample
+Epoch 77/90
+84077/84077 - 5s - loss: 1.0886e-04 - val_loss: 1.0599e-04 - 5s/epoch - 54us/sample
+Epoch 78/90
+84077/84077 - 5s - loss: 1.0851e-04 - val_loss: 1.0312e-04 - 5s/epoch - 54us/sample
+Epoch 79/90
+84077/84077 - 5s - loss: 1.0828e-04 - val_loss: 1.0306e-04 - 5s/epoch - 54us/sample
+Epoch 80/90
+84077/84077 - 5s - loss: 1.0805e-04 - val_loss: 1.0264e-04 - 5s/epoch - 54us/sample
+Epoch 81/90
+84077/84077 - 5s - loss: 1.0742e-04 - val_loss: 1.0188e-04 - 5s/epoch - 54us/sample
+Epoch 82/90
+84077/84077 - 5s - loss: 1.0717e-04 - val_loss: 1.0151e-04 - 5s/epoch - 54us/sample
+Epoch 83/90
+84077/84077 - 5s - loss: 1.0692e-04 - val_loss: 1.0277e-04 - 5s/epoch - 54us/sample
+Epoch 84/90
+84077/84077 - 5s - loss: 1.0775e-04 - val_loss: 1.0292e-04 - 5s/epoch - 54us/sample
+Epoch 85/90
+84077/84077 - 5s - loss: 1.0708e-04 - val_loss: 1.0127e-04 - 5s/epoch - 54us/sample
+Epoch 86/90
+84077/84077 - 5s - loss: 1.0646e-04 - val_loss: 1.0197e-04 - 5s/epoch - 54us/sample
+Epoch 87/90
+84077/84077 - 5s - loss: 1.0846e-04 - val_loss: 1.0203e-04 - 5s/epoch - 54us/sample
+Epoch 88/90
+84077/84077 - 5s - loss: 1.0566e-04 - val_loss: 1.0202e-04 - 5s/epoch - 54us/sample
+Epoch 89/90
+84077/84077 - 5s - loss: 1.0597e-04 - val_loss: 1.0133e-04 - 5s/epoch - 54us/sample
+Epoch 90/90
+84077/84077 - 5s - loss: 1.0539e-04 - val_loss: 1.0067e-04 - 5s/epoch - 54us/sample
+COMPRESSED VECTOR SIZE: 471
+Loss in the autoencoder: 0.0001006686976528278
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2357: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates=self.state_updates,
+2023-02-15 10:39:46.860045: W tensorflow/c/c_api.cc:291] Operation '{name:'decoder_model_1/outputlayer/BiasAdd' id:1682 op device:{requested: '', assigned: ''} def:{{{node decoder_model_1/outputlayer/BiasAdd}} = BiasAdd[T=DT_FLOAT, _has_manual_control_dependencies=true, data_format="NHWC"](decoder_model_1/outputlayer/MatMul, decoder_model_1/outputlayer/BiasAdd/ReadVariableOp)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+correlation 0.011113173456871362
+cosine 0.010977663349084368
+MAE: 0.0016645303672315182
+RMSE: 0.006395824274258066
+r2: 0.9685983735638903
+RMSE zero-vector: 0.04004287452915337
+['2.1custom_VAE', 'mse', 64, 90, 0.001, 0.5, 471, 0.00010539481928553643, 0.0001006686976528278, 0.011113173456871362, 0.010977663349084368, 0.0016645303672315182, 0.006395824274258066, 0.9685983735638903, 0.04004287452915337] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[1.5 70 0.0005 16 0] 2
+./tmp/ already created.
+Shape of dataset to encode: (93419, 943)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 943)]        0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 1414)         1334816     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_6 (BatchNo  (None, 1414)        5656        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_6 (ReLU)                 (None, 1414)         0           ['batch_normalization_6[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 471)          666465      ['re_lu_6[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 471)          666465      ['re_lu_6[0][0]']                
+                                                                                                  
+ bottleneck (Lambda)            (None, 471)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 943)          2231605     ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 4,905,007
+Trainable params: 4,898,409
+Non-trainable params: 6,598
+__________________________________________________________________________________________________
+Train on 84077 samples, validate on 9342 samples
+Epoch 1/70
+2023-02-15 10:39:51.512787: W tensorflow/c/c_api.cc:291] Operation '{name:'training_4/Adam/batch_normalization_7/gamma/v/Assign' id:3683 op device:{requested: '', assigned: ''} def:{{{node training_4/Adam/batch_normalization_7/gamma/v/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](training_4/Adam/batch_normalization_7/gamma/v, training_4/Adam/batch_normalization_7/gamma/v/Initializer/zeros)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2333: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates = self.state_updates
+2023-02-15 10:40:06.174146: W tensorflow/c/c_api.cc:291] Operation '{name:'loss_2/mul' id:2988 op device:{requested: '', assigned: ''} def:{{{node loss_2/mul}} = Mul[T=DT_FLOAT, _has_manual_control_dependencies=true](loss_2/mul/x, loss_2/decoder_model_loss/value)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+84077/84077 - 16s - loss: 0.0679 - val_loss: 0.0704 - 16s/epoch - 187us/sample
+Epoch 2/70
+84077/84077 - 15s - loss: 0.0674 - val_loss: 0.0674 - 15s/epoch - 177us/sample
+Epoch 3/70
+84077/84077 - 15s - loss: 0.0669 - val_loss: 0.0674 - 15s/epoch - 177us/sample
+Epoch 4/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 5/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 6/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 7/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 8/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 9/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 10/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 11/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 12/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 13/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 14/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 15/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 16/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 17/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 18/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 19/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 20/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 21/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 22/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 23/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 24/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 25/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 26/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 27/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 28/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 29/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 30/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 31/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 32/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 33/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 34/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 35/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 36/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 37/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 38/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 39/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 40/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 41/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 42/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 43/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 44/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 45/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 46/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 47/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 48/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 49/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 50/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 51/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 52/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 53/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 54/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 55/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 56/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 57/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 58/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 59/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 60/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 61/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 62/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 63/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 64/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 65/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 66/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 67/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 68/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 69/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+Epoch 70/70
+84077/84077 - 15s - loss: 0.0668 - val_loss: 0.0673 - 15s/epoch - 177us/sample
+COMPRESSED VECTOR SIZE: 471
+Loss in the autoencoder: 0.06734578753756752
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2357: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates=self.state_updates,
+2023-02-15 10:57:14.982543: W tensorflow/c/c_api.cc:291] Operation '{name:'decoder_model_2/outputlayer/BiasAdd' id:2940 op device:{requested: '', assigned: ''} def:{{{node decoder_model_2/outputlayer/BiasAdd}} = BiasAdd[T=DT_FLOAT, _has_manual_control_dependencies=true, data_format="NHWC"](decoder_model_2/outputlayer/MatMul, decoder_model_2/outputlayer/BiasAdd/ReadVariableOp)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+correlation 1.2141449345874822
+cosine 1.182062716324057
+MAE: 4.718220238523229
+RMSE: 5.288837757595016
+r2: -20775.083565754005
+RMSE zero-vector: 0.04004287452915337
+['1.5custom_VAE', 'binary_crossentropy', 16, 70, 0.0005, 0.5, 471, 0.06683691081029557, 0.06734578753756752, 1.2141449345874822, 1.182062716324057, 4.718220238523229, 5.288837757595016, -20775.083565754005, 0.04004287452915337] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.5 50 0.0005 64 2] 3
+./tmp/ already created.
+Shape of dataset to encode: (93419, 943)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 943)]        0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 2357)         2225008     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_9 (BatchNo  (None, 2357)        9428        ['dense_enc0[0][0]']             
+ rmalization)                                                                                     
+                                                                                                  
+ re_lu_9 (ReLU)                 (None, 2357)         0           ['batch_normalization_9[0][0]']  
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 471)          1110618     ['re_lu_9[0][0]']                
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 471)          1110618     ['re_lu_9[0][0]']                
+                                                                                                  
+ bottleneck (Lambda)            (None, 471)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 943)          3569722     ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 8,025,394
+Trainable params: 8,015,024
+Non-trainable params: 10,370
+__________________________________________________________________________________________________
+Train on 84077 samples, validate on 9342 samples
+Epoch 1/50
+2023-02-15 10:57:19.679812: W tensorflow/c/c_api.cc:291] Operation '{name:'training_6/Adam/beta_2/Assign' id:4778 op device:{requested: '', assigned: ''} def:{{{node training_6/Adam/beta_2/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](training_6/Adam/beta_2, training_6/Adam/beta_2/Initializer/initial_value)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2333: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates = self.state_updates
+2023-02-15 10:57:24.833571: W tensorflow/c/c_api.cc:291] Operation '{name:'loss_3/mul' id:4316 op device:{requested: '', assigned: ''} def:{{{node loss_3/mul}} = Mul[T=DT_FLOAT, _has_manual_control_dependencies=true](loss_3/mul/x, loss_3/decoder_model_loss/value)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+84077/84077 - 6s - loss: 0.0045 - val_loss: 0.0012 - 6s/epoch - 70us/sample
+Epoch 2/50
+84077/84077 - 5s - loss: 9.8346e-04 - val_loss: 7.2103e-04 - 5s/epoch - 57us/sample
+Epoch 3/50
+84077/84077 - 5s - loss: 0.0025 - val_loss: 6.7020e-04 - 5s/epoch - 57us/sample
+Epoch 4/50
+84077/84077 - 5s - loss: 6.4550e-04 - val_loss: 5.4980e-04 - 5s/epoch - 57us/sample
+Epoch 5/50
+84077/84077 - 5s - loss: 0.0016 - val_loss: 3.9673e-04 - 5s/epoch - 57us/sample
+Epoch 6/50
+84077/84077 - 5s - loss: 3.9333e-04 - val_loss: 3.5251e-04 - 5s/epoch - 57us/sample
+Epoch 7/50
+84077/84077 - 5s - loss: 3.8113e-04 - val_loss: 3.2189e-04 - 5s/epoch - 57us/sample
+Epoch 8/50
+84077/84077 - 5s - loss: 3.1988e-04 - val_loss: 2.5701e-04 - 5s/epoch - 57us/sample
+Epoch 9/50
+84077/84077 - 5s - loss: 2.8490e-04 - val_loss: 2.5682e-04 - 5s/epoch - 57us/sample
+Epoch 10/50
+84077/84077 - 5s - loss: 2.5452e-04 - val_loss: 3.4444e-04 - 5s/epoch - 57us/sample
+Epoch 11/50
+84077/84077 - 5s - loss: 2.2240e-04 - val_loss: 1.6960e-04 - 5s/epoch - 57us/sample
+Epoch 12/50
+84077/84077 - 5s - loss: 1.9952e-04 - val_loss: 2.0034e-04 - 5s/epoch - 57us/sample
+Epoch 13/50
+84077/84077 - 5s - loss: 1.8119e-04 - val_loss: 1.5310e-04 - 5s/epoch - 57us/sample
+Epoch 14/50
+84077/84077 - 5s - loss: 1.6763e-04 - val_loss: 1.4583e-04 - 5s/epoch - 57us/sample
+Epoch 15/50
+84077/84077 - 5s - loss: 1.5728e-04 - val_loss: 1.3014e-04 - 5s/epoch - 57us/sample
+Epoch 16/50
+84077/84077 - 5s - loss: 1.4817e-04 - val_loss: 1.2573e-04 - 5s/epoch - 57us/sample
+Epoch 17/50
+84077/84077 - 5s - loss: 1.3976e-04 - val_loss: 1.1531e-04 - 5s/epoch - 57us/sample
+Epoch 18/50
+84077/84077 - 5s - loss: 1.3152e-04 - val_loss: 1.1171e-04 - 5s/epoch - 57us/sample
+Epoch 19/50
+84077/84077 - 5s - loss: 1.2780e-04 - val_loss: 1.0692e-04 - 5s/epoch - 57us/sample
+Epoch 20/50
+84077/84077 - 5s - loss: 1.2205e-04 - val_loss: 1.0413e-04 - 5s/epoch - 57us/sample
+Epoch 21/50
+84077/84077 - 5s - loss: 1.1910e-04 - val_loss: 1.0224e-04 - 5s/epoch - 57us/sample
+Epoch 22/50
+84077/84077 - 5s - loss: 1.1509e-04 - val_loss: 9.9276e-05 - 5s/epoch - 57us/sample
+Epoch 23/50
+84077/84077 - 5s - loss: 1.1235e-04 - val_loss: 9.7586e-05 - 5s/epoch - 57us/sample
+Epoch 24/50
+84077/84077 - 5s - loss: 1.0979e-04 - val_loss: 9.6944e-05 - 5s/epoch - 57us/sample
+Epoch 25/50
+84077/84077 - 5s - loss: 1.0802e-04 - val_loss: 9.4854e-05 - 5s/epoch - 57us/sample
+Epoch 26/50
+84077/84077 - 5s - loss: 1.0588e-04 - val_loss: 9.3322e-05 - 5s/epoch - 57us/sample
+Epoch 27/50
+84077/84077 - 5s - loss: 1.0413e-04 - val_loss: 9.2181e-05 - 5s/epoch - 57us/sample
+Epoch 28/50
+84077/84077 - 5s - loss: 1.0299e-04 - val_loss: 9.0215e-05 - 5s/epoch - 57us/sample
+Epoch 29/50
+84077/84077 - 5s - loss: 1.0104e-04 - val_loss: 8.8356e-05 - 5s/epoch - 57us/sample
+Epoch 30/50
+84077/84077 - 5s - loss: 9.9796e-05 - val_loss: 8.9209e-05 - 5s/epoch - 57us/sample
+Epoch 31/50
+84077/84077 - 5s - loss: 9.9087e-05 - val_loss: 8.7477e-05 - 5s/epoch - 57us/sample
+Epoch 32/50
+84077/84077 - 5s - loss: 9.8979e-05 - val_loss: 8.7500e-05 - 5s/epoch - 57us/sample
+Epoch 33/50
+84077/84077 - 5s - loss: 9.7339e-05 - val_loss: 8.7140e-05 - 5s/epoch - 57us/sample
+Epoch 34/50
+84077/84077 - 5s - loss: 9.5734e-05 - val_loss: 8.4686e-05 - 5s/epoch - 57us/sample
+Epoch 35/50
+84077/84077 - 5s - loss: 9.4804e-05 - val_loss: 8.4474e-05 - 5s/epoch - 57us/sample
+Epoch 36/50
+84077/84077 - 5s - loss: 9.3962e-05 - val_loss: 8.4554e-05 - 5s/epoch - 57us/sample
+Epoch 37/50
+84077/84077 - 5s - loss: 9.3018e-05 - val_loss: 8.3630e-05 - 5s/epoch - 57us/sample
+Epoch 38/50
+84077/84077 - 5s - loss: 9.2753e-05 - val_loss: 8.2593e-05 - 5s/epoch - 57us/sample
+Epoch 39/50
+84077/84077 - 5s - loss: 9.2211e-05 - val_loss: 8.1785e-05 - 5s/epoch - 57us/sample
+Epoch 40/50
+84077/84077 - 5s - loss: 9.1114e-05 - val_loss: 8.1661e-05 - 5s/epoch - 57us/sample
+Epoch 41/50
+84077/84077 - 5s - loss: 9.0694e-05 - val_loss: 8.1498e-05 - 5s/epoch - 57us/sample
+Epoch 42/50
+84077/84077 - 5s - loss: 9.0004e-05 - val_loss: 8.1600e-05 - 5s/epoch - 57us/sample
+Epoch 43/50
+84077/84077 - 5s - loss: 8.9569e-05 - val_loss: 8.0667e-05 - 5s/epoch - 57us/sample
+Epoch 44/50
+84077/84077 - 5s - loss: 8.9060e-05 - val_loss: 7.9099e-05 - 5s/epoch - 57us/sample
+Epoch 45/50
+84077/84077 - 5s - loss: 8.8210e-05 - val_loss: 7.9317e-05 - 5s/epoch - 57us/sample
+Epoch 46/50
+84077/84077 - 5s - loss: 8.7964e-05 - val_loss: 7.9783e-05 - 5s/epoch - 57us/sample
+Epoch 47/50
+84077/84077 - 5s - loss: 8.7441e-05 - val_loss: 8.0113e-05 - 5s/epoch - 57us/sample
+Epoch 48/50
+84077/84077 - 5s - loss: 8.7019e-05 - val_loss: 7.9248e-05 - 5s/epoch - 57us/sample
+Epoch 49/50
+84077/84077 - 5s - loss: 8.6626e-05 - val_loss: 7.8851e-05 - 5s/epoch - 57us/sample
+Epoch 50/50
+84077/84077 - 5s - loss: 8.6362e-05 - val_loss: 8.1737e-05 - 5s/epoch - 57us/sample
+COMPRESSED VECTOR SIZE: 471
+Loss in the autoencoder: 8.173667911911029e-05
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2357: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates=self.state_updates,
+2023-02-15 11:01:20.580476: W tensorflow/c/c_api.cc:291] Operation '{name:'decoder_model_3/outputlayer/BiasAdd' id:4280 op device:{requested: '', assigned: ''} def:{{{node decoder_model_3/outputlayer/BiasAdd}} = BiasAdd[T=DT_FLOAT, _has_manual_control_dependencies=true, data_format="NHWC"](decoder_model_3/outputlayer/MatMul, decoder_model_3/outputlayer/BiasAdd/ReadVariableOp)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+correlation 0.020785888414633594
+cosine 0.02053724824309177
+MAE: 0.0024507175682193117
+RMSE: 0.008139639086489032
+r2: 0.9485308716765225
+RMSE zero-vector: 0.04004287452915337
+['2.5custom_VAE', 'logcosh', 64, 50, 0.0005, 0.5, 471, 8.636172099902465e-05, 8.173667911911029e-05, 0.020785888414633594, 0.02053724824309177, 0.0024507175682193117, 0.008139639086489032, 0.9485308716765225, 0.04004287452915337] [<class 'str'>, <class 'str'>, <class 'int'>, <class 'int'>, <class 'float'>, <class 'numpy.float64'>, <class 'int'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>, <class 'float'>]
+[2.0 110 0.0005 8 0] 4
+./tmp/ already created.
+Shape of dataset to encode: (93419, 943)
+Model: "VAE"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_enc (InputLayer)         [(None, 943)]        0           []                               
+                                                                                                  
+ dense_enc0 (Dense)             (None, 1886)         1780384     ['input_enc[0][0]']              
+                                                                                                  
+ batch_normalization_12 (BatchN  (None, 1886)        7544        ['dense_enc0[0][0]']             
+ ormalization)                                                                                    
+                                                                                                  
+ re_lu_12 (ReLU)                (None, 1886)         0           ['batch_normalization_12[0][0]'] 
+                                                                                                  
+ bottleneck_zmean (Dense)       (None, 471)          888777      ['re_lu_12[0][0]']               
+                                                                                                  
+ bottleneck_zlog (Dense)        (None, 471)          888777      ['re_lu_12[0][0]']               
+                                                                                                  
+ bottleneck (Lambda)            (None, 471)          0           ['bottleneck_zmean[0][0]',       
+                                                                  'bottleneck_zlog[0][0]']        
+                                                                                                  
+ decoder_model (Functional)     (None, 943)          2901373     ['bottleneck[0][0]']             
+                                                                                                  
+==================================================================================================
+Total params: 6,466,855
+Trainable params: 6,458,369
+Non-trainable params: 8,486
+__________________________________________________________________________________________________
+Train on 84077 samples, validate on 9342 samples
+Epoch 1/110
+2023-02-15 11:01:25.869171: W tensorflow/c/c_api.cc:291] Operation '{name:'batch_normalization_13/moving_variance/Assign' id:5339 op device:{requested: '', assigned: ''} def:{{{node batch_normalization_13/moving_variance/Assign}} = AssignVariableOp[_has_manual_control_dependencies=true, dtype=DT_FLOAT, validate_shape=false](batch_normalization_13/moving_variance, batch_normalization_13/moving_variance/Initializer/ones)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/keras/engine/training_v1.py:2333: UserWarning: `Model.state_updates` will be removed in a future version. This property should not be used in TensorFlow 2.0, as `updates` are applied automatically.
+  updates = self.state_updates
+2023-02-15 11:01:55.765307: W tensorflow/c/c_api.cc:291] Operation '{name:'loss_4/mul' id:5616 op device:{requested: '', assigned: ''} def:{{{node loss_4/mul}} = Mul[T=DT_FLOAT, _has_manual_control_dependencies=true](loss_4/mul/x, loss_4/decoder_model_loss/value)}}' was changed by setting attribute after it was run by a session. This mutation will have no effect, and will trigger an error in the future. Either don't modify nodes after running them or create a new session.
+84077/84077 - 32s - loss: 0.0673 - val_loss: 0.0674 - 32s/epoch - 377us/sample
+Epoch 2/110
+84077/84077 - 31s - loss: 0.0669 - val_loss: 0.0673 - 31s/epoch - 363us/sample
+Epoch 3/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 363us/sample
+Epoch 4/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 363us/sample
+Epoch 5/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 363us/sample
+Epoch 6/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 363us/sample
+Epoch 7/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 364us/sample
+Epoch 8/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 363us/sample
+Epoch 9/110
+84077/84077 - 31s - loss: 0.0668 - val_loss: 0.0673 - 31s/epoch - 364us/sample
+Epoch 10/110
+slurmstepd: error: *** JOB 36005776 ON mb-icg101 CANCELLED AT 2023-02-15T11:06:21 ***
