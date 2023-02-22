@@ -10,12 +10,12 @@
 source ~/.bashrc
 module load CUDA cuDNN/8.0.4.30-CUDA-11.1.1 
 # TensorFlow/2.5.0-fosscuda-2020b
-#export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_megnetgpu/lib/"
-CUDA_DIR=/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/nvidia/cuda_nvcc/
-export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_modnetmod/lib/python3.8/site-packages/nvidia/cuda_nvcc/" 
+export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/"
+CUDA_DIR=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/cuda_nvcc/
+# export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/cuda_nvcc/" 
 # /home/ucl/modl/rgouvea/xla/nvvm/libdevice"
 
-conda activate env_modnetmod
+conda activate env_tfmodnet
 echo "start"
 date
 #python3 -u autoencoderMODNetFeats0.py >> log0.txt

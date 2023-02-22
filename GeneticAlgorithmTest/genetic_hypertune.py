@@ -85,6 +85,7 @@ def genetic_hypertune_autoencoder(prefix_name = 'testmodel',
             )
         # Clear the session, im trying to avoid memory problems Ive been having 
         tf.keras.backend.clear_session()
+
         MAE=results_dict["MAE"]
         # if the MAE is a string, it means that the autoencoder failed to train
         if isinstance(MAE,str):
@@ -166,6 +167,8 @@ def genetic_hypertune_autoencoder(prefix_name = 'testmodel',
         # print also the best solutions
         print("Best solutions : ", ga_instance.best_solutions)
         print("Best solutions fitness : ", ga_instance.best_solutions_fitness)
+        # Clear the session, im trying to avoid memory problems Ive been having 
+        tf.keras.backend.clear_session()
 
     def save_callback(ga_instance):
         # saving with dill because pickle does not work with nested functions
@@ -173,6 +176,8 @@ def genetic_hypertune_autoencoder(prefix_name = 'testmodel',
         with open(filename, "wb") as f:
             dill.dump(ga_instance, f)
         print(f"Saved GA instance to file: {filename}")
+        # Clear the session, im trying to avoid memory problems Ive been having 
+        tf.keras.backend.clear_session()
 
     gene_type=[float, int, float, int, int]
     # check if gene_space is a list of the types given in gene_type
