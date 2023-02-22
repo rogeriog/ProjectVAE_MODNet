@@ -1,0 +1,37 @@
+
+| Model                                             | Size | Score  |
+|----------------------------------------------------|------|--------|
+| mb_perovskites_original/fullset-copy               | Full | 0.0829 |
+| mb_perovskites_original/fullset                    | Full | 0.0928 |
+| mb_perovskites_original/fullset_precomputednmi     | Full | 0.0829 |
+| mb_perovskites_original/remake_fullset             | Full | 0.0888 |
+| mb_perovskites_original/subset5k                    | 5k   | 0.1667 |
+| mb_perovskites_original/subset5k_precomputednmi     | 5k   | 0.1642 |
+| mb_perovskites_original/remake_subset1k             | 1k   | 0.2747 |
+| mb_perovskites_original/subset1k                    | 1k   | 0.2802 |
+| mb_perovskites_original/subset1k_precomputednmi     | 1k   | 0.2727 |
+| mb_perovskites_wOFM/fullset                        | Full | 0.0903 |
+| mb_perovskites_wOFM/subset5k                        | 5k   | 0.1646 |
+| mb_perovskites_wOFM/subset1k                        | 1k   | 0.2811 |
+| MODNetCompressed80/fullset                         | Full | 0.0839 |
+| MODNetCompressed80/subset5k                         | 5k   | 0.1550 |
+| MODNetCompressed80/subset1k                         | 1k   | 0.3040 |
+| MODNetCompressed/fullset                            | Full | 0.0917 |
+| MODNetCompressed/subset5k                            | 5k   | 0.1620 |
+| MODNetCompressed/subset1k                            | 1k   | 0.3164 |
+| MODNet_MM088encod/fullset                          | Full | 0.1055 |
+| MODNet_MM088encod/subset5k                          | 5k   |0.1795 |
+| MODNet_MM088encod/subset1k                          | 1k   | 0.3236 |
+| MODNet_MM80_OFM50/fullset       | Full | 0.0728 |
+| MODNet_MM80_OFM50/subset5k      | 5k   | 0.1401 |
+| MODNet_MM80_OFM50/subset1k      | 1k   | 0.2656 |
+| MODNet_MM80_OFM50_MEGNet32/fullset  | Full | 0.0653 |
+| MODNet_MM80_OFM50_MEGNet32/subset5k | 5k   | 0.1171 |
+| MODNet_MM80_OFM50_MEGNet32/subset1k | 1k   | 0.1936 |
+| MODNet_MM_MEGNet16/fullset      | Full | 0.0752 |
+| MODNet_MM_MEGNet16/subset5k     | 5k   | 0.1202 |
+| MODNet_MM_MEGNet16/subset1k     | 1k   | 0.1862 |
+| MODNet_MM_MEGNet32/fullset      | Full | 0.0726 |
+| MODNet_MM_MEGNet32/subset5k     | 5k   | 0.1167 |
+| MODNet_MM_MEGNet32/subset1k     | 1k   | 0.1749 |
+

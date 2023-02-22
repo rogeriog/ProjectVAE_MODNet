@@ -1,3 +1,8 @@
 **/tmp/
 **/tmp_old/
 *.pkl
+*.pkl.gz
+**/matbench_*
+**/*best_model*
+**/*train_moddata*
+**/final_model*
