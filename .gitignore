@@ -6,3 +6,4 @@
 **/*best_model*
 **/*train_moddata*
 **/final_model*
+**/*.h5
