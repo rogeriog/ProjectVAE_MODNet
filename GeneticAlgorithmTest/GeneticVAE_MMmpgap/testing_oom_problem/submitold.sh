@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --job-name=VAE-test
-#SBATCH --time=01:00:00
+#SBATCH --job-name=VAE-test2h
+#SBATCH --time=02:00:00
 #SBATCH --output=log.txt
 #SBATCH --nodes=1
 #SBATCH --mem-per-cpu=40000
@@ -10,8 +10,8 @@
 source ~/.bashrc
 module load CUDA cuDNN/8.0.4.30-CUDA-11.1.1 
 # TensorFlow/2.5.0-fosscuda-2020b
-export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/"
-CUDA_DIR=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/cuda_nvcc/
+export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/cuda"
+export CUDA_DIR="/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/cuda"
 # export XLA_FLAGS="--xla_gpu_cuda_data_dir=/home/ucl/modl/rgouvea/anaconda3/envs/env_tfmodnet/lib/python3.8/site-packages/nvidia/cuda_nvcc/" 
 # /home/ucl/modl/rgouvea/xla/nvvm/libdevice"
 

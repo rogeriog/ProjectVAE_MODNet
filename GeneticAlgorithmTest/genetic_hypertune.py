@@ -82,20 +82,22 @@ def genetic_hypertune_autoencoder(prefix_name = 'testmodel',
             random_state = random_state,
             loss = loss,
             return_results = True,
+            get_test_results = False,
             )
         # Clear the session, im trying to avoid memory problems Ive been having 
         tf.keras.backend.clear_session()
 
-        MAE=results_dict["MAE"]
+        # score=results_dict["MAE"] ## would be ideal but im using a workaround
+        score = results_dict['mse_error_val']
         # if the MAE is a string, it means that the autoencoder failed to train
-        if isinstance(MAE,str):
-            MAE=1000000
-            print('ATTENTION: MAE is a string, setting it to 1000000')
+        if isinstance(score,str):
+            score=1000000
+            print('ATTENTION: score is a string, setting it to 1000000')
             print(f'It means that the autoencoder failed to train so solution ({solution}) is not valid.')
         # # The fitness function calulates the sum of products between each input and its corresponding weight.
         # output = numpy.sum(solution*function_inputs)
         # The value 0.000001 is used to avoid the Inf value when the denominator numpy.abs(output - desired_output) is 0.0.
-        fitness = 1.0 / (MAE + 0.000001)
+        fitness = 1.0 / (score + 0.000001)
         return fitness
 
     # this mutation function may cause the following changes:
